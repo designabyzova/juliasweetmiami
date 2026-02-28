@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
 import { NAV_ITEMS } from "@/lib/constants";
 import MobileMenu from "./MobileMenu";
 
@@ -53,16 +52,13 @@ export default function Header() {
             {/* Logo */}
             <button
               onClick={() => handleNavClick("#hero")}
-              className="relative h-9 sm:h-10 lg:h-11 w-9 sm:w-10 lg:w-11 flex-shrink-0 hover:scale-105 transition-transform duration-200"
+              className="flex-shrink-0 hover:scale-[1.03] transition-transform duration-200"
             >
-              <Image
-                src="/logo.png"
-                alt="Juliia Sweet"
-                fill
-                className="object-contain"
-                sizes="44px"
-                priority
-              />
+              <span className="font-[family-name:var(--font-display)] text-lg sm:text-xl lg:text-[22px] font-black tracking-tight leading-none">
+                <span className="text-charcoal">Juliia</span>
+                {" "}
+                <span className="text-coral">Sweet</span>
+              </span>
             </button>
 
             {/* Desktop Nav */}
