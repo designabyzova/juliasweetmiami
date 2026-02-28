@@ -27,11 +27,18 @@
   --breakpoint-xl: 1200px;
 }
 
+/* ── Base ── */
 * { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto; }
+}
 
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  -webkit-tap-highlight-color: transparent;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -52,6 +59,14 @@ body {
 ::-webkit-scrollbar-thumb { background: var(--color-coral); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--color-coral-dark); }
 
+/* ── Focus styles ── */
+:focus-visible {
+  outline: 2px solid var(--color-coral);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ── Progress bar ── */
 .progress-bar {
   position: fixed;
   top: 0;
@@ -62,10 +77,11 @@ body {
   transition: width 0.4s ease-out, opacity 0.3s ease;
 }
 
+/* ── Hero blob — mobile-first sizing ── */
 .hero-blob {
   position: absolute;
-  width: 2800px;
-  height: 1000px;
+  width: 800px;
+  height: 400px;
   background-color: var(--color-pink-light);
   border-radius: 3000px;
   opacity: 0.55;
@@ -73,21 +89,27 @@ body {
   z-index: 1;
 }
 
-@media (min-width: 960px) {
-  .hero-blob {
-    width: 4000px;
-    height: 1400px;
-  }
+@media (min-width: 640px) {
+  .hero-blob { width: 1400px; height: 600px; }
 }
 
+@media (min-width: 960px) {
+  .hero-blob { width: 2400px; height: 900px; }
+}
+
+@media (min-width: 1200px) {
+  .hero-blob { width: 3200px; height: 1100px; }
+}
+
+/* ── Keyframes ── */
 @keyframes float {
   0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-18px) rotate(3deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
 }
 
 @keyframes float-reverse {
   0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-12px) rotate(-4deg); }
+  50% { transform: translateY(-8px) rotate(-3deg); }
 }
 
 @keyframes gentle-spin {
@@ -97,11 +119,11 @@ body {
 
 @keyframes pulse-glow {
   0%, 100% { box-shadow: 0 0 0 0 var(--color-coral-glow); }
-  50% { box-shadow: 0 0 30px 10px var(--color-coral-glow); }
+  50% { box-shadow: 0 0 20px 6px var(--color-coral-glow); }
 }
 
 @keyframes slide-up-fade {
-  from { opacity: 0; transform: translateY(30px); }
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
@@ -123,11 +145,23 @@ body {
   90% { transform: translate(-10%, 10%); }
 }
 
+/* ── Utility animations ── */
 .animate-float { animation: float 6s ease-in-out infinite; }
 .animate-float-reverse { animation: float-reverse 8s ease-in-out infinite; }
 .animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
 .animate-gentle-spin { animation: gentle-spin 30s linear infinite; }
 
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-float,
+  .animate-float-reverse,
+  .animate-pulse-glow,
+  .animate-gentle-spin {
+    animation: none;
+  }
+}
+
+/* ── Grain texture ── */
 .grain::after {
   content: "";
   position: absolute;
@@ -140,6 +174,11 @@ body {
   z-index: 0;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .grain::after { animation: none; }
+}
+
+/* ── Pill buttons ── */
 .btn-pill {
   display: inline-flex;
   align-items: center;
@@ -162,17 +201,18 @@ body {
   background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 100%);
 }
 
-.btn-pill:hover::after {
-  opacity: 1;
-}
+.btn-pill:hover::after { opacity: 1; }
 
+/* ── Scrollbar hide ── */
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
+/* ── Nav active ── */
 .nav-active {
   box-shadow: inset 0px -2px 0px 0px var(--color-coral);
 }
 
+/* ── Card lift ── */
 .card-lift {
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -181,6 +221,11 @@ body {
   box-shadow: 0 20px 40px -12px rgba(0,0,0,0.08), 0 8px 16px -8px rgba(255,133,118,0.12);
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .card-lift:hover { transform: none; }
+}
+
+/* ── Section accent ── */
 .section-accent::before {
   content: "";
   display: block;
@@ -196,6 +241,7 @@ body {
   margin-right: auto;
 }
 
+/* ── Rotated images ── */
 .img-rotated {
   transform: rotate(10deg);
   transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
@@ -204,6 +250,7 @@ body {
   transform: rotate(0deg) scale(1.03);
 }
 
+/* ── Dot decoration ── */
 .dot-decoration {
   width: 8px;
   height: 8px;
@@ -213,7 +260,7 @@ body {
   position: absolute;
 }
 
-/* Warm gradient backgrounds for sections */
+/* ── Gradient backgrounds ── */
 .bg-gradient-warm {
   background: linear-gradient(165deg, #fff5f0 0%, #fff 40%, #fef0f5 100%);
 }
@@ -230,7 +277,7 @@ body {
   background: linear-gradient(165deg, #fdf8f0 0%, #fff 50%, #fef5ec 100%);
 }
 
-/* Review carousel styles */
+/* ── Review carousel ── */
 .review-image-frame {
   border-radius: 20px;
   overflow: hidden;
@@ -243,6 +290,7 @@ body {
   transform: rotate(0deg) scale(1.02);
 }
 
+/* ── Chat bubbles ── */
 .chat-bubble {
   background: white;
   border-radius: 16px;
@@ -265,7 +313,7 @@ body {
   border-radius: 2px;
 }
 
-/* Category card styles */
+/* ── Category cards ── */
 .category-card {
   border-radius: 24px;
   overflow: visible;
@@ -286,18 +334,27 @@ body {
   transform: scale(1.05) rotate(-2deg);
 }
 
-/* Rating card */
+@media (prefers-reduced-motion: reduce) {
+  .category-card:hover { transform: none; }
+  .category-card:hover .category-card-image { transform: none; }
+}
+
+/* ── Rating card ── */
 .rating-card {
   background: white;
   border-radius: 20px;
-  padding: 20px 28px;
+  padding: 16px 20px;
   box-shadow: 0 8px 32px rgba(0,0,0,0.08);
 }
 
-/* Arrow buttons for carousel */
+@media (min-width: 640px) {
+  .rating-card { padding: 20px 28px; }
+}
+
+/* ── Arrow buttons ── */
 .arrow-btn {
-  width: 48px;
-  height: 48px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -307,20 +364,25 @@ body {
   border: none;
 }
 
+@media (min-width: 640px) {
+  .arrow-btn { width: 48px; height: 48px; }
+}
+
 .arrow-btn:hover {
   transform: scale(1.1);
 }
 
-/* Masonry grid for gallery */
+/* ── Gallery masonry — mobile-first ── */
 .gallery-masonry {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .gallery-masonry {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
   }
 }
 
@@ -329,13 +391,23 @@ body {
 }
 
 .gallery-item {
-  border-radius: 20px;
+  border-radius: 16px;
   overflow: hidden;
   cursor: pointer;
   transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
+@media (min-width: 640px) {
+  .gallery-item { border-radius: 20px; }
+}
+
 .gallery-item:hover {
   transform: scale(1.03);
   box-shadow: 0 20px 40px -10px rgba(0,0,0,0.12);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-item:hover { transform: none; }
+  .review-image-frame:hover { transform: none; }
+  .img-rotated:hover { transform: none; }
 }

@@ -48,11 +48,11 @@ export default function Header() {
         }`}
       >
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-[50px] lg:h-[70px]">
+          <div className="flex items-center justify-between h-14 sm:h-[60px] lg:h-[70px]">
             {/* Logo */}
             <button
               onClick={() => handleNavClick("#hero")}
-              className="font-[family-name:var(--font-display)] font-bold text-lg lg:text-xl tracking-tight text-charcoal hover:text-coral transition-colors"
+              className="font-[family-name:var(--font-display)] font-bold text-base sm:text-lg lg:text-xl tracking-tight text-charcoal hover:text-coral transition-colors"
             >
               Juliia Sweet
             </button>
@@ -88,25 +88,28 @@ export default function Header() {
               </button>
             </div>
 
-            {/* Mobile Hamburger */}
+            {/* Mobile Hamburger — 44px minimum touch target */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden flex flex-col gap-1.5 p-2"
+              className="lg:hidden flex items-center justify-center w-11 h-11 -mr-1.5"
               aria-label="Toggle menu"
+              aria-expanded={mobileOpen}
               data-testid="mobile-menu-toggle"
             >
-              <motion.span
-                animate={mobileOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
-                className="block w-6 h-0.5 bg-charcoal"
-              />
-              <motion.span
-                animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
-                className="block w-6 h-0.5 bg-charcoal"
-              />
-              <motion.span
-                animate={mobileOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
-                className="block w-6 h-0.5 bg-charcoal"
-              />
+              <div className="flex flex-col gap-1.5">
+                <motion.span
+                  animate={mobileOpen ? { rotate: 45, y: 8 } : { rotate: 0, y: 0 }}
+                  className="block w-6 h-0.5 bg-charcoal"
+                />
+                <motion.span
+                  animate={mobileOpen ? { opacity: 0 } : { opacity: 1 }}
+                  className="block w-6 h-0.5 bg-charcoal"
+                />
+                <motion.span
+                  animate={mobileOpen ? { rotate: -45, y: -8 } : { rotate: 0, y: 0 }}
+                  className="block w-6 h-0.5 bg-charcoal"
+                />
+              </div>
             </button>
           </div>
         </div>

@@ -26,6 +26,10 @@ export default function ProgressBar() {
 
   return (
     <motion.div
+      role="progressbar"
+      aria-valuemin={0}
+      aria-valuemax={100}
+      aria-label="Загрузка страницы"
       initial={{ width: "0%", opacity: 1 }}
       animate={controls}
       className="progress-bar"
