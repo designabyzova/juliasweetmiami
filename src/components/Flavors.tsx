@@ -9,7 +9,7 @@ export default function Flavors() {
     <section
       id="flavors"
       data-testid="flavors-section"
-      className="py-16 sm:py-20 lg:py-28 bg-bg relative overflow-hidden"
+      className="py-16 sm:py-20 lg:py-28 bg-gradient-cream relative overflow-hidden"
     >
       <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-pink-light/20 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
 

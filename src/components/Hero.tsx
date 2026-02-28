@@ -13,7 +13,7 @@ export default function Hero() {
     <section
       id="hero"
       data-testid="hero-section"
-      className="relative min-h-screen flex items-center overflow-hidden pt-[50px] lg:pt-[70px]"
+      className="relative min-h-screen flex items-center overflow-hidden pt-[50px] lg:pt-[70px] bg-gradient-peach"
     >
       {/* Decorative blobs */}
       <div className="absolute top-20 right-[-100px] w-[300px] h-[300px] lg:w-[500px] lg:h-[500px] bg-pink-light rounded-full opacity-40 blur-3xl animate-float-slow" />

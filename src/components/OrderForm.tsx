@@ -49,7 +49,7 @@ export default function OrderForm() {
         data-testid="order-section"
         className="py-16 sm:py-20 lg:py-28 relative overflow-hidden"
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-pink-lighter via-white to-pink-light/20" />
+        <div className="absolute inset-0 bg-gradient-to-br from-pink-lighter via-white to-[#fef0f5]" />
         <div className="max-w-[600px] mx-auto px-4 sm:px-6 relative">
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
@@ -81,7 +81,7 @@ export default function OrderForm() {
       className="py-16 sm:py-20 lg:py-28 relative overflow-hidden"
     >
       {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-pink-lighter via-white to-pink-light/20" />
+      <div className="absolute inset-0 bg-gradient-to-br from-pink-lighter via-white to-[#fef0f5]" />
       <div className="absolute top-20 left-[-100px] w-[300px] h-[300px] bg-coral/5 rounded-full blur-3xl" />
 
       <div className="max-w-[700px] mx-auto px-4 sm:px-6 relative">
