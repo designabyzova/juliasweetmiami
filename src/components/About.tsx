@@ -40,21 +40,89 @@ export default function About() {
           </div>
         </ScrollReveal>
 
-        {/* What makes me different — compact card */}
+        {/* "Чем я отличаюсь" — HERO CARD with dessert image */}
         <ScrollReveal delay={0.2}>
-          <div className="bg-white rounded-3xl p-8 lg:p-10 shadow-lg shadow-black/5 border border-border hover:shadow-xl hover:shadow-coral/5 transition-shadow duration-300 mb-6 lg:mb-8 max-w-3xl mx-auto">
-            <div className="w-14 h-14 rounded-2xl bg-pink-light flex items-center justify-center mb-6">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ff8576" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
-              </svg>
+          <div
+            className="relative rounded-[28px] lg:rounded-[36px] overflow-visible mb-6 lg:mb-8 min-h-[340px] sm:min-h-[380px] lg:min-h-[420px]"
+            style={{
+              background: "linear-gradient(135deg, #fef5f0 0%, #fdf0f5 50%, #fce8ee 100%)",
+            }}
+          >
+            <div className="relative flex flex-col-reverse md:flex-row items-center min-h-[340px] sm:min-h-[380px] lg:min-h-[420px]">
+              {/* Image side — tilted dessert cubes */}
+              <div className="relative flex-shrink-0 w-full md:w-auto flex items-center justify-center p-6 md:p-8 lg:p-12">
+                <motion.div
+                  className="relative w-[220px] sm:w-[250px] lg:w-[300px] aspect-square"
+                  initial={{ rotate: -5 }}
+                  whileHover={{ rotate: 2, scale: 1.05, y: -6 }}
+                  transition={{ type: "spring", stiffness: 180, damping: 18 }}
+                >
+                  {/* Soft glow behind */}
+                  <div className="absolute inset-0 rounded-[24px] bg-pink-light/40 blur-2xl scale-110" />
+
+                  {/* Decorative diagonal accent line */}
+                  <div className="absolute -top-3 -left-3 w-16 h-16 border-t-2 border-l-2 border-coral/20 rounded-tl-2xl" />
+                  <div className="absolute -bottom-3 -right-3 w-16 h-16 border-b-2 border-r-2 border-coral/20 rounded-br-2xl" />
+
+                  <div className="relative w-full h-full rounded-[24px] lg:rounded-[28px] overflow-hidden shadow-2xl shadow-charcoal/8 rotate-[-3deg]">
+                    <Image
+                      src="/desserts/desserts-4.png"
+                      alt="Минималистичные муссовые десерты-кубики"
+                      fill
+                      className="object-cover scale-105"
+                      sizes="(max-width: 768px) 220px, (max-width: 960px) 250px, 300px"
+                    />
+                  </div>
+
+                  {/* Floating sparkle badge */}
+                  <motion.div
+                    animate={{ y: [0, -6, 0], rotate: [0, 3, 0] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 bg-white rounded-xl shadow-lg px-3 py-2"
+                  >
+                    <span className="text-lg">&#10024;</span>
+                  </motion.div>
+                </motion.div>
+              </div>
+
+              {/* Text side */}
+              <div className="relative z-10 flex-1 p-7 sm:p-10 lg:p-14 pb-2 md:pb-10">
+                <div className="w-12 h-12 rounded-2xl bg-white/60 backdrop-blur-sm flex items-center justify-center mb-5">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ff8576" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
+                  </svg>
+                </div>
+                <h3 className="font-[family-name:var(--font-display)] font-black text-[24px] sm:text-[32px] lg:text-[40px] leading-[1.1] text-charcoal mb-4">
+                  Чем я{" "}
+                  <span className="relative inline-block">
+                    <span className="relative z-10">отличаюсь</span>
+                    <motion.span
+                      className="absolute -bottom-1 left-0 h-3 w-full rounded-full bg-coral/15"
+                      initial={{ scaleX: 0 }}
+                      whileInView={{ scaleX: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: 0.5 }}
+                      style={{ originX: 0 }}
+                    />
+                  </span>{" "}
+                  от других
+                </h3>
+                <p className="text-charcoal/60 text-base sm:text-lg max-w-md leading-relaxed font-[family-name:var(--font-body)] mb-5">
+                  Мои десерты не утомляют. Они лёгкие, сбалансированные и оставляют ощущение
+                  удовольствия, а не тяжести.
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {["Без заменителей", "Лёгкость", "Баланс вкуса"].map((tag) => (
+                    <span
+                      key={tag}
+                      className="bg-white/70 backdrop-blur-sm text-charcoal/70 text-xs sm:text-sm font-medium px-4 py-2 rounded-full font-[family-name:var(--font-body)]"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
             </div>
-            <h3 className="font-[family-name:var(--font-display)] font-bold text-xl sm:text-2xl text-charcoal mb-4">
-              Чем я отличаюсь от других
-            </h3>
-            <p className="text-gray text-base leading-relaxed font-[family-name:var(--font-body)]">
-              Мои десерты не утомляют. Они лёгкие, сбалансированные и оставляют ощущение
-              удовольствия, а не тяжести.
-            </p>
           </div>
         </ScrollReveal>
 
