@@ -10,37 +10,37 @@ const PORTFOLIO_ITEMS = [
   {
     title: "Торт с золотым декором",
     category: "Торты",
-    src: "/cakes/cake-1.jpeg",
+    src: "/cakes/cake-1.webp",
     span: true,
   },
   {
     title: "Муссовые десерты",
     category: "Десерты",
-    src: "/desserts/desserts-1.jpeg",
+    src: "/desserts/desserts-1.webp",
     span: false,
   },
   {
     title: "Матча торт",
     category: "Торты",
-    src: "/cakes/cake-3.jpeg",
+    src: "/cakes/cake-3.webp",
     span: false,
   },
   {
     title: "Авторские десерты",
     category: "Десерты",
-    src: "/desserts/desserts-2.png",
+    src: "/desserts/desserts-2.webp",
     span: true,
   },
   {
     title: "Медовый торт",
     category: "Торты",
-    src: "/cakes/cake-5.png",
+    src: "/cakes/cake-5.webp",
     span: false,
   },
   {
     title: "Минималистичные десерты",
     category: "Десерты",
-    src: "/desserts/desserts-4.png",
+    src: "/desserts/desserts-4.webp",
     span: false,
   },
 ];
@@ -109,7 +109,7 @@ export default function Portfolio() {
                   >
                     <div className="relative w-full h-full rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl">
                       <Image
-                        src="/cakes/cake-2.jpeg"
+                        src="/cakes/cake-2.webp"
                         alt="Бирюзовый торт"
                         fill
                         className="object-cover"
@@ -127,7 +127,7 @@ export default function Portfolio() {
                   >
                     <div className="relative w-full h-full rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl">
                       <Image
-                        src="/cakes/cake-1.jpeg"
+                        src="/cakes/cake-1.webp"
                         alt="Фиолетовый торт с золотом"
                         fill
                         className="object-cover"
@@ -156,7 +156,7 @@ export default function Portfolio() {
                 >
                   <div className="relative w-full h-full rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl">
                     <Image
-                      src="/desserts/desserts-2.png"
+                      src="/desserts/desserts-2.webp"
                       alt="Авторские десерты"
                       fill
                       className="object-cover"
@@ -198,7 +198,7 @@ export default function Portfolio() {
                 >
                   <div className="relative w-full h-full rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl">
                     <Image
-                      src="/cakes/cake-7.png"
+                      src="/cakes/cake-7.webp"
                       alt="Бенто торт"
                       fill
                       className="object-cover"

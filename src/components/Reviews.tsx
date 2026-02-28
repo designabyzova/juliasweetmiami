@@ -7,13 +7,13 @@ import { REVIEWS } from "@/lib/constants";
 import ScrollReveal from "./ScrollReveal";
 
 const REVIEW_IMAGES = [
-  "/reviews/review-1.jpeg",
-  "/reviews/review-2.jpeg",
-  "/reviews/review-3.jpeg",
-  "/reviews/review-4.jpeg",
-  "/reviews/review-5.jpeg",
-  "/reviews/review-6.jpeg",
-  "/reviews/review-7.jpeg",
+  "/reviews/review-1.webp",
+  "/reviews/review-2.webp",
+  "/reviews/review-3.webp",
+  "/reviews/review-4.webp",
+  "/reviews/review-5.webp",
+  "/reviews/review-6.webp",
+  "/reviews/review-7.webp",
 ];
 
 const CHAT_BUBBLES = [

@@ -87,7 +87,7 @@ export default function Hero() {
               <div className="absolute inset-3 sm:inset-4 bg-pink-light rounded-[24px] sm:rounded-[30px] rotate-3 transform" />
               <div className="absolute inset-0 rounded-[24px] sm:rounded-[30px] overflow-hidden shadow-2xl">
                 <Image
-                  src="/hero-juliia.jpg"
+                  src="/hero-juliia.webp"
                   alt="Juliia Sweet — Кондитер в Майами"
                   fill
                   className="object-cover"

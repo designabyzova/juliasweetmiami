@@ -66,7 +66,7 @@ export default function About() {
 
                   <div className="relative w-full h-full rounded-[20px] sm:rounded-[24px] lg:rounded-[28px] overflow-hidden shadow-2xl shadow-charcoal/8 rotate-[-3deg]">
                     <Image
-                      src="/desserts/desserts-4.png"
+                      src="/desserts/desserts-4.webp"
                       alt="Минималистичные муссовые десерты-кубики"
                       fill
                       className="object-cover scale-105"
@@ -187,7 +187,7 @@ export default function About() {
 
                   <div className="relative w-full h-full rounded-[24px] sm:rounded-[28px] lg:rounded-[36px] overflow-hidden shadow-2xl shadow-charcoal/10">
                     <Image
-                      src="/cakes/cake-7.png"
+                      src="/cakes/cake-7.webp"
                       alt="Элегантный белый муссовый торт с жемчужинами"
                       fill
                       className="object-cover"
