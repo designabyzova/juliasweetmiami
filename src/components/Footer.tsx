@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { NAV_ITEMS } from "@/lib/constants";
 
 export default function Footer() {
@@ -31,9 +32,15 @@ export default function Footer() {
             <div className="sm:col-span-2 lg:col-span-1">
               <button
                 onClick={() => handleNavClick("#hero")}
-                className="font-[family-name:var(--font-display)] font-bold text-lg sm:text-xl text-charcoal hover:text-coral transition-colors mb-3 sm:mb-4 block"
+                className="relative h-14 sm:h-16 w-14 sm:w-16 mb-3 sm:mb-4 block hover:scale-105 transition-transform duration-200"
               >
-                Juliia Sweet
+                <Image
+                  src="/logo.png"
+                  alt="Juliia Sweet"
+                  fill
+                  className="object-contain"
+                  sizes="64px"
+                />
               </button>
               <p className="text-charcoal/50 text-xs sm:text-sm leading-relaxed font-[family-name:var(--font-body)] max-w-[260px]">
                 Премиальные европейские муссовые десерты в Майами.

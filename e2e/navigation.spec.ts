@@ -31,7 +31,7 @@ test.describe("Navigation & Scroll", () => {
     await page.waitForTimeout(500);
 
     // Click logo
-    await page.getByText("Juliia Sweet").first().click();
+    await page.getByRole("button", { name: "Juliia Sweet" }).first().click();
     await page.waitForTimeout(1000);
 
     const scrollY = await page.evaluate(() => window.scrollY);
