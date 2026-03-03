@@ -116,28 +116,6 @@ export default function Pricing() {
               </div>
             </ScrollReveal>
 
-            {/* Pastries card */}
-            <ScrollReveal>
-              <div className="bg-white rounded-2xl sm:rounded-3xl p-6 sm:p-8 shadow-xl shadow-black/5 border border-border/80">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-pink-light/60 flex items-center justify-center flex-shrink-0">
-                      <span className="text-base sm:text-lg">🧁</span>
-                    </div>
-                    <h3 className="font-[family-name:var(--font-display)] font-bold text-base sm:text-lg text-charcoal">
-                      Пирожные
-                    </h3>
-                  </div>
-                  <span className="text-coral font-[family-name:var(--font-display)] font-bold text-lg sm:text-xl">
-                    $15
-                    <span className="text-gray-light text-xs sm:text-sm font-[family-name:var(--font-body)] font-normal ml-1">
-                      / шт
-                    </span>
-                  </span>
-                </div>
-              </div>
-            </ScrollReveal>
-
             {/* Rush order notice */}
             <ScrollReveal>
               <div className="bg-coral/5 rounded-xl sm:rounded-2xl px-5 sm:px-6 py-4 sm:py-5 border border-coral/10">
