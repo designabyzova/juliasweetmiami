@@ -2,7 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { FLAVORS, WEIGHTS, COATINGS, DECORATIONS, BOXES } from "@/lib/constants";
+import { FLAVORS, WEIGHTS, COATINGS, CAKE_COLORS, DECORATIONS, BOXES } from "@/lib/constants";
 import ScrollReveal from "./ScrollReveal";
 
 type OrderStep = 1 | 2 | 3;
@@ -15,6 +15,7 @@ export default function OrderForm() {
   const [filling, setFilling] = useState("");
   const [coating, setCoating] = useState("");
   const [box, setBox] = useState("");
+  const [color, setColor] = useState("");
   const [decorations, setDecorations] = useState<string[]>([]);
   const [date, setDate] = useState("");
   const [comment, setComment] = useState("");
@@ -210,6 +211,32 @@ export default function OrderForm() {
                       <option key={c} value={c}>{c}</option>
                     ))}
                   </select>
+
+                  {/* Color */}
+                  <label className="block mb-3 text-xs sm:text-sm font-medium text-charcoal font-[family-name:var(--font-body)]">
+                    Цвет торта
+                  </label>
+                  <div className="flex flex-wrap gap-2.5 sm:gap-3 mb-5 sm:mb-6" data-testid="color-picker">
+                    {CAKE_COLORS.map((c) => (
+                      <button
+                        key={c.name}
+                        type="button"
+                        title={c.name}
+                        onClick={() => setColor(color === c.name ? "" : c.name)}
+                        className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full transition-all duration-200 flex-shrink-0 ${
+                          color === c.name
+                            ? "ring-2 ring-offset-2 ring-coral scale-110"
+                            : "hover:scale-110"
+                        } ${c.hex === "#FFFFFF" ? "border border-border" : ""}`}
+                        style={{ backgroundColor: c.hex }}
+                      />
+                    ))}
+                  </div>
+                  {color && (
+                    <p className="text-gray text-xs font-[family-name:var(--font-body)] -mt-3 sm:-mt-4 mb-5 sm:mb-6">
+                      Выбран: <span className="text-charcoal font-medium">{color}</span>
+                    </p>
+                  )}
 
                   {/* Box */}
                   <label className="block mb-2 text-xs sm:text-sm font-medium text-charcoal font-[family-name:var(--font-body)]">

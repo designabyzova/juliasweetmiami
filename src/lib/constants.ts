@@ -90,6 +90,20 @@ export const BOXES = [
 
 export const COATINGS = ["Велюр", "Глянец"] as const;
 
+export const CAKE_COLORS = [
+  { name: "Белый", hex: "#FFFFFF" },
+  { name: "Чёрный", hex: "#1a1a1a" },
+  { name: "Нежно-розовый", hex: "#F8BBD0" },
+  { name: "Ярко-розовый", hex: "#EC407A" },
+  { name: "Красный", hex: "#E53935" },
+  { name: "Оранжевый", hex: "#FF7043" },
+  { name: "Жёлтый", hex: "#FDD835" },
+  { name: "Зелёный", hex: "#66BB6A" },
+  { name: "Голубой", hex: "#42A5F5" },
+  { name: "Синий", hex: "#5C6BC0" },
+  { name: "Фиолетовый", hex: "#AB47BC" },
+] as const;
+
 export const DECORATIONS = [
   "Рисунок по договорённости",
   "Надпись",
