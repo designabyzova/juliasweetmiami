@@ -95,15 +95,6 @@ export default function Hero() {
                   sizes="(max-width: 480px) 280px, (max-width: 640px) 320px, (max-width: 960px) 400px, 500px"
                 />
               </div>
-              {/* Floating badge */}
-              <motion.div
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -bottom-3 -left-3 sm:-bottom-5 sm:-left-5 bg-white rounded-xl sm:rounded-2xl shadow-xl p-2.5 sm:p-4"
-              >
-                <p className="font-[family-name:var(--font-display)] font-bold text-coral text-lg sm:text-2xl">10+</p>
-                <p className="text-[10px] sm:text-xs text-gray font-[family-name:var(--font-body)]">лет опыта</p>
-              </motion.div>
             </div>
           </motion.div>
         </div>
