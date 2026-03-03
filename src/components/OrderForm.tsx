@@ -143,12 +143,12 @@ export default function OrderForm() {
                     <option value="">Выберите вес</option>
                     <optgroup label="Торты">
                       {WEIGHTS.cakes.map((w) => (
-                        <option key={w} value={w}>{w}</option>
+                        <option key={w.label} value={w.label}>{w.label} — ${w.price}</option>
                       ))}
                     </optgroup>
                     <optgroup label="Пирожные">
                       {WEIGHTS.pastries.map((w) => (
-                        <option key={w} value={w}>{w}</option>
+                        <option key={w.label} value={w.label}>{w.label} — ${w.price}</option>
                       ))}
                     </optgroup>
                   </select>

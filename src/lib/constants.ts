@@ -67,8 +67,19 @@ export const FLAVORS = [
 ] as const;
 
 export const WEIGHTS = {
-  cakes: ["0.5 кг", "0.7 кг", "1 кг", "1.5 кг", "2.5 кг", "2-ярусный", "3-ярусный"],
-  pastries: ["100 г", "120 г", "150 г"],
+  cakes: [
+    { label: "0.5 кг", price: 75 },
+    { label: "0.7 кг", price: 105 },
+    { label: "1 кг", price: 150 },
+    { label: "1.5 кг", price: 225 },
+    { label: "2 кг", price: 280 },
+    { label: "2.5 кг", price: 355 },
+    { label: "2-ярусный", price: 300 },
+    { label: "3-ярусный", price: 380 },
+  ],
+  pastries: [
+    { label: "Пирожное", price: 15 },
+  ],
 } as const;
 
 export const BOXES = [
