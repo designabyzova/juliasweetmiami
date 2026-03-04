@@ -5,11 +5,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FLAVORS, WEIGHTS, COATINGS, CAKE_COLORS, DECORATIONS, BOXES } from "@/lib/constants";
 import ScrollReveal from "./ScrollReveal";
 
+const EMAIL_WORKER_URL = "https://email-service.anton-abyzov.workers.dev";
+
 type OrderStep = 1 | 2 | 3;
 
 export default function OrderForm() {
   const [step, setStep] = useState<OrderStep>(1);
   const [submitted, setSubmitted] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState("");
 
   const [weight, setWeight] = useState("");
   const [filling, setFilling] = useState("");
@@ -30,11 +34,43 @@ export default function OrderForm() {
 
   const canProceedStep1 = weight && filling;
   const canProceedStep2 = coating;
-  const canSubmit = name && phone;
+  const canSubmit = name && phone && !sending;
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
+    if (!canSubmit) return;
+
+    setSending(true);
+    setError("");
+
+    const orderHtml = buildEmailHtml({
+      weight, filling, coating, color, box, decorations, date, name, phone, comment,
+    });
+
+    try {
+      const res = await fetch(`${EMAIL_WORKER_URL}/send`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          to: "designabyzova@gmail.com",
+          from: { email: "admin@easychamp.com", name: "Juliia Sweet" },
+          subject: `Новый заказ: ${filling} ${weight} — ${name}`,
+          html: orderHtml,
+          replyTo: "designabyzova@gmail.com",
+        }),
+      });
+
+      const data = await res.json();
+      if (data.success) {
+        setSubmitted(true);
+      } else {
+        setError("Не удалось отправить заказ. Попробуйте ещё раз.");
+      }
+    } catch {
+      setError("Ошибка соединения. Проверьте интернет и попробуйте снова.");
+    } finally {
+      setSending(false);
+    }
   };
 
   const stepVariants = {
@@ -389,11 +425,18 @@ export default function OrderForm() {
                     </p>
                   </div>
 
+                  {error && (
+                    <div className="bg-red-50 border border-red-200 rounded-xl p-3.5 mb-4 text-red-600 text-sm font-[family-name:var(--font-body)]">
+                      {error}
+                    </div>
+                  )}
+
                   <div className="flex gap-3">
                     <button
                       type="button"
                       onClick={() => setStep(2)}
-                      className="flex-1 border-2 border-border text-charcoal py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-200 hover:border-charcoal active:scale-[0.97] font-[family-name:var(--font-body)]"
+                      disabled={sending}
+                      className="flex-1 border-2 border-border text-charcoal py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-200 hover:border-charcoal active:scale-[0.97] disabled:opacity-40 font-[family-name:var(--font-body)]"
                     >
                       Назад
                     </button>
@@ -403,7 +446,7 @@ export default function OrderForm() {
                       className="flex-1 bg-coral hover:bg-coral-dark active:scale-[0.97] disabled:opacity-40 disabled:cursor-not-allowed text-white py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-200 font-[family-name:var(--font-body)]"
                       data-testid="submit-order"
                     >
-                      Отправить
+                      {sending ? "Отправка..." : "Отправить"}
                     </button>
                   </div>
                 </motion.div>
@@ -414,4 +457,67 @@ export default function OrderForm() {
       </div>
     </section>
   );
+}
+
+function buildEmailHtml(order: {
+  weight: string;
+  filling: string;
+  coating: string;
+  color: string;
+  box: string;
+  decorations: string[];
+  date: string;
+  name: string;
+  phone: string;
+  comment: string;
+}) {
+  const row = (label: string, value: string) =>
+    value
+      ? `<tr><td style="padding:8px 12px;color:#888;font-size:14px;white-space:nowrap;vertical-align:top">${label}</td><td style="padding:8px 12px;color:#212529;font-size:14px">${value}</td></tr>`
+      : "";
+
+  const formattedDate = order.date
+    ? new Date(order.date + "T00:00:00").toLocaleDateString("ru-RU", {
+        day: "numeric",
+        month: "long",
+        year: "numeric",
+      })
+    : "Не указана";
+
+  return `
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"></head>
+<body style="margin:0;padding:0;background:#f9f5f2;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif">
+  <div style="max-width:600px;margin:0 auto;padding:32px 16px">
+    <div style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.06)">
+      <div style="background:linear-gradient(135deg,#ff8576,#ff6b6b);padding:28px 24px;text-align:center">
+        <h1 style="margin:0;color:#fff;font-size:22px;font-weight:700">Новый заказ</h1>
+        <p style="margin:8px 0 0;color:rgba(255,255,255,0.85);font-size:14px">Juliia Sweet — yuliia-sweet.vercel.app</p>
+      </div>
+      <div style="padding:24px">
+        <h2 style="margin:0 0 4px;color:#212529;font-size:16px;font-weight:600">Клиент</h2>
+        <table style="width:100%;border-collapse:collapse;margin-bottom:20px">
+          ${row("Имя", order.name)}
+          ${row("Телефон", order.phone)}
+          ${row("Дата", formattedDate)}
+        </table>
+        <h2 style="margin:0 0 4px;color:#212529;font-size:16px;font-weight:600">Торт</h2>
+        <table style="width:100%;border-collapse:collapse;margin-bottom:20px">
+          ${row("Вес", order.weight)}
+          ${row("Начинка", order.filling)}
+          ${row("Покрытие", order.coating)}
+          ${row("Цвет", order.color || "Не выбран")}
+          ${row("Коробка", order.box || "Не выбрана")}
+          ${row("Декор", order.decorations.length > 0 ? order.decorations.join(", ") : "Без декора")}
+        </table>
+        ${order.comment ? `<h2 style="margin:0 0 4px;color:#212529;font-size:16px;font-weight:600">Комментарий</h2><p style="margin:0;padding:12px;background:#f9f5f2;border-radius:8px;color:#212529;font-size:14px;line-height:1.5">${order.comment.replace(/</g, "&lt;").replace(/>/g, "&gt;")}</p>` : ""}
+      </div>
+      <div style="padding:16px 24px;border-top:1px solid #f0ebe6;text-align:center">
+        <p style="margin:0;color:#aaa;font-size:12px">Отправлено ${new Date().toLocaleString("ru-RU", { timeZone: "America/New_York" })}</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>`;
 }
