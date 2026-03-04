@@ -14,6 +14,7 @@ export const FLAVORS = [
       "Центр из груши, ванили и лимона, брауни с тёмным шоколадом, слой солёной карамели, мусс на основе маскарпоне",
     accent: "#f5e6c8",
     emoji: "🍐",
+    image: "/fillings/filling-0.webp",
   },
   {
     name: "Вишня в шоколаде",
@@ -21,6 +22,7 @@ export const FLAVORS = [
       "Вишнёвое конфи, мусс на молочном шоколаде, брауни",
     accent: "#f5c6c6",
     emoji: "🍒",
+    image: "/fillings/filling-1.webp",
   },
   {
     name: "Шоколадный мандарин",
@@ -28,6 +30,7 @@ export const FLAVORS = [
       "Начинка из мандарина, кремю из маракуйи, мусс на тёмном бельгийском шоколаде, брауни",
     accent: "#f5d5b0",
     emoji: "🍊",
+    image: "/fillings/filling-2.webp",
   },
   {
     name: "Манго-маракуйя-кокос",
@@ -35,6 +38,7 @@ export const FLAVORS = [
       "Центр из манго и маракуйи, кокосовый мусс, воздушный миндальный бисквит",
     accent: "#fceabb",
     emoji: "🥥",
+    image: "/fillings/filling-3.webp",
   },
   {
     name: "Фрэш",
@@ -42,6 +46,7 @@ export const FLAVORS = [
       "Конфитюр из клубники, кремю с лаймом и базиликом, мусс с лаймом и чаем Эрл Грей, миндальный бисквит",
     accent: "#d4f0d4",
     emoji: "🍓",
+    image: "/fillings/filling-4.webp",
   },
   {
     name: "Кофе / Бейлиз / Шоколад",
@@ -49,6 +54,7 @@ export const FLAVORS = [
       "Брауни, кофейная начинка с ликёром Bailey's, шоколадный мусс",
     accent: "#d4c4b0",
     emoji: "☕",
+    image: "/fillings/filling-5.webp",
   },
   {
     name: "Апероль",
@@ -56,6 +62,7 @@ export const FLAVORS = [
       "Начинка апельсин/Апероль, кремю с лаймом и мятой, мусс на белом бельгийском шоколаде с шампанским, миндальный бисквит",
     accent: "#fdd9b5",
     emoji: "🍹",
+    image: "/fillings/filling-6.webp",
   },
   {
     name: "Малиновый Мохито",
@@ -63,6 +70,7 @@ export const FLAVORS = [
       "Конфитюр из малины, кремю с лаймом и мятой, мусс с чаем тимьян, миндальный бисквит",
     accent: "#f0c6d8",
     emoji: "🫐",
+    image: "/fillings/filling-7.webp",
   },
 ] as const;
 

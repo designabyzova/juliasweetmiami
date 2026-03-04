@@ -1,6 +1,7 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState } from "react";
+import Image from "next/image";
 import { FLAVORS } from "@/lib/constants";
 import ScrollReveal from "./ScrollReveal";
 
@@ -28,15 +29,13 @@ export default function Flavors() {
           </div>
         </ScrollReveal>
 
-        {/* Single responsive container: horizontal scroll on mobile, grid on desktop */}
-        <div className="overflow-x-auto lg:overflow-visible no-scrollbar pb-4 lg:pb-0 -mx-5 px-5 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0">
-          <div className="flex gap-3 sm:gap-4 w-max lg:w-auto lg:grid lg:grid-cols-4 lg:gap-6">
-            {FLAVORS.map((flavor, i) => (
-              <ScrollReveal key={flavor.name} delay={i * 0.08}>
-                <FlavorCard flavor={flavor} index={i} />
-              </ScrollReveal>
-            ))}
-          </div>
+        {/* Grid: 2 cols on mobile, 4 cols on desktop — all same size */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-5">
+          {FLAVORS.map((flavor, i) => (
+            <ScrollReveal key={flavor.name} delay={i * 0.06}>
+              <FlavorCard flavor={flavor} index={i} />
+            </ScrollReveal>
+          ))}
         </div>
       </div>
     </section>
@@ -50,25 +49,60 @@ function FlavorCard({
   flavor: (typeof FLAVORS)[number];
   index: number;
 }) {
+  const [revealed, setRevealed] = useState(false);
+
   return (
-    <motion.div
-      whileHover={{ y: -6, scale: 1.02 }}
-      transition={{ duration: 0.2 }}
-      className="group bg-white rounded-2xl p-5 sm:p-6 shadow-md shadow-black/5 border border-border hover:shadow-xl hover:shadow-coral/10 transition-shadow duration-300 w-[230px] xs:w-[250px] sm:w-[260px] lg:w-auto flex-shrink-0"
+    <div
+      className="group relative rounded-2xl sm:rounded-[20px] overflow-hidden cursor-pointer select-none aspect-[4/5] sm:aspect-square lg:aspect-[4/5]"
+      style={{ backgroundColor: flavor.accent }}
       data-testid={`flavor-card-${index}`}
+      onMouseEnter={() => setRevealed(true)}
+      onMouseLeave={() => setRevealed(false)}
+      onClick={() => setRevealed((v) => !v)}
     >
+      {/* Default state: emoji + name */}
       <div
-        className="w-12 h-12 sm:w-16 sm:h-16 rounded-xl sm:rounded-2xl flex items-center justify-center text-2xl sm:text-3xl mb-3 sm:mb-4"
-        style={{ backgroundColor: flavor.accent }}
+        className="absolute inset-0 flex flex-col items-start justify-end p-4 sm:p-5 lg:p-6 transition-opacity duration-300"
+        style={{ opacity: revealed ? 0 : 1 }}
       >
-        {flavor.emoji}
+        {/* Small triangle accent (like palette dessert) */}
+        <div
+          className="absolute top-4 left-4 sm:top-5 sm:left-5 w-5 h-5 sm:w-6 sm:h-6"
+          style={{
+            clipPath: "polygon(0 0, 100% 0, 50% 100%)",
+            backgroundColor: "rgba(0,0,0,0.12)",
+          }}
+        />
+        <h3 className="font-[family-name:var(--font-display)] font-bold text-sm sm:text-base lg:text-lg text-charcoal leading-tight">
+          {flavor.name}
+        </h3>
       </div>
-      <h3 className="font-[family-name:var(--font-display)] font-bold text-base sm:text-lg text-charcoal mb-1.5 sm:mb-2 group-hover:text-coral transition-colors">
-        {flavor.name}
-      </h3>
-      <p className="text-gray text-xs sm:text-sm leading-relaxed font-[family-name:var(--font-body)]">
-        {flavor.description}
-      </p>
-    </motion.div>
+
+      {/* Hover/tap state: circular photo + description */}
+      <div
+        className="absolute inset-0 flex flex-col items-center justify-center p-3 sm:p-4 transition-opacity duration-300"
+        style={{ opacity: revealed ? 1 : 0 }}
+      >
+        {/* Circular image */}
+        <div
+          className="relative w-[100px] h-[100px] sm:w-[120px] sm:h-[120px] lg:w-[140px] lg:h-[140px] rounded-full overflow-hidden shadow-lg mb-2 sm:mb-3 flex-shrink-0 transition-transform duration-500"
+          style={{ transform: revealed ? "scale(1)" : "scale(0.7)" }}
+        >
+          <Image
+            src={flavor.image}
+            alt={`${flavor.name} — начинка`}
+            fill
+            className="object-cover"
+            sizes="140px"
+          />
+        </div>
+        <h3 className="font-[family-name:var(--font-display)] font-bold text-xs sm:text-sm text-charcoal text-center leading-tight mb-1">
+          {flavor.name}
+        </h3>
+        <p className="text-charcoal/60 text-[10px] sm:text-xs leading-snug font-[family-name:var(--font-body)] text-center line-clamp-3">
+          {flavor.description}
+        </p>
+      </div>
+    </div>
   );
 }
