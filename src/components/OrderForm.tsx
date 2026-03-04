@@ -252,14 +252,14 @@ export default function OrderForm() {
                   <label className="block mb-3 text-xs sm:text-sm font-medium text-charcoal font-[family-name:var(--font-body)]">
                     Цвет торта
                   </label>
-                  <div className="flex flex-wrap gap-2.5 sm:gap-3 mb-2" data-testid="color-picker">
+                  <div className="grid grid-cols-7 gap-y-2.5 gap-x-0 sm:gap-y-3 mb-3" data-testid="color-picker">
                     {CAKE_COLORS.map((c) => (
                       <button
                         key={c.name}
                         type="button"
                         title={c.name}
                         onClick={() => setColor(color === c.name ? "" : c.name)}
-                        className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full transition-all duration-200 flex-shrink-0 ${
+                        className={`w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-full transition-all duration-200 mx-auto ${
                           color === c.name
                             ? "ring-2 ring-offset-2 ring-coral scale-110"
                             : "hover:scale-110"
@@ -268,14 +268,20 @@ export default function OrderForm() {
                       />
                     ))}
                   </div>
-                  {color && (
-                    <p className="text-gray text-xs font-[family-name:var(--font-body)] mb-1">
-                      Выбран: <span className="text-charcoal font-medium">{color}</span>
+                  <div className="flex items-center justify-between mb-5 sm:mb-6">
+                    <p className="text-charcoal/40 text-[11px] sm:text-xs font-[family-name:var(--font-body)]">
+                      Другой цвет? Укажите в комментарии.
                     </p>
-                  )}
-                  <p className="text-charcoal/40 text-[11px] sm:text-xs font-[family-name:var(--font-body)] mb-5 sm:mb-6">
-                    Другой цвет? Напишите в комментарии на следующем шаге.
-                  </p>
+                    {color && (
+                      <span className="flex items-center gap-1.5 text-xs font-[family-name:var(--font-body)]">
+                        <span
+                          className="w-3 h-3 rounded-full inline-block flex-shrink-0"
+                          style={{ backgroundColor: CAKE_COLORS.find((c) => c.name === color)?.hex }}
+                        />
+                        <span className="text-charcoal font-medium">{color}</span>
+                      </span>
+                    )}
+                  </div>
 
                   {/* Box */}
                   <label className="block mb-2 text-xs sm:text-sm font-medium text-charcoal font-[family-name:var(--font-body)]">
