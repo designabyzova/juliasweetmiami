@@ -134,17 +134,17 @@ export default function About() {
           </div>
         </ScrollReveal>
 
-        {/* "Для кого мои торты" — HERO CARD with image */}
+        {/* "Для кого мои торты" — HERO CARD with transparent cake image */}
         <ScrollReveal delay={0.3}>
           <div
-            className="relative rounded-2xl sm:rounded-[28px] lg:rounded-[36px] overflow-visible min-h-[340px] sm:min-h-[400px] lg:min-h-[480px]"
+            className="relative rounded-2xl sm:rounded-[28px] lg:rounded-[36px] overflow-hidden"
             style={{
               background: "linear-gradient(145deg, #fdf0f5 0%, #fce4ec 40%, #f8d7e3 100%)",
             }}
           >
-            <div className="relative flex flex-col md:flex-row items-center md:items-center min-h-[340px] sm:min-h-[400px] lg:min-h-[480px]">
+            <div className="relative flex flex-col md:flex-row items-center">
               {/* Text side */}
-              <div className="relative z-10 flex-1 p-5 sm:p-8 lg:p-14 pb-3 md:pb-10">
+              <div className="relative z-10 flex-1 p-6 sm:p-8 lg:p-14 pb-4 md:pb-10">
                 <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-white/60 backdrop-blur-sm flex items-center justify-center mb-4 sm:mb-5">
                   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff8576" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="sm:w-6 sm:h-6">
                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
@@ -154,14 +154,7 @@ export default function About() {
                   Для кого{" "}
                   <span className="relative inline-block">
                     <span className="relative z-10">мои торты</span>
-                    <motion.span
-                      className="absolute -bottom-1 left-0 h-2.5 sm:h-3 w-full rounded-full bg-coral/15"
-                      initial={{ scaleX: 0 }}
-                      whileInView={{ scaleX: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.8, delay: 0.6 }}
-                      style={{ originX: 0 }}
-                    />
+                    <span className="absolute -bottom-1 left-0 h-2.5 sm:h-3 w-full rounded-full bg-coral/15" />
                   </span>
                 </h3>
                 <div className="max-w-md mb-5 sm:mb-6 space-y-3">
@@ -186,37 +179,20 @@ export default function About() {
                 </div>
               </div>
 
-              {/* Image side — beautiful white cake on pink */}
-              <div className="relative flex-1 w-full md:w-auto flex items-center justify-center md:justify-end p-5 sm:p-6 md:p-8 lg:p-12">
-                <motion.div
-                  className="relative w-[200px] sm:w-[260px] lg:w-[360px] aspect-square"
-                  whileHover={{ rotate: -2, scale: 1.03, y: -8 }}
-                  transition={{ type: "spring", stiffness: 200, damping: 20 }}
-                >
-                  {/* Decorative ring behind the image */}
-                  <div className="absolute -inset-3 sm:-inset-4 rounded-full border-2 border-white/40 opacity-60" />
-                  <div className="absolute -inset-6 sm:-inset-8 rounded-full border border-white/20 opacity-40" />
-
-                  <div className="relative w-full h-full rounded-[24px] sm:rounded-[28px] lg:rounded-[36px] overflow-hidden shadow-2xl shadow-charcoal/10">
-                    <Image
-                      src="/cakes/cake-7.webp"
-                      alt="Элегантный белый муссовый торт с жемчужинами"
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 640px) 200px, (max-width: 960px) 260px, 360px"
-                    />
-                  </div>
-
-                  {/* Floating tag */}
-                  <motion.div
-                    animate={{ y: [0, -8, 0] }}
-                    transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute -bottom-2 -right-2 sm:-bottom-4 sm:-right-4 bg-white rounded-xl sm:rounded-2xl shadow-xl px-3 py-2 sm:px-4 sm:py-2.5"
-                  >
-                    <p className="font-[family-name:var(--font-display)] font-bold text-coral text-xs sm:text-sm">Premium</p>
-                    <p className="text-[9px] sm:text-[10px] text-gray font-[family-name:var(--font-body)]">quality</p>
-                  </motion.div>
-                </motion.div>
+              {/* Image side — transparent cake PNG */}
+              <div className="relative flex-shrink-0 w-full md:w-[45%] flex items-end justify-center md:justify-end self-end">
+                <div className="relative w-[240px] sm:w-[300px] lg:w-[380px]">
+                  {/* Soft radial glow behind the cake */}
+                  <div className="absolute bottom-[10%] left-1/2 -translate-x-1/2 w-[80%] h-[60%] bg-white/30 rounded-full blur-3xl" />
+                  <Image
+                    src="/for-whom-cake.webp"
+                    alt="Премиальный муссовый торт Juliia Sweet"
+                    width={597}
+                    height={800}
+                    className="relative z-10 drop-shadow-[0_20px_40px_rgba(0,0,0,0.08)]"
+                    sizes="(max-width: 640px) 240px, (max-width: 960px) 300px, 380px"
+                  />
+                </div>
               </div>
             </div>
           </div>
