@@ -179,18 +179,18 @@ export default function About() {
                 </div>
               </div>
 
-              {/* Image side — transparent cake PNG */}
-              <div className="relative flex-shrink-0 w-full md:w-[45%] flex items-end justify-center md:justify-end self-end">
-                <div className="relative w-[240px] sm:w-[300px] lg:w-[380px]">
-                  {/* Soft radial glow behind the cake */}
-                  <div className="absolute bottom-[10%] left-1/2 -translate-x-1/2 w-[80%] h-[60%] bg-white/30 rounded-full blur-3xl" />
+              {/* Image side — heart cake with transparent background */}
+              <div className="relative flex-shrink-0 w-full md:w-[45%] flex items-center justify-center p-4 sm:p-6 md:p-8 lg:p-10">
+                <div className="relative w-[220px] sm:w-[280px] lg:w-[360px]">
+                  {/* Soft glow under the cake */}
+                  <div className="absolute bottom-[5%] left-1/2 -translate-x-1/2 w-[70%] h-[30%] bg-charcoal/5 rounded-full blur-2xl" />
                   <Image
                     src="/for-whom-cake.webp"
-                    alt="Премиальный муссовый торт Juliia Sweet"
-                    width={597}
-                    height={800}
-                    className="relative z-10 drop-shadow-[0_20px_40px_rgba(0,0,0,0.08)]"
-                    sizes="(max-width: 640px) 240px, (max-width: 960px) 300px, 380px"
+                    alt="Муссовый торт в форме сердца — Juliia Sweet"
+                    width={600}
+                    height={561}
+                    className="relative z-10 drop-shadow-[0_12px_32px_rgba(0,0,0,0.10)]"
+                    sizes="(max-width: 640px) 220px, (max-width: 960px) 280px, 360px"
                   />
                 </div>
               </div>
