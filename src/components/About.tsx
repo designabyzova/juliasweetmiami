@@ -30,10 +30,14 @@ export default function About() {
 
         {/* Story */}
         <ScrollReveal delay={0.1}>
-          <div className="max-w-3xl mx-auto mb-12 sm:mb-16 lg:mb-20">
+          <div className="max-w-3xl mx-auto mb-12 sm:mb-16 lg:mb-20 space-y-4 sm:space-y-5">
             <p className="text-gray text-sm sm:text-base lg:text-lg leading-relaxed font-[family-name:var(--font-body)] text-center">
               Мой профессиональный опыт научил меня ценить качество и внимание к деталям.
+            </p>
+            <p className="text-gray text-sm sm:text-base lg:text-lg leading-relaxed font-[family-name:var(--font-body)] text-center">
               Именно поэтому в своих десертах я использую только отборные ингредиенты.
+            </p>
+            <p className="text-gray text-sm sm:text-base lg:text-lg leading-relaxed font-[family-name:var(--font-body)] text-center">
               Я создаю европейские муссовые десерты с минимальным содержанием сахара —
               без заменителей, только натуральный вкус и баланс, где сахар есть лишь в шоколаде.
             </p>
@@ -107,10 +111,14 @@ export default function About() {
                   </span>{" "}
                   от других
                 </h3>
-                <p className="text-charcoal/60 text-sm sm:text-base lg:text-lg max-w-md leading-relaxed font-[family-name:var(--font-body)] mb-4 sm:mb-5">
-                  Мои десерты не утомляют. Они лёгкие, сбалансированные и оставляют ощущение
-                  удовольствия, а не тяжести.
-                </p>
+                <div className="max-w-md mb-4 sm:mb-5 space-y-3">
+                  <p className="text-charcoal/60 text-sm sm:text-base lg:text-lg leading-relaxed font-[family-name:var(--font-body)]">
+                    Мои десерты не утомляют.
+                  </p>
+                  <p className="text-charcoal/60 text-sm sm:text-base lg:text-lg leading-relaxed font-[family-name:var(--font-body)]">
+                    Они лёгкие, сбалансированные и оставляют ощущение удовольствия, а не тяжести.
+                  </p>
+                </div>
                 <div className="flex flex-wrap gap-2">
                   {["Без заменителей", "Лёгкость", "Баланс вкуса"].map((tag) => (
                     <span
@@ -156,10 +164,14 @@ export default function About() {
                     />
                   </span>
                 </h3>
-                <p className="text-charcoal/60 text-sm sm:text-base lg:text-lg max-w-md leading-relaxed font-[family-name:var(--font-body)] mb-5 sm:mb-6">
-                  Создаю десерты для тех, кто ценит вкус, а не просто сладость.
-                  Для тех, кто выбирает качество, осознанность и удовольствие без перегруза.
-                </p>
+                <div className="max-w-md mb-5 sm:mb-6 space-y-3">
+                  <p className="text-charcoal/60 text-sm sm:text-base lg:text-lg leading-relaxed font-[family-name:var(--font-body)]">
+                    Создаю десерты для тех, кто ценит вкус, а не просто сладость.
+                  </p>
+                  <p className="text-charcoal/60 text-sm sm:text-base lg:text-lg leading-relaxed font-[family-name:var(--font-body)]">
+                    Для тех, кто выбирает качество, осознанность и удовольствие без перегруза.
+                  </p>
+                </div>
 
                 {/* Small feature pills */}
                 <div className="flex flex-wrap gap-2">

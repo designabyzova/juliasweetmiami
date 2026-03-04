@@ -149,7 +149,7 @@ export default function OrderForm() {
                     </optgroup>
                     <optgroup label="Пирожные">
                       {WEIGHTS.pastries.map((w) => (
-                        <option key={w.label} value={w.label}>{w.label} — ${w.price}</option>
+                        <option key={w.label} value={w.label}>{w.label} — ${w.price} (от 4 шт)</option>
                       ))}
                     </optgroup>
                   </select>
