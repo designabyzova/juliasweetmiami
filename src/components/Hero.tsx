@@ -44,15 +44,19 @@ export default function Hero() {
               <span className="text-coral"> в Майами</span>
             </h1>
 
-            <motion.p
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-gray text-sm sm:text-base lg:text-lg max-w-md mx-auto lg:mx-0 mb-6 sm:mb-8 font-[family-name:var(--font-body)] leading-relaxed"
+              className="max-w-md mx-auto lg:mx-0 mb-6 sm:mb-8 space-y-3"
             >
-              Кондитер Juliia Sweet. Европейские муссовые десерты
-              с минимальным содержанием сахара — только натуральный вкус и баланс.
-            </motion.p>
+              <p className="text-gray text-sm sm:text-base lg:text-lg font-[family-name:var(--font-body)] leading-relaxed">
+                Кондитер Juliia Sweet.
+              </p>
+              <p className="text-gray text-sm sm:text-base lg:text-lg font-[family-name:var(--font-body)] leading-relaxed">
+                Европейские муссовые десерты с минимальным содержанием сахара — только натуральный вкус и баланс.
+              </p>
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}
