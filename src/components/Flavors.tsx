@@ -53,55 +53,49 @@ function FlavorCard({
 
   return (
     <div
-      className="group relative rounded-2xl sm:rounded-[20px] overflow-hidden cursor-pointer select-none aspect-[4/5] sm:aspect-square lg:aspect-[4/5]"
+      className="group relative rounded-2xl sm:rounded-[20px] overflow-hidden cursor-pointer select-none h-full"
       style={{ backgroundColor: flavor.accent }}
       data-testid={`flavor-card-${index}`}
       onMouseEnter={() => setRevealed(true)}
       onMouseLeave={() => setRevealed(false)}
       onClick={() => setRevealed((v) => !v)}
     >
-      {/* Default state: emoji + name */}
-      <div
-        className="absolute inset-0 flex flex-col items-start justify-end p-4 sm:p-5 lg:p-6 transition-opacity duration-300"
-        style={{ opacity: revealed ? 0 : 1 }}
-      >
-        {/* Small triangle accent (like palette dessert) */}
+      {/* Always-visible content: triangle + name + description */}
+      <div className="relative p-4 sm:p-5 lg:p-6">
+        {/* Small triangle accent */}
         <div
-          className="absolute top-4 left-4 sm:top-5 sm:left-5 w-5 h-5 sm:w-6 sm:h-6"
+          className="w-5 h-5 sm:w-6 sm:h-6 mb-4 sm:mb-6 lg:mb-8"
           style={{
             clipPath: "polygon(0 0, 100% 0, 50% 100%)",
             backgroundColor: "rgba(0,0,0,0.12)",
           }}
         />
-        <h3 className="font-[family-name:var(--font-display)] font-bold text-sm sm:text-base lg:text-lg text-charcoal leading-tight">
+        <h3 className="font-[family-name:var(--font-display)] font-bold text-sm sm:text-base lg:text-lg text-charcoal leading-tight mb-2">
           {flavor.name}
         </h3>
+        <p className="text-charcoal/55 text-[11px] sm:text-xs lg:text-sm leading-relaxed font-[family-name:var(--font-body)]">
+          {flavor.description}
+        </p>
       </div>
 
-      {/* Hover/tap state: circular photo + description */}
+      {/* Hover/tap overlay: circular photo */}
       <div
-        className="absolute inset-0 flex flex-col items-center justify-center p-3 sm:p-4 transition-opacity duration-300"
+        className="absolute inset-0 flex items-center justify-center transition-opacity duration-300 pointer-events-none"
         style={{ opacity: revealed ? 1 : 0 }}
       >
-        {/* Circular image */}
+        <div className="absolute inset-0 bg-black/5" />
         <div
-          className="relative w-[100px] h-[100px] sm:w-[120px] sm:h-[120px] lg:w-[140px] lg:h-[140px] rounded-full overflow-hidden shadow-lg mb-2 sm:mb-3 flex-shrink-0 transition-transform duration-500"
-          style={{ transform: revealed ? "scale(1)" : "scale(0.7)" }}
+          className="relative w-[130px] h-[130px] sm:w-[150px] sm:h-[150px] lg:w-[180px] lg:h-[180px] rounded-full overflow-hidden shadow-2xl ring-4 ring-white/80 transition-transform duration-500"
+          style={{ transform: revealed ? "scale(1)" : "scale(0.5)" }}
         >
           <Image
             src={flavor.image}
             alt={`${flavor.name} — начинка`}
             fill
             className="object-cover"
-            sizes="140px"
+            sizes="180px"
           />
         </div>
-        <h3 className="font-[family-name:var(--font-display)] font-bold text-xs sm:text-sm text-charcoal text-center leading-tight mb-1">
-          {flavor.name}
-        </h3>
-        <p className="text-charcoal/60 text-[10px] sm:text-xs leading-snug font-[family-name:var(--font-body)] text-center line-clamp-3">
-          {flavor.description}
-        </p>
       </div>
     </div>
   );
