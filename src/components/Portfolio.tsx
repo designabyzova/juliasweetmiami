@@ -6,44 +6,29 @@ import ScrollReveal from "./ScrollReveal";
 
 /* ---------- data ---------- */
 
-const PORTFOLIO_ITEMS = [
-  {
-    title: "Торт с золотым декором",
-    category: "Торты",
-    src: "/cakes/cake-1.webp",
-    span: true,
-  },
-  {
-    title: "Муссовые десерты",
-    category: "Десерты",
-    src: "/desserts/desserts-1.webp",
-    span: false,
-  },
-  {
-    title: "Матча торт",
-    category: "Торты",
-    src: "/cakes/cake-3.webp",
-    span: false,
-  },
-  {
-    title: "Авторские десерты",
-    category: "Десерты",
-    src: "/desserts/desserts-2.webp",
-    span: true,
-  },
-  {
-    title: "Медовый торт",
-    category: "Торты",
-    src: "/cakes/cake-5.webp",
-    span: false,
-  },
-  {
-    title: "Минималистичные десерты",
-    category: "Десерты",
-    src: "/desserts/desserts-4.webp",
-    span: false,
-  },
+const CAKES = [
+  { src: "/cakes/cake-1.webp", alt: "Торт Happy Birthday с шоколадными медальонами" },
+  { src: "/cakes/cake-2.webp", alt: "Фисташковый торт с виноградом" },
+  { src: "/cakes/cake-3.webp", alt: "Розовый торт с шоколадным декором" },
+  { src: "/cakes/cake-4.webp", alt: "Торт с надписью" },
+  { src: "/cakes/cake-5.webp", alt: "Медовый торт с пчёлками" },
+  { src: "/cakes/cake-6.webp", alt: "Фисташковый торт с голубикой" },
+  { src: "/cakes/cake-7.webp", alt: "Зелёный торт с ягодами и эвкалиптом" },
+  { src: "/cakes/cake-8.webp", alt: "Белый муссовый торт с жемчугом" },
+  { src: "/cakes/cake-9.webp", alt: "Розово-фисташковый торт" },
+  { src: "/cakes/cake-10.webp", alt: "Красный торт из сфер" },
 ];
+
+const DESSERTS = [
+  { src: "/desserts/dessert-1.webp", alt: "Авторский десерт с персиковым муссом" },
+  { src: "/desserts/dessert-2.webp", alt: "Коллекция муссовых десертов" },
+  { src: "/desserts/dessert-3.webp", alt: "Зелёные и красные десерты" },
+  { src: "/desserts/dessert-4.webp", alt: "Лаймовые кубические десерты" },
+  { src: "/desserts/dessert-5.webp", alt: "Оранжевый купольный десерт" },
+  { src: "/desserts/dessert-6.webp", alt: "Розовые сферические трюфели" },
+];
+
+const ALL_ITEMS = [...CAKES, ...DESSERTS];
 
 /* ---------- component ---------- */
 
@@ -90,12 +75,12 @@ export default function Portfolio() {
                   <p className="text-charcoal/60 text-xs sm:text-sm lg:text-base max-w-xs mb-4 sm:mb-6 font-[family-name:var(--font-body)]">
                     Авторские торты на любой праздник — от классики до смелых решений
                   </p>
-                  <button className="btn-pill bg-charcoal text-white text-xs sm:text-sm px-5 sm:px-7 py-2.5 sm:py-3 hover:bg-charcoal/85 transition-colors font-[family-name:var(--font-body)]">
-                    Смотреть все
+                  <a href="#order" className="btn-pill bg-charcoal text-white text-xs sm:text-sm px-5 sm:px-7 py-2.5 sm:py-3 hover:bg-charcoal/85 transition-colors font-[family-name:var(--font-body)] inline-block">
+                    Заказать торт
                     <svg className="ml-2 w-3.5 h-3.5 sm:w-4 sm:h-4 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
-                  </button>
+                  </a>
                 </div>
 
                 {/* image side — two cake images overlapping */}
@@ -110,7 +95,7 @@ export default function Portfolio() {
                     <div className="relative w-full h-full rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl">
                       <Image
                         src="/cakes/cake-2.webp"
-                        alt="Бирюзовый торт"
+                        alt="Фисташковый торт с виноградом"
                         fill
                         className="object-cover"
                         sizes="(max-width: 640px) 120px, (max-width: 768px) 180px, 260px"
@@ -128,7 +113,7 @@ export default function Portfolio() {
                     <div className="relative w-full h-full rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden shadow-2xl">
                       <Image
                         src="/cakes/cake-1.webp"
-                        alt="Фиолетовый торт с золотом"
+                        alt="Торт Happy Birthday с шоколадными медальонами"
                         fill
                         className="object-cover"
                         sizes="(max-width: 640px) 140px, (max-width: 768px) 200px, 280px"
@@ -156,8 +141,8 @@ export default function Portfolio() {
                 >
                   <div className="relative w-full h-full rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl">
                     <Image
-                      src="/desserts/desserts-2.webp"
-                      alt="Авторские десерты"
+                      src="/desserts/dessert-2.webp"
+                      alt="Коллекция муссовых десертов"
                       fill
                       className="object-cover"
                       sizes="(max-width: 640px) 160px, (max-width: 768px) 200px, 260px"
@@ -173,12 +158,12 @@ export default function Portfolio() {
                   <p className="text-charcoal/50 text-xs sm:text-sm max-w-[200px] mb-4 sm:mb-5 font-[family-name:var(--font-body)]">
                     Муссовые, шоколадные и авторские мини-десерты
                   </p>
-                  <button className="btn-pill bg-charcoal text-white text-xs sm:text-sm px-5 sm:px-6 py-2 sm:py-2.5 hover:bg-charcoal/85 transition-colors font-[family-name:var(--font-body)]">
-                    Перейти
+                  <a href="#order" className="btn-pill bg-charcoal text-white text-xs sm:text-sm px-5 sm:px-6 py-2 sm:py-2.5 hover:bg-charcoal/85 transition-colors font-[family-name:var(--font-body)] inline-block">
+                    Заказать
                     <svg className="ml-2 w-3.5 h-3.5 sm:w-4 sm:h-4 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
-                  </button>
+                  </a>
                 </div>
               </div>
             </ScrollReveal>
@@ -199,7 +184,7 @@ export default function Portfolio() {
                   <div className="relative w-full h-full rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden shadow-xl">
                     <Image
                       src="/cakes/cake-7.webp"
-                      alt="Бенто торт"
+                      alt="Зелёный торт с ягодами и эвкалиптом"
                       fill
                       className="object-cover"
                       sizes="(max-width: 640px) 160px, (max-width: 768px) 200px, 260px"
@@ -215,12 +200,12 @@ export default function Portfolio() {
                   <p className="text-charcoal/50 text-xs sm:text-sm max-w-[200px] mb-4 sm:mb-5 font-[family-name:var(--font-body)]">
                     Мини-торты с индивидуальным дизайном для одного
                   </p>
-                  <button className="btn-pill bg-charcoal text-white text-xs sm:text-sm px-5 sm:px-6 py-2 sm:py-2.5 hover:bg-charcoal/85 transition-colors font-[family-name:var(--font-body)]">
-                    Перейти
+                  <a href="#order" className="btn-pill bg-charcoal text-white text-xs sm:text-sm px-5 sm:px-6 py-2 sm:py-2.5 hover:bg-charcoal/85 transition-colors font-[family-name:var(--font-body)] inline-block">
+                    Заказать
                     <svg className="ml-2 w-3.5 h-3.5 sm:w-4 sm:h-4 inline-block" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                       <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
-                  </button>
+                  </a>
                 </div>
               </div>
             </ScrollReveal>
@@ -228,50 +213,29 @@ export default function Portfolio() {
         </div>
 
         {/* ============================================================
-            MASONRY GRID — mobile-first with consistent breakpoints
+            PHOTO GRID — 2 cols mobile, 4 cols desktop
             ============================================================ */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 lg:gap-5 auto-rows-[160px] xs:auto-rows-[180px] sm:auto-rows-[220px] md:auto-rows-[260px] lg:auto-rows-[280px]">
-          {PORTFOLIO_ITEMS.map((item, i) => (
-            <ScrollReveal key={item.title} delay={i * 0.07}>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 lg:gap-5">
+          {ALL_ITEMS.map((item, i) => (
+            <ScrollReveal key={item.src} delay={i * 0.04}>
               <motion.div
-                whileHover={{ scale: 1.025 }}
+                whileHover={{ scale: 1.03 }}
                 transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                className={`group relative rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden cursor-pointer h-full ${
-                  item.span ? "col-span-2 row-span-1" : "col-span-1 row-span-1"
-                }`}
+                className="group relative aspect-square rounded-xl sm:rounded-2xl lg:rounded-3xl overflow-hidden cursor-pointer"
                 data-testid={`portfolio-item-${i}`}
-                style={{ gridColumn: item.span ? "span 2" : "span 1" }}
               >
-                {/* image */}
                 <div className="absolute inset-0 transition-transform duration-700 ease-out group-hover:scale-110">
                   <Image
                     src={item.src}
-                    alt={item.title}
+                    alt={item.alt}
                     fill
                     className="object-cover"
-                    sizes={item.span ? "(max-width:768px) 100vw, 50vw" : "(max-width:768px) 50vw, 25vw"}
+                    sizes="(max-width: 768px) 50vw, 25vw"
                   />
                 </div>
 
-                {/* subtle dark gradient at bottom */}
-                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 via-charcoal/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
-
-                {/* caption */}
-                <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 lg:p-5 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-400 z-10">
-                  <span className="text-white/60 text-[10px] sm:text-xs font-medium tracking-wider uppercase font-[family-name:var(--font-body)]">
-                    {item.category}
-                  </span>
-                  <h4 className="text-white font-[family-name:var(--font-display)] font-bold text-xs sm:text-sm lg:text-base mt-0.5">
-                    {item.title}
-                  </h4>
-                </div>
-
-                {/* top-right pill tag */}
-                <div className="absolute top-2 right-2 sm:top-3 sm:right-3 lg:top-4 lg:right-4 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="bg-white/90 backdrop-blur-sm text-charcoal text-[9px] sm:text-[10px] lg:text-xs font-semibold px-2 sm:px-3 py-1 rounded-full font-[family-name:var(--font-body)]">
-                    {item.category}
-                  </span>
-                </div>
+                {/* hover overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-charcoal/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </motion.div>
             </ScrollReveal>
           ))}

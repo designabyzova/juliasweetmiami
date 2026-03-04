@@ -66,11 +66,11 @@ test.describe("Visual Rendering", () => {
     }
   });
 
-  test("all 6 portfolio items render", async ({ page }) => {
+  test("all 16 portfolio items render", async ({ page }) => {
     await page.locator("#portfolio").scrollIntoViewIfNeeded();
     await page.waitForTimeout(500);
 
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 16; i++) {
       const item = page.getByTestId(`portfolio-item-${i}`);
       await expect(item).toBeAttached();
     }
