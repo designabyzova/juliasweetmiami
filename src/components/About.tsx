@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Image from "next/image";
 import ScrollReveal from "./ScrollReveal";
 
@@ -44,49 +43,39 @@ export default function About() {
           </div>
         </ScrollReveal>
 
-        {/* "Чем я отличаюсь" — HERO CARD with dessert image */}
+        {/* "Чем я отличаюсь" — card with bubble desserts image */}
         <ScrollReveal delay={0.2}>
           <div
-            className="relative rounded-2xl sm:rounded-[28px] lg:rounded-[36px] overflow-visible mb-5 sm:mb-6 lg:mb-8 min-h-[300px] sm:min-h-[360px] lg:min-h-[420px]"
+            className="relative rounded-2xl sm:rounded-[28px] lg:rounded-[36px] overflow-hidden mb-5 sm:mb-6 lg:mb-8"
             style={{
               background: "linear-gradient(135deg, #fef5f0 0%, #fdf0f5 50%, #fce8ee 100%)",
             }}
           >
-            <div className="relative flex flex-col-reverse md:flex-row items-center min-h-[300px] sm:min-h-[360px] lg:min-h-[420px]">
-              {/* Image side — tilted dessert cubes */}
-              <div className="relative flex-shrink-0 w-full md:w-auto flex items-center justify-center p-5 sm:p-6 md:p-8 lg:p-12">
-                <motion.div
-                  className="relative w-[180px] sm:w-[220px] lg:w-[300px] aspect-square"
-                  initial={{ rotate: -5 }}
-                  whileHover={{ rotate: 2, scale: 1.05, y: -6 }}
-                  transition={{ type: "spring", stiffness: 180, damping: 18 }}
-                >
-                  {/* Soft glow behind */}
-                  <div className="absolute inset-0 rounded-[20px] sm:rounded-[24px] bg-pink-light/40 blur-2xl scale-110" />
-
-                  {/* Decorative diagonal accent line */}
-                  <div className="absolute -top-2 -left-2 sm:-top-3 sm:-left-3 w-12 sm:w-16 h-12 sm:h-16 border-t-2 border-l-2 border-coral/20 rounded-tl-2xl" />
-                  <div className="absolute -bottom-2 -right-2 sm:-bottom-3 sm:-right-3 w-12 sm:w-16 h-12 sm:h-16 border-b-2 border-r-2 border-coral/20 rounded-br-2xl" />
-
-                  <div className="relative w-full h-full rounded-[20px] sm:rounded-[24px] lg:rounded-[28px] overflow-hidden shadow-2xl shadow-charcoal/8 rotate-[-3deg]">
+            <div className="relative flex flex-col-reverse md:flex-row items-center">
+              {/* Image side — bubble desserts */}
+              <div className="relative flex-shrink-0 w-full md:w-[48%] flex items-center justify-center p-5 sm:p-7 md:p-8 lg:p-12">
+                <div className="relative w-[260px] sm:w-[300px] lg:w-[380px]">
+                  {/* Tilted pink frame behind */}
+                  <div className="absolute -inset-2 sm:-inset-3 bg-pink-light/50 rounded-[22px] sm:rounded-[26px] lg:rounded-[30px] rotate-[-3deg]" />
+                  {/* Decorative corner accents */}
+                  <div className="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 w-10 sm:w-14 h-10 sm:h-14 border-t-2 border-l-2 border-coral/25 rounded-tl-2xl" />
+                  <div className="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 w-10 sm:w-14 h-10 sm:h-14 border-b-2 border-r-2 border-coral/25 rounded-br-2xl" />
+                  {/* Photo */}
+                  <div className="relative rounded-[18px] sm:rounded-[22px] lg:rounded-[26px] overflow-hidden shadow-2xl shadow-charcoal/10">
                     <Image
-                      src="/desserts/desserts-4.webp"
-                      alt="Минималистичные муссовые десерты-кубики"
-                      fill
-                      className="object-cover scale-105"
-                      sizes="(max-width: 640px) 180px, (max-width: 960px) 220px, 300px"
+                      src="/desserts/what-different.webp"
+                      alt="Муссовые десерты-кубики из шариков"
+                      width={700}
+                      height={475}
+                      className="w-full h-auto"
+                      sizes="(max-width: 640px) 260px, (max-width: 960px) 300px, 380px"
                     />
                   </div>
-
-                  {/* Floating sparkle badge */}
-                  <motion.div
-                    animate={{ y: [0, -6, 0], rotate: [0, 3, 0] }}
-                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute -top-1.5 -right-1.5 sm:-top-3 sm:-right-3 bg-white rounded-lg sm:rounded-xl shadow-lg px-2.5 py-1.5 sm:px-3 sm:py-2"
-                  >
+                  {/* Sparkle badge */}
+                  <div className="absolute -top-2 -right-2 sm:-top-3 sm:-right-3 bg-white rounded-lg sm:rounded-xl shadow-lg px-2.5 py-1.5 sm:px-3 sm:py-2 z-10">
                     <span className="text-base sm:text-lg">&#10024;</span>
-                  </motion.div>
-                </motion.div>
+                  </div>
+                </div>
               </div>
 
               {/* Text side */}
@@ -100,14 +89,7 @@ export default function About() {
                   Чем я{" "}
                   <span className="relative inline-block">
                     <span className="relative z-10">отличаюсь</span>
-                    <motion.span
-                      className="absolute -bottom-1 left-0 h-2.5 sm:h-3 w-full rounded-full bg-coral/15"
-                      initial={{ scaleX: 0 }}
-                      whileInView={{ scaleX: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.8, delay: 0.5 }}
-                      style={{ originX: 0 }}
-                    />
+                    <span className="absolute -bottom-1 left-0 h-2.5 sm:h-3 w-full rounded-full bg-coral/15" />
                   </span>{" "}
                   от других
                 </h3>
@@ -134,7 +116,7 @@ export default function About() {
           </div>
         </ScrollReveal>
 
-        {/* "Для кого мои торты" — HERO CARD with transparent cake image */}
+        {/* "Для кого мои торты" — card with heart cake image */}
         <ScrollReveal delay={0.3}>
           <div
             className="relative rounded-2xl sm:rounded-[28px] lg:rounded-[36px] overflow-hidden"
@@ -179,19 +161,29 @@ export default function About() {
                 </div>
               </div>
 
-              {/* Image side — heart cake with transparent background */}
-              <div className="relative flex-shrink-0 w-full md:w-[45%] flex items-center justify-center p-4 sm:p-6 md:p-8 lg:p-10">
-                <div className="relative w-[220px] sm:w-[280px] lg:w-[360px]">
-                  {/* Soft glow under the cake */}
-                  <div className="absolute bottom-[5%] left-1/2 -translate-x-1/2 w-[70%] h-[30%] bg-charcoal/5 rounded-full blur-2xl" />
-                  <Image
-                    src="/for-whom-cake.webp"
-                    alt="Муссовый торт в форме сердца — Juliia Sweet"
-                    width={600}
-                    height={561}
-                    className="relative z-10 drop-shadow-[0_12px_32px_rgba(0,0,0,0.10)]"
-                    sizes="(max-width: 640px) 220px, (max-width: 960px) 280px, 360px"
-                  />
+              {/* Image side — heart cake in styled frame */}
+              <div className="relative flex-shrink-0 w-full md:w-[45%] flex items-center justify-center p-5 sm:p-7 md:p-8 lg:p-10">
+                <div className="relative w-[220px] sm:w-[270px] lg:w-[340px]">
+                  {/* Tilted pink frame behind */}
+                  <div className="absolute -inset-2 sm:-inset-3 bg-white/40 rounded-[22px] sm:rounded-[26px] lg:rounded-[30px] rotate-[3deg]" />
+                  {/* Decorative corner accents */}
+                  <div className="absolute -top-3 -left-3 sm:-top-4 sm:-left-4 w-10 sm:w-14 h-10 sm:h-14 border-t-2 border-l-2 border-coral/25 rounded-tl-2xl" />
+                  <div className="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 w-10 sm:w-14 h-10 sm:h-14 border-b-2 border-r-2 border-coral/25 rounded-br-2xl" />
+                  {/* Photo */}
+                  <div className="relative rounded-[18px] sm:rounded-[22px] lg:rounded-[26px] overflow-hidden shadow-2xl shadow-charcoal/10">
+                    <Image
+                      src="/for-whom-cake.webp"
+                      alt="Муссовый торт в форме сердца — Juliia Sweet"
+                      width={600}
+                      height={561}
+                      className="w-full h-auto"
+                      sizes="(max-width: 640px) 220px, (max-width: 960px) 270px, 340px"
+                    />
+                  </div>
+                  {/* Heart badge */}
+                  <div className="absolute -bottom-2 -right-2 sm:-bottom-3 sm:-right-3 bg-white rounded-lg sm:rounded-xl shadow-lg px-2.5 py-1.5 sm:px-3 sm:py-2 z-10">
+                    <span className="text-base sm:text-lg">&#x1F90D;</span>
+                  </div>
                 </div>
               </div>
             </div>
