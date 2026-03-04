@@ -64,9 +64,9 @@ export default function About() {
                   <div className="relative rounded-[18px] sm:rounded-[22px] lg:rounded-[26px] overflow-hidden shadow-2xl shadow-charcoal/10">
                     <Image
                       src="/desserts/what-different.webp"
-                      alt="Муссовые десерты-кубики из шариков"
-                      width={700}
-                      height={475}
+                      alt="Авторские муссовые десерты"
+                      width={754}
+                      height={800}
                       className="w-full h-auto"
                       sizes="(max-width: 640px) 260px, (max-width: 960px) 300px, 380px"
                     />
