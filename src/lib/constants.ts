@@ -110,6 +110,9 @@ export const CAKE_COLORS = [
   { name: "Голубой", hex: "#42A5F5" },
   { name: "Синий", hex: "#5C6BC0" },
   { name: "Фиолетовый", hex: "#AB47BC" },
+  { name: "Лаймовый", hex: "#CDDC39" },
+  { name: "Хаки", hex: "#8D6E63" },
+  { name: "Бордовый", hex: "#880E4F" },
 ] as const;
 
 export const DECORATIONS = [

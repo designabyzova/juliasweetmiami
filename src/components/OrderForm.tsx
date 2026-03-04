@@ -252,7 +252,7 @@ export default function OrderForm() {
                   <label className="block mb-3 text-xs sm:text-sm font-medium text-charcoal font-[family-name:var(--font-body)]">
                     Цвет торта
                   </label>
-                  <div className="flex flex-wrap gap-2.5 sm:gap-3 mb-5 sm:mb-6" data-testid="color-picker">
+                  <div className="flex flex-wrap gap-2.5 sm:gap-3 mb-2" data-testid="color-picker">
                     {CAKE_COLORS.map((c) => (
                       <button
                         key={c.name}
@@ -269,10 +269,13 @@ export default function OrderForm() {
                     ))}
                   </div>
                   {color && (
-                    <p className="text-gray text-xs font-[family-name:var(--font-body)] -mt-3 sm:-mt-4 mb-5 sm:mb-6">
+                    <p className="text-gray text-xs font-[family-name:var(--font-body)] mb-1">
                       Выбран: <span className="text-charcoal font-medium">{color}</span>
                     </p>
                   )}
+                  <p className="text-charcoal/40 text-[11px] sm:text-xs font-[family-name:var(--font-body)] mb-5 sm:mb-6">
+                    Другой цвет? Напишите в комментарии на следующем шаге.
+                  </p>
 
                   {/* Box */}
                   <label className="block mb-2 text-xs sm:text-sm font-medium text-charcoal font-[family-name:var(--font-body)]">
