@@ -1,4 +1,10 @@
-import { test, expect } from "@playwright/test";
+import { test, expect, Page } from "@playwright/test";
+
+/** Click the custom select trigger, then pick the first option. */
+async function pickFirstOption(page: Page, testId: string) {
+  await page.getByTestId(testId).click();
+  await page.getByTestId(testId).locator('[role="option"]').first().click();
+}
 
 test.describe("Order Form (Cake Constructor)", () => {
   test.beforeEach(async ({ page }) => {
@@ -22,18 +28,18 @@ test.describe("Order Form (Cake Constructor)", () => {
     await expect(nextBtn).toBeDisabled();
 
     // Select weight
-    await page.getByTestId("select-weight").selectOption({ index: 1 });
+    await pickFirstOption(page, "select-weight");
     await expect(nextBtn).toBeDisabled();
 
     // Select filling
-    await page.getByTestId("select-filling").selectOption({ index: 1 });
+    await pickFirstOption(page, "select-filling");
     await expect(nextBtn).toBeEnabled();
   });
 
   test("navigate through all 3 steps", async ({ page }) => {
     // Step 1
-    await page.getByTestId("select-weight").selectOption({ index: 1 });
-    await page.getByTestId("select-filling").selectOption({ index: 1 });
+    await pickFirstOption(page, "select-weight");
+    await pickFirstOption(page, "select-filling");
     await page.getByTestId("next-step-1").click();
     await page.waitForTimeout(400);
 
@@ -42,7 +48,7 @@ test.describe("Order Form (Cake Constructor)", () => {
     await expect(step2).toBeVisible();
 
     // Select coating
-    await page.getByTestId("select-coating").selectOption({ index: 1 });
+    await pickFirstOption(page, "select-coating");
     await page.getByTestId("next-step-2").click();
     await page.waitForTimeout(400);
 
@@ -53,12 +59,12 @@ test.describe("Order Form (Cake Constructor)", () => {
 
   test("step 3: submit disabled without required fields", async ({ page }) => {
     // Navigate to step 3
-    await page.getByTestId("select-weight").selectOption({ index: 1 });
-    await page.getByTestId("select-filling").selectOption({ index: 1 });
+    await pickFirstOption(page, "select-weight");
+    await pickFirstOption(page, "select-filling");
     await page.getByTestId("next-step-1").click();
     await page.waitForTimeout(400);
 
-    await page.getByTestId("select-coating").selectOption({ index: 1 });
+    await pickFirstOption(page, "select-coating");
     await page.getByTestId("next-step-2").click();
     await page.waitForTimeout(400);
 
@@ -76,13 +82,13 @@ test.describe("Order Form (Cake Constructor)", () => {
 
   test("full form submission shows success message", async ({ page }) => {
     // Step 1
-    await page.getByTestId("select-weight").selectOption({ index: 1 });
-    await page.getByTestId("select-filling").selectOption({ index: 1 });
+    await pickFirstOption(page, "select-weight");
+    await pickFirstOption(page, "select-filling");
     await page.getByTestId("next-step-1").click();
     await page.waitForTimeout(400);
 
     // Step 2
-    await page.getByTestId("select-coating").selectOption({ index: 1 });
+    await pickFirstOption(page, "select-coating");
     await page.getByTestId("next-step-2").click();
     await page.waitForTimeout(400);
 
@@ -101,8 +107,8 @@ test.describe("Order Form (Cake Constructor)", () => {
 
   test("can navigate back between steps", async ({ page }) => {
     // Go to step 2
-    await page.getByTestId("select-weight").selectOption({ index: 1 });
-    await page.getByTestId("select-filling").selectOption({ index: 1 });
+    await pickFirstOption(page, "select-weight");
+    await pickFirstOption(page, "select-filling");
     await page.getByTestId("next-step-1").click();
     await page.waitForTimeout(400);
 
@@ -117,8 +123,8 @@ test.describe("Order Form (Cake Constructor)", () => {
 
   test("decoration checkboxes can be toggled", async ({ page }) => {
     // Navigate to step 2
-    await page.getByTestId("select-weight").selectOption({ index: 1 });
-    await page.getByTestId("select-filling").selectOption({ index: 1 });
+    await pickFirstOption(page, "select-weight");
+    await pickFirstOption(page, "select-filling");
     await page.getByTestId("next-step-1").click();
     await page.waitForTimeout(400);
 

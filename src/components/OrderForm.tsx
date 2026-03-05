@@ -1,9 +1,11 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, useMemo, FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FLAVORS, WEIGHTS, COATINGS, CAKE_COLORS, DECORATIONS, BOXES } from "@/lib/constants";
 import ScrollReveal from "./ScrollReveal";
+import CustomSelect from "./CustomSelect";
+import type { SelectOption, SelectGroup } from "./CustomSelect";
 
 const EMAIL_WORKER_URL = "https://email-service.anton-abyzov.workers.dev";
 
@@ -31,6 +33,39 @@ export default function OrderForm() {
       prev.includes(dec) ? prev.filter((d) => d !== dec) : [...prev, dec]
     );
   };
+
+  /* Memoised option lists for CustomSelect */
+  const weightGroups: SelectGroup[] = useMemo(
+    () => [
+      {
+        label: "Торты",
+        options: WEIGHTS.cakes.map((w) => ({
+          value: w.label,
+          label: `${w.label} — $${w.price}`,
+        })),
+      },
+      {
+        label: "Пирожные",
+        options: WEIGHTS.pastries.map((w) => ({
+          value: w.label,
+          label: `${w.label} — $${w.price} (от 4 шт)`,
+        })),
+      },
+    ],
+    []
+  );
+  const fillingOptions: SelectOption[] = useMemo(
+    () => FLAVORS.map((f) => ({ value: f.name, label: f.name })),
+    []
+  );
+  const coatingOptions: SelectOption[] = useMemo(
+    () => COATINGS.map((c) => ({ value: c, label: c })),
+    []
+  );
+  const boxOptions: SelectOption[] = useMemo(
+    () => BOXES.map((b) => ({ value: b, label: b })),
+    []
+  );
 
   const canProceedStep1 = weight && filling;
   const canProceedStep2 = coating;
@@ -171,40 +206,29 @@ export default function OrderForm() {
                   <label className="block mb-2 text-xs sm:text-sm font-medium text-charcoal font-[family-name:var(--font-body)]">
                     Вес
                   </label>
-                  <select
-                    value={weight}
-                    onChange={(e) => setWeight(e.target.value)}
-                    className="w-full border border-border rounded-xl px-4 py-3 text-charcoal font-[family-name:var(--font-body)] text-sm sm:text-base mb-5 sm:mb-6 bg-white focus:outline-none focus:ring-2 focus:ring-coral/30 focus:border-coral transition-all"
-                    data-testid="select-weight"
-                  >
-                    <option value="">Выберите вес</option>
-                    <optgroup label="Торты">
-                      {WEIGHTS.cakes.map((w) => (
-                        <option key={w.label} value={w.label}>{w.label} — ${w.price}</option>
-                      ))}
-                    </optgroup>
-                    <optgroup label="Пирожные">
-                      {WEIGHTS.pastries.map((w) => (
-                        <option key={w.label} value={w.label}>{w.label} — ${w.price} (от 4 шт)</option>
-                      ))}
-                    </optgroup>
-                  </select>
+                  <div className="mb-5 sm:mb-6">
+                    <CustomSelect
+                      value={weight}
+                      onChange={setWeight}
+                      placeholder="Выберите вес"
+                      groups={weightGroups}
+                      testId="select-weight"
+                    />
+                  </div>
 
                   {/* Filling */}
                   <label className="block mb-2 text-xs sm:text-sm font-medium text-charcoal font-[family-name:var(--font-body)]">
                     Начинка
                   </label>
-                  <select
-                    value={filling}
-                    onChange={(e) => setFilling(e.target.value)}
-                    className="w-full border border-border rounded-xl px-4 py-3 text-charcoal font-[family-name:var(--font-body)] text-sm sm:text-base mb-5 sm:mb-6 bg-white focus:outline-none focus:ring-2 focus:ring-coral/30 focus:border-coral transition-all"
-                    data-testid="select-filling"
-                  >
-                    <option value="">Выберите начинку</option>
-                    {FLAVORS.map((f) => (
-                      <option key={f.name} value={f.name}>{f.name}</option>
-                    ))}
-                  </select>
+                  <div className="mb-5 sm:mb-6">
+                    <CustomSelect
+                      value={filling}
+                      onChange={setFilling}
+                      placeholder="Выберите начинку"
+                      options={fillingOptions}
+                      testId="select-filling"
+                    />
+                  </div>
 
                   <button
                     type="button"
@@ -236,17 +260,15 @@ export default function OrderForm() {
                   <label className="block mb-2 text-xs sm:text-sm font-medium text-charcoal font-[family-name:var(--font-body)]">
                     Покрытие
                   </label>
-                  <select
-                    value={coating}
-                    onChange={(e) => setCoating(e.target.value)}
-                    className="w-full border border-border rounded-xl px-4 py-3 text-charcoal font-[family-name:var(--font-body)] text-sm sm:text-base mb-5 sm:mb-6 bg-white focus:outline-none focus:ring-2 focus:ring-coral/30 focus:border-coral transition-all"
-                    data-testid="select-coating"
-                  >
-                    <option value="">Выберите покрытие</option>
-                    {COATINGS.map((c) => (
-                      <option key={c} value={c}>{c}</option>
-                    ))}
-                  </select>
+                  <div className="mb-5 sm:mb-6">
+                    <CustomSelect
+                      value={coating}
+                      onChange={setCoating}
+                      placeholder="Выберите покрытие"
+                      options={coatingOptions}
+                      testId="select-coating"
+                    />
+                  </div>
 
                   {/* Color */}
                   <label className="block mb-3 text-xs sm:text-sm font-medium text-charcoal font-[family-name:var(--font-body)]">
@@ -287,17 +309,15 @@ export default function OrderForm() {
                   <label className="block mb-2 text-xs sm:text-sm font-medium text-charcoal font-[family-name:var(--font-body)]">
                     Коробка
                   </label>
-                  <select
-                    value={box}
-                    onChange={(e) => setBox(e.target.value)}
-                    className="w-full border border-border rounded-xl px-4 py-3 text-charcoal font-[family-name:var(--font-body)] text-sm sm:text-base mb-5 sm:mb-6 bg-white focus:outline-none focus:ring-2 focus:ring-coral/30 focus:border-coral transition-all"
-                    data-testid="select-box"
-                  >
-                    <option value="">Выберите коробку</option>
-                    {BOXES.map((b) => (
-                      <option key={b} value={b}>{b}</option>
-                    ))}
-                  </select>
+                  <div className="mb-5 sm:mb-6">
+                    <CustomSelect
+                      value={box}
+                      onChange={setBox}
+                      placeholder="Выберите коробку"
+                      options={boxOptions}
+                      testId="select-box"
+                    />
+                  </div>
 
                   {/* Decorations */}
                   <label className="block mb-3 text-xs sm:text-sm font-medium text-charcoal font-[family-name:var(--font-body)]">
