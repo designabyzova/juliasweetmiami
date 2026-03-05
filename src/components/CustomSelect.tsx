@@ -127,7 +127,7 @@ export default function CustomSelect({
             transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="absolute z-50 mt-2 w-full bg-white border border-border/80 rounded-2xl shadow-2xl shadow-charcoal/10 overflow-hidden"
           >
-            <div className="max-h-[260px] overflow-y-auto py-1.5 no-scrollbar">
+            <div className="py-1.5">
               {groups
                 ? groups.map((group) => (
                     <div key={group.label}>
