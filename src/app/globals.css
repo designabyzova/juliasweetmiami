@@ -241,6 +241,12 @@ body {
   margin-right: auto;
 }
 
+/* ── Wide display heading (DrukTextWideTT feel) ── */
+.heading-wide {
+  transform: scaleX(1.08) scaleY(0.93);
+  display: block;
+}
+
 /* ── Rotated images ── */
 .img-rotated {
   transform: rotate(10deg);

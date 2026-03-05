@@ -21,7 +21,7 @@ export default function About() {
             <p className="text-coral font-semibold text-xs sm:text-sm tracking-widest uppercase mb-3 font-[family-name:var(--font-body)]">
               Обо мне
             </p>
-            <h2 className="font-[family-name:var(--font-display)] font-black text-[24px] sm:text-[32px] lg:text-[48px] tracking-normal text-charcoal">
+            <h2 className="heading-wide font-[family-name:var(--font-display)] font-black text-[24px] sm:text-[32px] lg:text-[48px] tracking-normal text-charcoal">
               Моя история
             </h2>
           </div>
@@ -85,7 +85,7 @@ export default function About() {
                     <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
                   </svg>
                 </div>
-                <h3 className="font-[family-name:var(--font-display)] font-black text-[22px] sm:text-[28px] lg:text-[40px] leading-[1.1] text-charcoal mb-3 sm:mb-4">
+                <h3 className="heading-wide font-[family-name:var(--font-display)] font-black text-[22px] sm:text-[28px] lg:text-[40px] leading-[1.1] text-charcoal mb-3 sm:mb-4">
                   Чем я{" "}
                   <span className="relative inline-block">
                     <span className="relative z-10">отличаюсь</span>
@@ -132,7 +132,7 @@ export default function About() {
                     <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                   </svg>
                 </div>
-                <h3 className="font-[family-name:var(--font-display)] font-black text-[24px] sm:text-[32px] lg:text-[44px] leading-[1.1] text-charcoal mb-3 sm:mb-4">
+                <h3 className="heading-wide font-[family-name:var(--font-display)] font-black text-[24px] sm:text-[32px] lg:text-[44px] leading-[1.1] text-charcoal mb-3 sm:mb-4">
                   Для кого{" "}
                   <span className="relative inline-block">
                     <span className="relative z-10">мои торты</span>
