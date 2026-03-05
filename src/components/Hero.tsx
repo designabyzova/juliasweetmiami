@@ -37,7 +37,7 @@ export default function Hero() {
               Miami, Florida
             </motion.p>
 
-            <h1 className="font-[family-name:var(--font-display)] font-black text-[28px] xs:text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] xl:text-[64px] leading-[1.05] tracking-tight text-charcoal mb-4 sm:mb-6">
+            <h1 className="font-[family-name:var(--font-display)] font-black text-[28px] xs:text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] xl:text-[64px] leading-[1.05] tracking-normal text-charcoal mb-4 sm:mb-6">
               Премиальные
               <br />
               торты

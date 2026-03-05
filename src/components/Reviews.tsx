@@ -92,7 +92,7 @@ export default function Reviews() {
                 <p className="mb-3 sm:mb-4 font-[family-name:var(--font-body)] text-xs sm:text-sm font-semibold uppercase tracking-widest text-coral">
                   Отзывы
                 </p>
-                <h2 className="font-[family-name:var(--font-display)] text-[26px] sm:text-[36px] lg:text-[52px] font-black leading-[1.1] tracking-tight text-charcoal">
+                <h2 className="font-[family-name:var(--font-display)] text-[26px] sm:text-[36px] lg:text-[52px] font-black leading-[1.1] tracking-normal text-charcoal">
                   Сохраняем{" "}
                   <span className="relative inline-block">
                     <span className="relative z-10">WOW-эффект</span>

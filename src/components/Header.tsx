@@ -54,7 +54,7 @@ export default function Header() {
               onClick={() => handleNavClick("#hero")}
               className="flex-shrink-0 hover:scale-[1.03] transition-transform duration-200"
             >
-              <span className="font-[family-name:var(--font-display)] text-lg sm:text-xl lg:text-[22px] font-black tracking-tight leading-none">
+              <span className="font-[family-name:var(--font-display)] text-lg sm:text-xl lg:text-[22px] font-black tracking-normal leading-none">
                 <span className="text-charcoal">Juliia</span>
                 {" "}
                 <span className="text-coral">Sweet</span>
