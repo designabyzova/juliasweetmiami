@@ -119,7 +119,7 @@ export default function OrderForm() {
       <section
         id="order"
         data-testid="order-section"
-        className="py-14 sm:py-20 lg:py-28 relative overflow-hidden"
+        className="py-14 sm:py-20 lg:py-28 relative"
       >
         <div className="absolute inset-0 bg-gradient-to-br from-pink-lighter via-white to-[#fef0f5]" />
         <div className="max-w-[600px] mx-auto px-5 sm:px-6 relative">
@@ -150,11 +150,13 @@ export default function OrderForm() {
     <section
       id="order"
       data-testid="order-section"
-      className="py-14 sm:py-20 lg:py-28 relative overflow-hidden"
+      className="py-14 sm:py-20 lg:py-28 relative"
     >
-      {/* Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-pink-lighter via-white to-[#fef0f5]" />
-      <div className="absolute top-10 sm:top-20 -left-12 sm:left-[-100px] w-[200px] sm:w-[300px] h-[200px] sm:h-[300px] bg-coral/5 rounded-full blur-3xl" />
+      {/* Background — wrapped separately so overflow-hidden doesn't clip dropdowns */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-pink-lighter via-white to-[#fef0f5]" />
+        <div className="absolute top-10 sm:top-20 -left-12 sm:left-[-100px] w-[200px] sm:w-[300px] h-[200px] sm:h-[300px] bg-coral/5 rounded-full blur-3xl" />
+      </div>
 
       <div className="max-w-[700px] mx-auto px-5 sm:px-6 relative">
         <ScrollReveal>
