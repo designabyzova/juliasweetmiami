@@ -2,8 +2,26 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import { useLanguage } from "@/lib/LanguageContext";
+
+const text = {
+  location: { ru: "Miami, Florida", en: "Miami, Florida" },
+  title1: { ru: "Премиальные муссовые", en: "Premium Mousse" },
+  title2: { ru: "десерты от кондитера", en: "Desserts by a Pastry Chef" },
+  titleAccent: { ru: "в Майами", en: "in Miami" },
+  subtitle1: { ru: "Кондитер Juliia Sweet.", en: "Pastry Chef Juliia Sweet." },
+  subtitle2: {
+    ru: "Европейские муссовые десерты с минимальным содержанием сахара — только натуральный вкус и баланс.",
+    en: "European mousse desserts with minimal sugar — only natural flavor and balance.",
+  },
+  ctaOrder: { ru: "Заказать торт", en: "Order Cake" },
+  ctaFlavors: { ru: "Смотреть начинки", en: "See Fillings" },
+  imageAlt: { ru: "Juliia Sweet — Кондитер в Майами", en: "Juliia Sweet — Pastry Chef in Miami" },
+};
 
 export default function Hero() {
+  const { t } = useLanguage();
+
   const handleScroll = (href: string) => {
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -34,14 +52,15 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-coral font-semibold text-xs sm:text-sm tracking-widest uppercase mb-3 sm:mb-4 font-[family-name:var(--font-body)]"
             >
-              Miami, Florida
+              {t(text.location)}
             </motion.p>
 
             <h1 className="heading-wide font-[family-name:var(--font-display)] font-black text-[28px] xs:text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] xl:text-[64px] leading-[1.05] tracking-normal text-charcoal mb-4 sm:mb-6">
-              Премиальные
+              {t(text.title1)}
               <br />
-              торты
-              <span className="text-coral"> в Майами</span>
+              {t(text.title2)}
+              <br />
+              <span className="text-coral">{t(text.titleAccent)}</span>
             </h1>
 
             <motion.div
@@ -51,10 +70,10 @@ export default function Hero() {
               className="max-w-md mx-auto lg:mx-0 mb-6 sm:mb-8 space-y-3"
             >
               <p className="text-gray text-sm sm:text-base lg:text-lg font-[family-name:var(--font-body)] leading-relaxed">
-                Кондитер Juliia Sweet.
+                {t(text.subtitle1)}
               </p>
               <p className="text-gray text-sm sm:text-base lg:text-lg font-[family-name:var(--font-body)] leading-relaxed">
-                Европейские муссовые десерты с минимальным содержанием сахара — только натуральный вкус и баланс.
+                {t(text.subtitle2)}
               </p>
             </motion.div>
 
@@ -68,13 +87,13 @@ export default function Hero() {
                 onClick={() => handleScroll("#order")}
                 className="bg-coral hover:bg-coral-dark active:scale-[0.97] text-white px-7 py-3.5 rounded-full font-semibold text-sm sm:text-base transition-all duration-200 hover:shadow-lg hover:shadow-coral/25 font-[family-name:var(--font-body)]"
               >
-                Заказать торт
+                {t(text.ctaOrder)}
               </button>
               <button
                 onClick={() => handleScroll("#flavors")}
                 className="border-2 border-charcoal text-charcoal hover:bg-charcoal hover:text-white active:scale-[0.97] px-7 py-3.5 rounded-full font-semibold text-sm sm:text-base transition-all duration-200 font-[family-name:var(--font-body)]"
               >
-                Смотреть начинки
+                {t(text.ctaFlavors)}
               </button>
             </motion.div>
           </motion.div>
@@ -92,7 +111,7 @@ export default function Hero() {
               <div className="absolute inset-0 rounded-[24px] sm:rounded-[30px] overflow-hidden shadow-2xl">
                 <Image
                   src="/hero-juliia.webp"
-                  alt="Juliia Sweet — Кондитер в Майами"
+                  alt={t(text.imageAlt)}
                   fill
                   className="object-cover"
                   priority

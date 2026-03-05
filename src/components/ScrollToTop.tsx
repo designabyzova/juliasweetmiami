@@ -2,9 +2,11 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useLanguage } from "@/lib/LanguageContext";
 
 export default function ScrollToTop() {
   const [visible, setVisible] = useState(false);
+  const { t } = useLanguage();
 
   /* ── Reset scroll on page load/reload ── */
   useEffect(() => {
@@ -33,7 +35,7 @@ export default function ScrollToTop() {
           exit={{ opacity: 0, scale: 0.6, y: 20 }}
           transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
           onClick={scrollToTop}
-          aria-label="Наверх"
+          aria-label={t({ ru: "Наверх", en: "Back to top" })}
           className="fixed bottom-6 right-6 z-50 w-12 h-12 sm:w-14 sm:h-14 bg-coral hover:bg-coral-dark active:scale-[0.92] text-white rounded-full shadow-lg shadow-coral/30 hover:shadow-xl hover:shadow-coral/40 flex items-center justify-center transition-all duration-200 cursor-pointer"
         >
           <svg

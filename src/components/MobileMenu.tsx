@@ -3,6 +3,8 @@
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { NAV_ITEMS } from "@/lib/constants";
+import { useLanguage } from "@/lib/LanguageContext";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 interface MobileMenuProps {
   onClose: () => void;
@@ -11,6 +13,7 @@ interface MobileMenuProps {
 
 export default function MobileMenu({ onClose, onNavClick }: MobileMenuProps) {
   const firstItemRef = useRef<HTMLButtonElement>(null);
+  const { t } = useLanguage();
 
   // Focus first nav item when menu opens
   useEffect(() => {
@@ -51,7 +54,7 @@ export default function MobileMenu({ onClose, onNavClick }: MobileMenuProps) {
         data-testid="mobile-menu"
         role="dialog"
         aria-modal="true"
-        aria-label="Меню навигации"
+        aria-label={t({ ru: "Меню навигации", en: "Navigation menu" })}
       >
         <div className="flex flex-col h-full pt-16 sm:pt-20 px-5 sm:px-6 pb-6 sm:pb-8">
           <nav className="flex flex-col gap-1">
@@ -65,17 +68,19 @@ export default function MobileMenu({ onClose, onNavClick }: MobileMenuProps) {
                 onClick={() => onNavClick(item.href)}
                 className="text-left text-base sm:text-lg font-medium text-charcoal hover:text-coral active:text-coral-dark transition-colors py-3 border-b border-border font-[family-name:var(--font-body)] min-h-[44px] flex items-center"
               >
-                {item.label}
+                {t(item.label)}
               </motion.button>
             ))}
           </nav>
 
           <div className="mt-auto space-y-4">
+            <LanguageSwitcher className="justify-center py-2" />
+
             <button
               onClick={() => onNavClick("#order")}
               className="w-full bg-coral hover:bg-coral-dark active:scale-[0.97] text-white py-3.5 rounded-full font-semibold transition-all duration-200 text-sm sm:text-base"
             >
-              Заказать торт
+              {t({ ru: "Заказать торт", en: "Order Cake" })}
             </button>
 
             <div className="flex gap-4 justify-center">

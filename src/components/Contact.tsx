@@ -1,8 +1,20 @@
 "use client";
 
+import { useLanguage } from "@/lib/LanguageContext";
 import ScrollReveal from "./ScrollReveal";
 
+const text = {
+  sectionLabel: { ru: "Контакты", en: "Contact" },
+  title: { ru: "Свяжитесь с нами", en: "Get in Touch" },
+  whatsappAction: { ru: "Написать сообщение", en: "Send a message" },
+  telegramAction: { ru: "Написать в Telegram", en: "Message on Telegram" },
+  instagramAction: { ru: "Смотреть работы", en: "View portfolio" },
+  workingHours: { ru: "Работаем каждый день с 9:00 до 21:00", en: "Open every day from 9:00 AM to 9:00 PM" },
+};
+
 export default function Contact() {
+  const { t } = useLanguage();
+
   return (
     <section
       id="contact"
@@ -15,10 +27,10 @@ export default function Contact() {
         <ScrollReveal>
           <div className="text-center mb-10 sm:mb-12 lg:mb-16">
             <p className="text-coral font-semibold text-xs sm:text-sm tracking-widest uppercase mb-3 font-[family-name:var(--font-body)]">
-              Контакты
+              {t(text.sectionLabel)}
             </p>
             <h2 className="heading-wide font-[family-name:var(--font-display)] font-black text-[24px] sm:text-[32px] lg:text-[48px] tracking-normal text-charcoal">
-              Свяжитесь с нами
+              {t(text.title)}
             </h2>
           </div>
         </ScrollReveal>
@@ -40,7 +52,7 @@ export default function Contact() {
                 WhatsApp
               </h3>
               <p className="text-gray text-xs sm:text-sm font-[family-name:var(--font-body)]">
-                Написать сообщение
+                {t(text.whatsappAction)}
               </p>
             </a>
           </ScrollReveal>
@@ -61,7 +73,7 @@ export default function Contact() {
                 Telegram
               </h3>
               <p className="text-gray text-xs sm:text-sm font-[family-name:var(--font-body)]">
-                Написать в Telegram
+                {t(text.telegramAction)}
               </p>
             </a>
           </ScrollReveal>
@@ -82,7 +94,7 @@ export default function Contact() {
                 Instagram
               </h3>
               <p className="text-gray text-xs sm:text-sm font-[family-name:var(--font-body)]">
-                Смотреть работы
+                {t(text.instagramAction)}
               </p>
             </a>
           </ScrollReveal>
@@ -98,7 +110,7 @@ export default function Contact() {
               +1 (786) 200-1234
             </a>
             <p className="text-gray text-xs sm:text-sm font-[family-name:var(--font-body)]">
-              Работаем каждый день с 9:00 до 21:00
+              {t(text.workingHours)}
             </p>
           </div>
         </ScrollReveal>

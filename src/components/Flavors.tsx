@@ -3,7 +3,15 @@
 import { useState } from "react";
 import Image from "next/image";
 import { FLAVORS } from "@/lib/constants";
+import { useLanguage } from "@/lib/LanguageContext";
 import ScrollReveal from "./ScrollReveal";
+
+const text = {
+  sectionLabel: { ru: "Начинки", en: "Fillings" },
+  title: { ru: "Наши вкусы", en: "Our Flavors" },
+  subtitle: { ru: "Авторские начинки из премиальных ингредиентов", en: "Signature fillings from premium ingredients" },
+  fillingAlt: { ru: "начинка", en: "filling" },
+};
 
 // Images showing full plate — zoom past the rim to show just the slice
 const PLATE_IMAGES = new Set(["/fillings/filling-8.png", "/fillings/filling-9.jpeg"]);
@@ -27,6 +35,8 @@ const GRID_PLACEMENT = [
 ];
 
 export default function Flavors() {
+  const { t } = useLanguage();
+
   return (
     <section
       id="flavors"
@@ -39,13 +49,13 @@ export default function Flavors() {
         <ScrollReveal>
           <div className="text-center mb-10 sm:mb-12 lg:mb-16">
             <p className="text-coral font-semibold text-xs sm:text-sm tracking-widest uppercase mb-3 font-[family-name:var(--font-body)]">
-              Начинки
+              {t(text.sectionLabel)}
             </p>
             <h2 className="heading-wide font-[family-name:var(--font-display)] font-black text-[24px] sm:text-[32px] lg:text-[48px] tracking-normal text-charcoal mb-3 sm:mb-4">
-              Наши вкусы
+              {t(text.title)}
             </h2>
             <p className="text-gray text-sm sm:text-base lg:text-lg max-w-lg mx-auto font-[family-name:var(--font-body)]">
-              Авторские начинки из премиальных ингредиентов
+              {t(text.subtitle)}
             </p>
           </div>
         </ScrollReveal>
@@ -54,7 +64,7 @@ export default function Flavors() {
         <div className="grid grid-cols-2 md:grid-cols-6 gap-3 sm:gap-4 md:gap-5">
           {FLAVORS.map((flavor, i) => (
             <ScrollReveal
-              key={flavor.name}
+              key={flavor.name.ru}
               delay={i * 0.05}
               className={GRID_PLACEMENT[i]}
             >
@@ -76,6 +86,7 @@ function FlavorCard({
 }) {
   const [revealed, setRevealed] = useState(false);
   const isPlateImage = PLATE_IMAGES.has(flavor.image);
+  const { t } = useLanguage();
 
   return (
     <div
@@ -97,10 +108,10 @@ function FlavorCard({
           }}
         />
         <h3 className="font-[family-name:var(--font-display)] font-bold text-sm sm:text-base lg:text-lg text-charcoal leading-tight mb-2">
-          {flavor.name}
+          {t(flavor.name)}
         </h3>
         <p className="text-charcoal/55 text-[11px] sm:text-xs lg:text-sm leading-relaxed font-[family-name:var(--font-body)]">
-          {flavor.description}
+          {t(flavor.description)}
         </p>
       </div>
 
@@ -116,7 +127,7 @@ function FlavorCard({
         >
           <Image
             src={flavor.image}
-            alt={`${flavor.name} — начинка`}
+            alt={`${t(flavor.name)} — ${t(text.fillingAlt)}`}
             fill
             className="object-cover"
             style={{

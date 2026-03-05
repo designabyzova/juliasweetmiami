@@ -1,8 +1,30 @@
 "use client";
 
 import { NAV_ITEMS } from "@/lib/constants";
+import { useLanguage } from "@/lib/LanguageContext";
+import LanguageSwitcher from "./LanguageSwitcher";
+
+const text = {
+  brandDescription: {
+    ru: "Премиальные европейские муссовые десерты в Майами. Минимум сахара, максимум вкуса.",
+    en: "Premium European mousse desserts in Miami. Minimal sugar, maximum flavor.",
+  },
+  navigation: { ru: "Навигация", en: "Navigation" },
+  contacts: { ru: "Контакты", en: "Contact" },
+  workingHours: { ru: "Часы работы", en: "Working Hours" },
+  everyDay: { ru: "Каждый день", en: "Every Day" },
+  orderAdvance: { ru: "Заказ за 2–3 дня", en: "Order 2–3 days ahead" },
+  rushOrder: { ru: "Срочный заказ: +25%", en: "Rush order: +25%" },
+  allRights: { ru: "Все права защищены.", en: "All rights reserved." },
+  tagline: {
+    ru: "Luxury Mousse Desserts Made by a Pastry Chef in Miami",
+    en: "Luxury Mousse Desserts Made by a Pastry Chef in Miami",
+  },
+};
 
 export default function Footer() {
+  const { t } = useLanguage();
+
   const handleNavClick = (href: string) => {
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: "smooth" });
@@ -41,7 +63,7 @@ export default function Footer() {
                 </span>
               </button>
               <p className="text-charcoal/50 text-xs leading-relaxed font-[family-name:var(--font-body)] max-w-[260px] mx-auto">
-                Премиальные европейские муссовые десерты в Майами. Минимум сахара, максимум вкуса.
+                {t(text.brandDescription)}
               </p>
               {/* Social icons */}
               <div className="flex gap-2.5 mt-4 justify-center">
@@ -81,10 +103,10 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Navigation — 2-column grid */}
+            {/* Navigation — 3-column grid */}
             <div className="mb-6">
               <h4 className="font-[family-name:var(--font-display)] font-bold text-[10px] uppercase tracking-wider text-coral/60 mb-3 text-center">
-                Навигация
+                {t(text.navigation)}
               </h4>
               <nav className="grid grid-cols-3 gap-x-4 gap-y-1 max-w-[320px] mx-auto">
                 {NAV_ITEMS.map((item) => (
@@ -93,19 +115,19 @@ export default function Footer() {
                     onClick={() => handleNavClick(item.href)}
                     className="text-center text-charcoal/55 hover:text-coral text-xs transition-colors font-[family-name:var(--font-body)] py-1.5"
                   >
-                    {item.label}
+                    {t(item.label)}
                   </button>
                 ))}
               </nav>
             </div>
 
-            {/* Info card — hours + contact combined */}
+            {/* Info card */}
             <div className="bg-white/50 rounded-2xl p-5 border border-white/60 max-w-[340px] mx-auto">
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
                   <p className="text-xs text-charcoal/70 font-[family-name:var(--font-body)] font-medium">
-                    Каждый день
+                    {t(text.everyDay)}
                   </p>
                 </div>
                 <p className="text-base font-[family-name:var(--font-display)] font-bold text-charcoal/80">
@@ -131,7 +153,7 @@ export default function Footer() {
                     <circle cx="12" cy="12" r="10" />
                     <polyline points="12 6 12 12 16 14" />
                   </svg>
-                  Заказ за 2–3 дня · Срочный: +25%
+                  {t(text.orderAdvance)} · {t(text.rushOrder)}
                 </p>
               </div>
             </div>
@@ -152,7 +174,7 @@ export default function Footer() {
                 </span>
               </button>
               <p className="text-charcoal/50 text-sm leading-relaxed font-[family-name:var(--font-body)] max-w-[260px]">
-                Премиальные европейские муссовые десерты в Майами. Минимум сахара, максимум вкуса.
+                {t(text.brandDescription)}
               </p>
               <div className="flex gap-2.5 mt-6">
                 <a href="https://wa.me/17862001234" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" className="w-10 h-10 rounded-xl bg-white/70 border border-white/80 flex items-center justify-center hover:bg-white hover:shadow-md hover:shadow-coral/10 hover:-translate-y-0.5 transition-all duration-200">
@@ -176,7 +198,7 @@ export default function Footer() {
             {/* Navigation */}
             <div>
               <h4 className="font-[family-name:var(--font-display)] font-bold text-xs uppercase tracking-wider text-coral/60 mb-4">
-                Навигация
+                {t(text.navigation)}
               </h4>
               <nav className="flex flex-col gap-2">
                 {NAV_ITEMS.map((item) => (
@@ -185,7 +207,7 @@ export default function Footer() {
                     onClick={() => handleNavClick(item.href)}
                     className="text-left text-charcoal/55 hover:text-coral text-sm transition-colors font-[family-name:var(--font-body)]"
                   >
-                    {item.label}
+                    {t(item.label)}
                   </button>
                 ))}
               </nav>
@@ -194,7 +216,7 @@ export default function Footer() {
             {/* Contact */}
             <div>
               <h4 className="font-[family-name:var(--font-display)] font-bold text-xs uppercase tracking-wider text-coral/60 mb-4">
-                Контакты
+                {t(text.contacts)}
               </h4>
               <div className="flex flex-col gap-2 text-sm font-[family-name:var(--font-body)]">
                 <a href="tel:+17862001234" className="text-charcoal/70 hover:text-coral transition-colors font-medium">
@@ -222,13 +244,13 @@ export default function Footer() {
             {/* Hours */}
             <div>
               <h4 className="font-[family-name:var(--font-display)] font-bold text-xs uppercase tracking-wider text-coral/60 mb-4">
-                Часы работы
+                {t(text.workingHours)}
               </h4>
               <div className="bg-white/50 rounded-2xl p-5 border border-white/60">
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
                   <p className="text-sm text-charcoal/70 font-[family-name:var(--font-body)] font-medium">
-                    Каждый день
+                    {t(text.everyDay)}
                   </p>
                 </div>
                 <p className="text-xl font-[family-name:var(--font-display)] font-bold text-charcoal/80">
@@ -240,13 +262,13 @@ export default function Footer() {
                       <circle cx="12" cy="12" r="10" />
                       <polyline points="12 6 12 12 16 14" />
                     </svg>
-                    Заказ за 2–3 дня
+                    {t(text.orderAdvance)}
                   </p>
                   <p className="text-xs text-charcoal/40 font-[family-name:var(--font-body)] flex items-center gap-1.5">
                     <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
                     </svg>
-                    Срочный заказ: +25%
+                    {t(text.rushOrder)}
                   </p>
                 </div>
               </div>
@@ -256,10 +278,11 @@ export default function Footer() {
           {/* Bottom bar */}
           <div className="border-t border-charcoal/8 mt-8 sm:mt-10 pt-5 sm:pt-6 flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-4">
             <p className="text-charcoal/30 text-[10px] sm:text-xs font-[family-name:var(--font-body)]">
-              &copy; {new Date().getFullYear()} Juliia Sweet. Все права защищены.
+              &copy; {new Date().getFullYear()} Juliia Sweet. {t(text.allRights)}
             </p>
+            <LanguageSwitcher />
             <p className="text-charcoal/20 text-[10px] sm:text-xs font-[family-name:var(--font-body)] italic">
-              Premium cakes in Miami
+              {t(text.tagline)}
             </p>
           </div>
         </div>

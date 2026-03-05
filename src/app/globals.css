@@ -319,31 +319,6 @@ body {
   border-radius: 2px;
 }
 
-/* ── Category cards ── */
-.category-card {
-  border-radius: 24px;
-  overflow: visible;
-  position: relative;
-  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.category-card:hover {
-  transform: translateY(-4px);
-}
-
-.category-card-image {
-  position: absolute;
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.category-card:hover .category-card-image {
-  transform: scale(1.05) rotate(-2deg);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .category-card:hover { transform: none; }
-  .category-card:hover .category-card-image { transform: none; }
-}
 
 /* ── Rating card ── */
 .rating-card {
@@ -396,24 +371,7 @@ body {
   grid-column: span 2;
 }
 
-.gallery-item {
-  border-radius: 16px;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-@media (min-width: 640px) {
-  .gallery-item { border-radius: 20px; }
-}
-
-.gallery-item:hover {
-  transform: scale(1.03);
-  box-shadow: 0 20px 40px -10px rgba(0,0,0,0.12);
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .gallery-item:hover { transform: none; }
   .review-image-frame:hover { transform: none; }
   .img-rotated:hover { transform: none; }
 }

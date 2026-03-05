@@ -3,11 +3,56 @@
 import { useState, useMemo, FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FLAVORS, WEIGHTS, COATINGS, CAKE_COLORS, DECORATIONS, BOXES } from "@/lib/constants";
+import { useLanguage } from "@/lib/LanguageContext";
 import ScrollReveal from "./ScrollReveal";
 import CustomSelect from "./CustomSelect";
 import type { SelectOption, SelectGroup } from "./CustomSelect";
 
 const EMAIL_WORKER_URL = "https://email-service.anton-abyzov.workers.dev";
+
+const ui = {
+  sectionLabel: { ru: "Конструктор торта", en: "Cake Builder" },
+  title: { ru: "Собери свой торт", en: "Build Your Cake" },
+  subtitle: { ru: "Ответьте на 3 простых вопроса", en: "Answer 3 simple questions" },
+  step1Title: { ru: "1. Выберите основу", en: "1. Choose the Base" },
+  weightLabel: { ru: "Вес", en: "Weight" },
+  weightPlaceholder: { ru: "Выберите вес", en: "Select weight" },
+  fillingLabel: { ru: "Начинка", en: "Filling" },
+  fillingPlaceholder: { ru: "Выберите начинку", en: "Select filling" },
+  next: { ru: "Далее", en: "Next" },
+  back: { ru: "Назад", en: "Back" },
+  step2Title: { ru: "2. Оформление", en: "2. Design" },
+  coatingLabel: { ru: "Покрытие", en: "Coating" },
+  coatingPlaceholder: { ru: "Выберите покрытие", en: "Select coating" },
+  colorLabel: { ru: "Цвет торта", en: "Cake Color" },
+  colorHint: { ru: "Другой цвет? Укажите в комментарии.", en: "Different color? Specify in comment." },
+  boxLabel: { ru: "Коробка", en: "Box" },
+  boxPlaceholder: { ru: "Выберите коробку", en: "Select box" },
+  decorLabel: { ru: "Декор", en: "Decorations" },
+  step3Title: { ru: "3. Контактные данные", en: "3. Contact Details" },
+  dateLabel: { ru: "Дата", en: "Date" },
+  nameLabel: { ru: "Имя", en: "Name" },
+  namePlaceholder: { ru: "Ваше имя", en: "Your name" },
+  phoneLabel: { ru: "Контактный телефон", en: "Phone Number" },
+  commentLabel: { ru: "Комментарий", en: "Comment" },
+  commentPlaceholder: { ru: "Пожелания к заказу...", en: "Order preferences..." },
+  orderRules: {
+    ru: "Заказ оформляется за 2–3 дня. Срочный заказ — +25% к стоимости. Заявка будет отправлена на WhatsApp / email.",
+    en: "Orders are placed 2–3 days in advance. Rush orders: +25% surcharge. Your request will be sent via WhatsApp / email.",
+  },
+  sending: { ru: "Отправка...", en: "Sending..." },
+  submit: { ru: "Отправить", en: "Submit" },
+  successTitle: { ru: "Заявка отправлена!", en: "Request Sent!" },
+  successMsg: {
+    ru: "Спасибо, {name}! Мы свяжемся с вами в ближайшее время для подтверждения заказа.",
+    en: "Thank you, {name}! We will contact you soon to confirm your order.",
+  },
+  errorSend: { ru: "Не удалось отправить заказ. Попробуйте ещё раз.", en: "Failed to send order. Please try again." },
+  errorConnection: { ru: "Ошибка соединения. Проверьте интернет и попробуйте снова.", en: "Connection error. Check your internet and try again." },
+  cakesGroup: { ru: "Торты", en: "Cakes" },
+  pastriesGroup: { ru: "Пирожные", en: "Pastries" },
+  pastriesMin: { ru: "от 4 шт", en: "min 4 pcs" },
+};
 
 type OrderStep = 1 | 2 | 3;
 
@@ -28,6 +73,8 @@ export default function OrderForm() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
 
+  const { t } = useLanguage();
+
   const toggleDecoration = (dec: string) => {
     setDecorations((prev) =>
       prev.includes(dec) ? prev.filter((d) => d !== dec) : [...prev, dec]
@@ -38,33 +85,33 @@ export default function OrderForm() {
   const weightGroups: SelectGroup[] = useMemo(
     () => [
       {
-        label: "Торты",
+        label: t(ui.cakesGroup),
         options: WEIGHTS.cakes.map((w) => ({
-          value: w.label,
-          label: `${w.label} — $${w.price}`,
+          value: w.label.ru,
+          label: `${t(w.label)} — $${w.price}`,
         })),
       },
       {
-        label: "Пирожные",
+        label: t(ui.pastriesGroup),
         options: WEIGHTS.pastries.map((w) => ({
-          value: w.label,
-          label: `${w.label} — $${w.price} (от 4 шт)`,
+          value: w.label.ru,
+          label: `${t(w.label)} — $${w.price} (${t(ui.pastriesMin)})`,
         })),
       },
     ],
-    []
+    [t]
   );
   const fillingOptions: SelectOption[] = useMemo(
-    () => FLAVORS.map((f) => ({ value: f.name, label: f.name })),
-    []
+    () => FLAVORS.map((f) => ({ value: f.name.ru, label: t(f.name) })),
+    [t]
   );
   const coatingOptions: SelectOption[] = useMemo(
-    () => COATINGS.map((c) => ({ value: c, label: c })),
-    []
+    () => COATINGS.map((c) => ({ value: c.ru, label: t(c) })),
+    [t]
   );
   const boxOptions: SelectOption[] = useMemo(
-    () => BOXES.map((b) => ({ value: b, label: b })),
-    []
+    () => BOXES.map((b) => ({ value: b.ru, label: t(b) })),
+    [t]
   );
 
   const canProceedStep1 = weight && filling;
@@ -99,10 +146,10 @@ export default function OrderForm() {
       if (data.success) {
         setSubmitted(true);
       } else {
-        setError("Не удалось отправить заказ. Попробуйте ещё раз.");
+        setError(t(ui.errorSend));
       }
     } catch {
-      setError("Ошибка соединения. Проверьте интернет и попробуйте снова.");
+      setError(t(ui.errorConnection));
     } finally {
       setSending(false);
     }
@@ -135,10 +182,10 @@ export default function OrderForm() {
               </svg>
             </div>
             <h3 className="font-[family-name:var(--font-display)] font-bold text-xl sm:text-2xl text-charcoal mb-2 sm:mb-3">
-              Заявка отправлена!
+              {t(ui.successTitle)}
             </h3>
             <p className="text-gray font-[family-name:var(--font-body)] text-sm sm:text-base">
-              Спасибо, {name}! Мы свяжемся с вами в ближайшее время для подтверждения заказа.
+              {t(ui.successMsg).replace("{name}", name)}
             </p>
           </motion.div>
         </div>
@@ -152,7 +199,7 @@ export default function OrderForm() {
       data-testid="order-section"
       className="py-14 sm:py-20 lg:py-28 relative"
     >
-      {/* Background — wrapped separately so overflow-hidden doesn't clip dropdowns */}
+      {/* Background */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-pink-lighter via-white to-[#fef0f5]" />
         <div className="absolute top-10 sm:top-20 -left-12 sm:left-[-100px] w-[200px] sm:w-[300px] h-[200px] sm:h-[300px] bg-coral/5 rounded-full blur-3xl" />
@@ -162,13 +209,13 @@ export default function OrderForm() {
         <ScrollReveal>
           <div className="text-center mb-8 sm:mb-10">
             <p className="text-coral font-semibold text-xs sm:text-sm tracking-widest uppercase mb-3 font-[family-name:var(--font-body)]">
-              Конструктор торта
+              {t(ui.sectionLabel)}
             </p>
             <h2 className="heading-wide font-[family-name:var(--font-display)] font-black text-[24px] sm:text-[32px] lg:text-[48px] tracking-normal text-charcoal mb-3 sm:mb-4">
-              Собери свой торт
+              {t(ui.title)}
             </h2>
             <p className="text-gray text-sm sm:text-base lg:text-lg font-[family-name:var(--font-body)]">
-              Ответьте на 3 простых вопроса
+              {t(ui.subtitle)}
             </p>
           </div>
         </ScrollReveal>
@@ -201,32 +248,30 @@ export default function OrderForm() {
                   data-testid="order-step-1"
                 >
                   <h3 className="font-[family-name:var(--font-display)] font-bold text-lg sm:text-xl text-charcoal mb-5 sm:mb-6">
-                    1. Выберите основу
+                    {t(ui.step1Title)}
                   </h3>
 
-                  {/* Weight */}
                   <label className="block mb-2 text-xs sm:text-sm font-medium text-charcoal font-[family-name:var(--font-body)]">
-                    Вес
+                    {t(ui.weightLabel)}
                   </label>
                   <div className="mb-5 sm:mb-6">
                     <CustomSelect
                       value={weight}
                       onChange={setWeight}
-                      placeholder="Выберите вес"
+                      placeholder={t(ui.weightPlaceholder)}
                       groups={weightGroups}
                       testId="select-weight"
                     />
                   </div>
 
-                  {/* Filling */}
                   <label className="block mb-2 text-xs sm:text-sm font-medium text-charcoal font-[family-name:var(--font-body)]">
-                    Начинка
+                    {t(ui.fillingLabel)}
                   </label>
                   <div className="mb-5 sm:mb-6">
                     <CustomSelect
                       value={filling}
                       onChange={setFilling}
-                      placeholder="Выберите начинку"
+                      placeholder={t(ui.fillingPlaceholder)}
                       options={fillingOptions}
                       testId="select-filling"
                     />
@@ -239,7 +284,7 @@ export default function OrderForm() {
                     className="w-full bg-coral hover:bg-coral-dark active:scale-[0.97] disabled:opacity-40 disabled:cursor-not-allowed text-white py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-200 font-[family-name:var(--font-body)]"
                     data-testid="next-step-1"
                   >
-                    Далее
+                    {t(ui.next)}
                   </button>
                 </motion.div>
               )}
@@ -255,36 +300,34 @@ export default function OrderForm() {
                   data-testid="order-step-2"
                 >
                   <h3 className="font-[family-name:var(--font-display)] font-bold text-lg sm:text-xl text-charcoal mb-5 sm:mb-6">
-                    2. Оформление
+                    {t(ui.step2Title)}
                   </h3>
 
-                  {/* Coating */}
                   <label className="block mb-2 text-xs sm:text-sm font-medium text-charcoal font-[family-name:var(--font-body)]">
-                    Покрытие
+                    {t(ui.coatingLabel)}
                   </label>
                   <div className="mb-5 sm:mb-6">
                     <CustomSelect
                       value={coating}
                       onChange={setCoating}
-                      placeholder="Выберите покрытие"
+                      placeholder={t(ui.coatingPlaceholder)}
                       options={coatingOptions}
                       testId="select-coating"
                     />
                   </div>
 
-                  {/* Color */}
                   <label className="block mb-3 text-xs sm:text-sm font-medium text-charcoal font-[family-name:var(--font-body)]">
-                    Цвет торта
+                    {t(ui.colorLabel)}
                   </label>
                   <div className="grid grid-cols-7 gap-y-2.5 gap-x-0 sm:gap-y-3 mb-3" data-testid="color-picker">
                     {CAKE_COLORS.map((c) => (
                       <button
-                        key={c.name}
+                        key={c.name.ru}
                         type="button"
-                        title={c.name}
-                        onClick={() => setColor(color === c.name ? "" : c.name)}
+                        title={t(c.name)}
+                        onClick={() => setColor(color === c.name.ru ? "" : c.name.ru)}
                         className={`w-8 h-8 sm:w-9 sm:h-9 lg:w-10 lg:h-10 rounded-full transition-all duration-200 mx-auto ${
-                          color === c.name
+                          color === c.name.ru
                             ? "ring-2 ring-offset-2 ring-coral scale-110"
                             : "hover:scale-110"
                         } ${c.hex === "#FFFFFF" ? "border border-border" : ""}`}
@@ -294,51 +337,51 @@ export default function OrderForm() {
                   </div>
                   <div className="flex items-center justify-between mb-5 sm:mb-6">
                     <p className="text-charcoal/40 text-[11px] sm:text-xs font-[family-name:var(--font-body)]">
-                      Другой цвет? Укажите в комментарии.
+                      {t(ui.colorHint)}
                     </p>
                     {color && (
                       <span className="flex items-center gap-1.5 text-xs font-[family-name:var(--font-body)]">
                         <span
                           className="w-3 h-3 rounded-full inline-block flex-shrink-0"
-                          style={{ backgroundColor: CAKE_COLORS.find((c) => c.name === color)?.hex }}
+                          style={{ backgroundColor: CAKE_COLORS.find((c) => c.name.ru === color)?.hex }}
                         />
-                        <span className="text-charcoal font-medium">{color}</span>
+                        <span className="text-charcoal font-medium">
+                          {t(CAKE_COLORS.find((c) => c.name.ru === color)?.name ?? { ru: color, en: color })}
+                        </span>
                       </span>
                     )}
                   </div>
 
-                  {/* Box */}
                   <label className="block mb-2 text-xs sm:text-sm font-medium text-charcoal font-[family-name:var(--font-body)]">
-                    Коробка
+                    {t(ui.boxLabel)}
                   </label>
                   <div className="mb-5 sm:mb-6">
                     <CustomSelect
                       value={box}
                       onChange={setBox}
-                      placeholder="Выберите коробку"
+                      placeholder={t(ui.boxPlaceholder)}
                       options={boxOptions}
                       testId="select-box"
                     />
                   </div>
 
-                  {/* Decorations */}
                   <label className="block mb-3 text-xs sm:text-sm font-medium text-charcoal font-[family-name:var(--font-body)]">
-                    Декор
+                    {t(ui.decorLabel)}
                   </label>
                   <div className="space-y-2 mb-5 sm:mb-6">
                     {DECORATIONS.map((dec) => (
                       <label
-                        key={dec}
+                        key={dec.ru}
                         className="flex items-center gap-3 cursor-pointer group min-h-[44px]"
                       >
                         <div
                           className={`w-5 h-5 rounded border-2 flex items-center justify-center transition-all duration-200 flex-shrink-0 ${
-                            decorations.includes(dec)
+                            decorations.includes(dec.ru)
                               ? "bg-coral border-coral"
                               : "border-border group-hover:border-coral/50"
                           }`}
                         >
-                          {decorations.includes(dec) && (
+                          {decorations.includes(dec.ru) && (
                             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
                               <polyline points="20 6 9 17 4 12" />
                             </svg>
@@ -346,13 +389,13 @@ export default function OrderForm() {
                         </div>
                         <input
                           type="checkbox"
-                          checked={decorations.includes(dec)}
-                          onChange={() => toggleDecoration(dec)}
+                          checked={decorations.includes(dec.ru)}
+                          onChange={() => toggleDecoration(dec.ru)}
                           className="sr-only"
-                          data-testid={`checkbox-${dec}`}
+                          data-testid={`checkbox-${dec.ru}`}
                         />
                         <span className="text-charcoal text-xs sm:text-sm font-[family-name:var(--font-body)]">
-                          {dec}
+                          {t(dec)}
                         </span>
                       </label>
                     ))}
@@ -364,7 +407,7 @@ export default function OrderForm() {
                       onClick={() => setStep(1)}
                       className="flex-1 border-2 border-border text-charcoal py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-200 hover:border-charcoal active:scale-[0.97] font-[family-name:var(--font-body)]"
                     >
-                      Назад
+                      {t(ui.back)}
                     </button>
                     <button
                       type="button"
@@ -373,7 +416,7 @@ export default function OrderForm() {
                       className="flex-1 bg-coral hover:bg-coral-dark active:scale-[0.97] disabled:opacity-40 disabled:cursor-not-allowed text-white py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-200 font-[family-name:var(--font-body)]"
                       data-testid="next-step-2"
                     >
-                      Далее
+                      {t(ui.next)}
                     </button>
                   </div>
                 </motion.div>
@@ -390,12 +433,11 @@ export default function OrderForm() {
                   data-testid="order-step-3"
                 >
                   <h3 className="font-[family-name:var(--font-display)] font-bold text-lg sm:text-xl text-charcoal mb-5 sm:mb-6">
-                    3. Контактные данные
+                    {t(ui.step3Title)}
                   </h3>
 
-                  {/* Date */}
                   <label className="block mb-2 text-xs sm:text-sm font-medium text-charcoal font-[family-name:var(--font-body)]">
-                    Дата
+                    {t(ui.dateLabel)}
                   </label>
                   <input
                     type="date"
@@ -405,24 +447,22 @@ export default function OrderForm() {
                     data-testid="input-date"
                   />
 
-                  {/* Name */}
                   <label className="block mb-2 text-xs sm:text-sm font-medium text-charcoal font-[family-name:var(--font-body)]">
-                    Имя <span className="text-coral">*</span>
+                    {t(ui.nameLabel)} <span className="text-coral">*</span>
                   </label>
                   <input
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    placeholder="Ваше имя"
+                    placeholder={t(ui.namePlaceholder)}
                     required
                     aria-required="true"
                     className="w-full border border-border rounded-xl px-4 py-3 text-charcoal font-[family-name:var(--font-body)] text-sm sm:text-base mb-4 bg-white focus:outline-none focus:ring-2 focus:ring-coral/30 focus:border-coral transition-all placeholder:text-gray-light/70"
                     data-testid="input-name"
                   />
 
-                  {/* Phone */}
                   <label className="block mb-2 text-xs sm:text-sm font-medium text-charcoal font-[family-name:var(--font-body)]">
-                    Контактный телефон <span className="text-coral">*</span>
+                    {t(ui.phoneLabel)} <span className="text-coral">*</span>
                   </label>
                   <input
                     type="tel"
@@ -435,24 +475,21 @@ export default function OrderForm() {
                     data-testid="input-phone"
                   />
 
-                  {/* Comment */}
                   <label className="block mb-2 text-xs sm:text-sm font-medium text-charcoal font-[family-name:var(--font-body)]">
-                    Комментарий
+                    {t(ui.commentLabel)}
                   </label>
                   <textarea
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
-                    placeholder="Пожелания к заказу..."
+                    placeholder={t(ui.commentPlaceholder)}
                     rows={3}
                     className="w-full border border-border rounded-xl px-4 py-3 text-charcoal font-[family-name:var(--font-body)] text-sm sm:text-base mb-4 bg-white focus:outline-none focus:ring-2 focus:ring-coral/30 focus:border-coral transition-all resize-none placeholder:text-gray-light/70"
                     data-testid="input-comment"
                   />
 
-                  {/* Order rules info */}
                   <div className="bg-bg rounded-xl p-3.5 sm:p-4 mb-5 sm:mb-6">
                     <p className="text-gray text-[11px] sm:text-sm font-[family-name:var(--font-body)] leading-relaxed">
-                      Заказ оформляется за 2–3 дня. Срочный заказ — +25% к стоимости.
-                      Заявка будет отправлена на WhatsApp / email.
+                      {t(ui.orderRules)}
                     </p>
                   </div>
 
@@ -469,7 +506,7 @@ export default function OrderForm() {
                       disabled={sending}
                       className="flex-1 border-2 border-border text-charcoal py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-200 hover:border-charcoal active:scale-[0.97] disabled:opacity-40 font-[family-name:var(--font-body)]"
                     >
-                      Назад
+                      {t(ui.back)}
                     </button>
                     <button
                       type="submit"
@@ -477,7 +514,7 @@ export default function OrderForm() {
                       className="flex-1 bg-coral hover:bg-coral-dark active:scale-[0.97] disabled:opacity-40 disabled:cursor-not-allowed text-white py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-200 font-[family-name:var(--font-body)]"
                       data-testid="submit-order"
                     >
-                      {sending ? "Отправка..." : "Отправить"}
+                      {sending ? t(ui.sending) : t(ui.submit)}
                     </button>
                   </div>
                 </motion.div>

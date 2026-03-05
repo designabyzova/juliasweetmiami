@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Unbounded, DM_Sans } from "next/font/google";
 import ProgressBar from "@/components/ProgressBar";
+import { LanguageProvider } from "@/lib/LanguageContext";
 import "./globals.css";
 
 const unbounded = Unbounded({
@@ -31,8 +32,10 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <body className={`${unbounded.variable} ${dmSans.variable} antialiased`}>
-        <ProgressBar />
-        {children}
+        <LanguageProvider>
+          <ProgressBar />
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );

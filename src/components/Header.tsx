@@ -3,11 +3,14 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { NAV_ITEMS } from "@/lib/constants";
+import { useLanguage } from "@/lib/LanguageContext";
+import LanguageSwitcher from "./LanguageSwitcher";
 import MobileMenu from "./MobileMenu";
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -69,7 +72,7 @@ export default function Header() {
                   onClick={() => handleNavClick(item.href)}
                   className="text-sm font-medium text-gray hover:text-coral transition-colors duration-200 font-[family-name:var(--font-body)]"
                 >
-                  {item.label}
+                  {t(item.label)}
                 </button>
               ))}
             </nav>
@@ -84,11 +87,12 @@ export default function Header() {
               >
                 WhatsApp
               </a>
+              <LanguageSwitcher />
               <button
                 onClick={() => handleNavClick("#order")}
                 className="bg-coral hover:bg-coral-dark text-white px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 hover:scale-105"
               >
-                Заказать торт
+                {t({ ru: "Заказать торт", en: "Order Cake" })}
               </button>
             </div>
 
@@ -96,7 +100,7 @@ export default function Header() {
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className="lg:hidden flex items-center justify-center w-11 h-11 -mr-1.5"
-              aria-label="Toggle menu"
+              aria-label={t({ ru: "Открыть меню", en: "Toggle menu" })}
               aria-expanded={mobileOpen}
               data-testid="mobile-menu-toggle"
             >
