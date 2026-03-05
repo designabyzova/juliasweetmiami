@@ -162,6 +162,22 @@ export default function Reviews() {
 
                 {/* Main image carousel */}
                 <div className="relative h-full w-full overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-2xl shadow-charcoal/10">
+                  {/* Preload all images so carousel transitions are instant */}
+                  <div aria-hidden className="absolute inset-0 pointer-events-none invisible">
+                    {REVIEW_IMAGES.map((src, i) => (
+                      <Image
+                        key={src}
+                        src={src}
+                        alt=""
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 640px) 360px, 440px"
+                        priority={i < 3}
+                        loading={i < 3 ? "eager" : "lazy"}
+                      />
+                    ))}
+                  </div>
+
                   <AnimatePresence initial={false} custom={direction} mode="wait">
                     <motion.div
                       key={currentIndex}
@@ -183,7 +199,6 @@ export default function Reviews() {
                         fill
                         className="object-cover"
                         sizes="(max-width: 640px) 360px, 440px"
-                        priority={currentIndex === 0}
                       />
                     </motion.div>
                   </AnimatePresence>

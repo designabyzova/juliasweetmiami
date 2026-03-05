@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
 import { FLAVORS } from "@/lib/constants";
 import ScrollReveal from "./ScrollReveal";
@@ -29,10 +28,10 @@ export default function Flavors() {
           </div>
         </ScrollReveal>
 
-        {/* Grid: 2 cols on mobile, 4 cols on desktop — all same size */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-5">
+        {/* Grid: 2 cols on mobile, 5 cols on desktop — perfect 2×5 for 10 items */}
+        <div className="grid grid-cols-2 md:grid-cols-5 gap-3 sm:gap-4 lg:gap-5">
           {FLAVORS.map((flavor, i) => (
-            <ScrollReveal key={flavor.name} delay={i * 0.06}>
+            <ScrollReveal key={flavor.name} delay={i * 0.05}>
               <FlavorCard flavor={flavor} index={i} />
             </ScrollReveal>
           ))}
@@ -49,53 +48,36 @@ function FlavorCard({
   flavor: (typeof FLAVORS)[number];
   index: number;
 }) {
-  const [revealed, setRevealed] = useState(false);
-
   return (
     <div
-      className="group relative rounded-2xl sm:rounded-[20px] overflow-hidden cursor-pointer select-none h-full"
+      className="group relative rounded-2xl sm:rounded-[20px] overflow-hidden cursor-pointer select-none h-full transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-xl"
       style={{ backgroundColor: flavor.accent }}
       data-testid={`flavor-card-${index}`}
-      onMouseEnter={() => setRevealed(true)}
-      onMouseLeave={() => setRevealed(false)}
-      onClick={() => setRevealed((v) => !v)}
     >
-      {/* Always-visible content: triangle + name + description */}
-      <div className="relative p-4 sm:p-5 lg:p-6">
-        {/* Small triangle accent */}
+      <div className="p-3 sm:p-4 lg:p-5 flex flex-col items-center text-center">
+        {/* Circular dessert image — always visible, centered */}
         <div
-          className="w-5 h-5 sm:w-6 sm:h-6 mb-4 sm:mb-6 lg:mb-8"
-          style={{
-            clipPath: "polygon(0 0, 100% 0, 50% 100%)",
-            backgroundColor: "rgba(0,0,0,0.12)",
-          }}
-        />
-        <h3 className="font-[family-name:var(--font-display)] font-bold text-sm sm:text-base lg:text-lg text-charcoal leading-tight mb-2">
-          {flavor.name}
-        </h3>
-        <p className="text-charcoal/55 text-[11px] sm:text-xs lg:text-sm leading-relaxed font-[family-name:var(--font-body)]">
-          {flavor.description}
-        </p>
-      </div>
-
-      {/* Hover/tap overlay: circular photo */}
-      <div
-        className="absolute inset-0 flex items-center justify-center transition-opacity duration-300 pointer-events-none"
-        style={{ opacity: revealed ? 1 : 0 }}
-      >
-        <div className="absolute inset-0 bg-black/5" />
-        <div
-          className="relative w-[130px] h-[130px] sm:w-[150px] sm:h-[150px] lg:w-[180px] lg:h-[180px] rounded-full overflow-hidden shadow-2xl ring-4 ring-white/80 transition-transform duration-500"
-          style={{ transform: revealed ? "scale(1)" : "scale(0.5)" }}
+          className="relative w-[90px] h-[90px] sm:w-[105px] sm:h-[105px] lg:w-[125px] lg:h-[125px] rounded-full overflow-hidden shadow-lg ring-[3px] ring-white/80 mb-3 sm:mb-4 transition-transform duration-500 ease-out group-hover:scale-[1.06]"
         >
           <Image
             src={flavor.image}
             alt={`${flavor.name} — начинка`}
             fill
             className="object-cover"
-            sizes="180px"
+            style={{ objectPosition: "center center" }}
+            sizes="(max-width: 640px) 90px, (max-width: 768px) 105px, 125px"
           />
         </div>
+
+        {/* Flavor name */}
+        <h3 className="font-[family-name:var(--font-display)] font-bold text-[11px] sm:text-xs lg:text-sm text-charcoal leading-tight mb-1 sm:mb-1.5">
+          {flavor.name}
+        </h3>
+
+        {/* Description */}
+        <p className="text-charcoal/45 text-[9px] sm:text-[10px] lg:text-[11px] leading-relaxed font-[family-name:var(--font-body)] line-clamp-3">
+          {flavor.description}
+        </p>
       </div>
     </div>
   );

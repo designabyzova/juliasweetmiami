@@ -72,6 +72,22 @@ export const FLAVORS = [
     emoji: "🫐",
     image: "/fillings/filling-7.webp",
   },
+  {
+    name: "Фисташка-малина",
+    description:
+      "Конфитюр из малины, фисташковый мусс, хрустящий слой с фисташкой, миндальный бисквит",
+    accent: "#d6e6c4",
+    emoji: "🌿",
+    image: "/fillings/filling-8.png",
+  },
+  {
+    name: "Виски-яблоко",
+    description:
+      "Яблочное конфи с виски, карамельный мусс с орехами, бисквит с корицей",
+    accent: "#e5d4b0",
+    emoji: "🍏",
+    image: "/fillings/filling-9.jpeg",
+  },
 ] as const;
 
 export const WEIGHTS = {
