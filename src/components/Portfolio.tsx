@@ -40,7 +40,6 @@ const BENTO_CAKES: CakeItem[] = [
 
 const CELEBRATION_CAKES: CakeItem[] = [
   { src: "/cakes-celebration/Cake_2.png", alt: { ru: "Бирюзовый торт с фиолетовым кремом и золотыми подтёками", en: "Teal cake with purple cream and gold drips" } },
-  { src: "/cakes-celebration/Cake_3.jpeg", alt: { ru: "Розовый торт с золотыми подтёками и шоколадными медальонами", en: "Pink cake with gold drips and chocolate medallions" } },
   { src: "/cakes-celebration/Cake_4.png", alt: { ru: "Фисташковый торт с голубикой и золотой надписью", en: "Pistachio cake with blueberries and gold inscription" } },
   { src: "/cakes-celebration/Cake_6.jpeg", alt: { ru: "Медовый торт с сотами и пчёлками", en: "Honey cake with honeycombs and bees" } },
   { src: "/cakes-celebration/Cake_7.jpeg", alt: { ru: "Фисташковый торт с голубикой и эвкалиптом", en: "Pistachio cake with blueberries and eucalyptus" } },

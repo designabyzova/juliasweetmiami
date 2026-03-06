@@ -5,9 +5,9 @@ export default function JsonLd() {
     "@context": "https://schema.org",
     "@type": "Bakery",
     "@id": `${SITE_URL}/#business`,
-    name: "Juliia Sweet",
+    name: "Sweet Balance",
     description:
-      "Premium European mousse desserts with minimal sugar by pastry chef Juliia Sweet in Miami. Custom cakes for birthdays, weddings, and celebrations.",
+      "Luxurious European mousse desserts with minimal sugar by pastry chef Juliia Sweet in Miami. Custom cakes for birthdays, weddings, and celebrations.",
     url: SITE_URL,
     telephone: "+17862001234",
     image: `${SITE_URL}/hero-juliia.webp`,
@@ -59,7 +59,7 @@ export default function JsonLd() {
       "Premium European mousse cake with minimal sugar. Available in 10 signature flavors including Creamy Pear, Cherry in Chocolate, Aperol, and Pistachio-Raspberry.",
     brand: {
       "@type": "Brand",
-      name: "Juliia Sweet",
+      name: "Sweet Balance",
     },
     image: `${SITE_URL}/hero-juliia.webp`,
     offers: {

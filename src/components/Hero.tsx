@@ -16,8 +16,8 @@ const text = {
   ctaOrder: { ru: "Заказать торт", en: "Order Cake" },
   ctaFlavors: { ru: "Смотреть начинки", en: "See Fillings" },
   imageAlt: {
-    ru: "Juliia Sweet — кондитер муссовых десертов в Майами",
-    en: "Juliia Sweet — Mousse Dessert Pastry Chef in Miami",
+    ru: "Sweet Balance — роскошные муссовые десерты в Майами",
+    en: "Sweet Balance — Luxurious Mousse Desserts in Miami",
   },
 };
 

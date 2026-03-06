@@ -6,8 +6,8 @@ import LanguageSwitcher from "./LanguageSwitcher";
 
 const text = {
   brandDescription: {
-    ru: "Премиальные европейские муссовые десерты в Майами. Минимум сахара, максимум вкуса.",
-    en: "Premium European mousse desserts in Miami. Minimal sugar, maximum flavor.",
+    ru: "Роскошные европейские муссовые десерты в Майами. Минимум сахара, чистый вкус.",
+    en: "Luxurious European mousse desserts in Miami. Minimal sugar, pure flavor.",
   },
   navigation: { ru: "Навигация", en: "Navigation" },
   contacts: { ru: "Контакты", en: "Contact" },

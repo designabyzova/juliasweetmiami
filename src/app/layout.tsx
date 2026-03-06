@@ -24,11 +24,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default:
-      "Juliia Sweet — Luxurious Mousse Desserts in Miami | Роскошные муссовые десерты в Майами",
-    template: "%s | Juliia Sweet",
+      "Sweet Balance — Luxurious Mousse Desserts in Miami | Роскошные муссовые десерты в Майами",
+    template: "%s | Sweet Balance",
   },
   description:
-    "Luxurious European mousse desserts with minimal sugar by Juliia Sweet in Miami. European recipes, pure flavor, custom cakes for birthdays, weddings & celebrations. From $75. Роскошные муссовые десерты в Майами — европейские рецепты, минимум сахара, чистый вкус.",
+    "Sweet Balance — luxurious European mousse desserts with minimal sugar by Juliia Sweet in Miami. European recipes, pure flavor, custom cakes for birthdays, weddings & celebrations. From $75. Роскошные муссовые десерты в Майами — европейские рецепты, минимум сахара, чистый вкус.",
   keywords: [
     "custom cakes Miami",
     "mousse desserts Miami",
@@ -44,17 +44,17 @@ export const metadata: Metadata = {
     "кондитер Майами",
     "торт на день рождения Майами",
     "свадебный торт Майами",
-    "Juliia Sweet",
+    "Sweet Balance",
   ],
-  authors: [{ name: "Juliia Sweet" }],
-  creator: "Juliia Sweet",
+  authors: [{ name: "Sweet Balance" }],
+  creator: "Sweet Balance",
   openGraph: {
     type: "website",
     locale: "en_US",
     alternateLocale: "ru_RU",
     url: SITE_URL,
-    siteName: "Juliia Sweet",
-    title: "Juliia Sweet — Luxurious Mousse Desserts in Miami",
+    siteName: "Sweet Balance",
+    title: "Sweet Balance — Luxurious Mousse Desserts in Miami",
     description:
       "Luxurious European mousse desserts with minimal sugar. European recipes, pure flavor. Custom cakes for birthdays, weddings & celebrations. From $75.",
     images: [
@@ -62,15 +62,15 @@ export const metadata: Metadata = {
         url: "/hero-juliia.webp",
         width: 800,
         height: 1067,
-        alt: "Juliia Sweet — Luxurious Mousse Desserts in Miami",
+        alt: "Sweet Balance — Luxurious Mousse Desserts in Miami",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Juliia Sweet — Luxurious Mousse Desserts in Miami",
+    title: "Sweet Balance — Luxurious Mousse Desserts in Miami",
     description:
-      "European mousse desserts with minimal sugar. European recipes, pure flavor. Custom cakes from $75.",
+      "Sweet Balance — European mousse desserts with minimal sugar. European recipes, pure flavor. Custom cakes from $75.",
     images: ["/hero-juliia.webp"],
   },
   alternates: {

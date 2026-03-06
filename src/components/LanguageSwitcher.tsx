@@ -11,7 +11,7 @@ export default function LanguageSwitcher({ className = "" }: { className?: strin
     >
       {/* Sliding active indicator */}
       <div
-        className={`absolute top-1 bottom-1 rounded-full bg-coral shadow-sm transition-all duration-300 ease-out ${
+        className={`absolute top-1 bottom-1 rounded-full bg-charcoal shadow-sm transition-all duration-300 ease-out ${
           locale === "en"
             ? "left-1 w-[calc(50%-2px)]"
             : "left-[calc(50%+2px)] w-[calc(50%-2px)]"

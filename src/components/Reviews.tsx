@@ -13,7 +13,7 @@ const uiText = {
   titleAccent: { ru: "WOW-эффект", en: "WOW Effect" },
   titlePart2: { ru: "до последней крошки", en: "Down to the Last Crumb" },
   ratingOutOf: { ru: "из 5", en: "of 5" },
-  ratingLabel: { ru: "оценка клиентов Juliia Sweet", en: "Juliia Sweet client rating" },
+  ratingLabel: { ru: "оценка клиентов Sweet Balance", en: "Sweet Balance client rating" },
   clientWords: { ru: "Слова наших клиентов", en: "Words from Our Clients" },
   prevReview: { ru: "Предыдущий отзыв", en: "Previous review" },
   nextReview: { ru: "Следующий отзыв", en: "Next review" },
@@ -27,13 +27,13 @@ const CHAT_BUBBLES = [
 ];
 
 const REVIEW_IMAGES = [
-  { src: "/reviews/review-1.webp", alt: { ru: "Отзыв клиента о торте Juliia Sweet в Майами", en: "Client review for Juliia Sweet custom cake in Miami" } },
-  { src: "/reviews/review-2.webp", alt: { ru: "Отзыв клиента о праздничном торте Juliia Sweet", en: "Client review for Juliia Sweet celebration cake" } },
-  { src: "/reviews/review-3.webp", alt: { ru: "Отзыв клиента о муссовом десерте Juliia Sweet", en: "Client review for Juliia Sweet mousse dessert" } },
-  { src: "/reviews/review-4.webp", alt: { ru: "Отзыв клиента о торте на заказ Juliia Sweet", en: "Client testimonial for custom Juliia Sweet cake" } },
-  { src: "/reviews/review-5.webp", alt: { ru: "Отзыв клиента о свадебном торте Juliia Sweet", en: "Client review for Juliia Sweet wedding cake" } },
-  { src: "/reviews/review-6.webp", alt: { ru: "Отзыв клиента о бенто-торте Juliia Sweet", en: "Client review for Juliia Sweet bento cake" } },
-  { src: "/reviews/review-7.webp", alt: { ru: "Отзыв клиента о премиальном десерте Juliia Sweet", en: "Client review for premium Juliia Sweet dessert" } },
+  { src: "/reviews/review-1.webp", alt: { ru: "Отзыв клиента о торте Sweet Balance в Майами", en: "Client review for Sweet Balance custom cake in Miami" } },
+  { src: "/reviews/review-2.webp", alt: { ru: "Отзыв клиента о праздничном торте Sweet Balance", en: "Client review for Sweet Balance celebration cake" } },
+  { src: "/reviews/review-3.webp", alt: { ru: "Отзыв клиента о муссовом десерте Sweet Balance", en: "Client review for Sweet Balance mousse dessert" } },
+  { src: "/reviews/review-4.webp", alt: { ru: "Отзыв клиента о торте на заказ Sweet Balance", en: "Client testimonial for custom Sweet Balance cake" } },
+  { src: "/reviews/review-5.webp", alt: { ru: "Отзыв клиента о свадебном торте Sweet Balance", en: "Client review for Sweet Balance wedding cake" } },
+  { src: "/reviews/review-6.webp", alt: { ru: "Отзыв клиента о бенто-торте Sweet Balance", en: "Client review for Sweet Balance bento cake" } },
+  { src: "/reviews/review-7.webp", alt: { ru: "Отзыв клиента о премиальном десерте Sweet Balance", en: "Client review for premium Sweet Balance dessert" } },
 ];
 
 export default function Reviews() {

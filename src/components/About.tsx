@@ -105,8 +105,8 @@ const text = {
   ],
   diffImageAlt: { ru: "Авторские муссовые десерты", en: "Signature mousse desserts" },
   forWhomImageAlt: {
-    ru: "Муссовый торт в форме сердца — Juliia Sweet",
-    en: "Heart-shaped mousse cake — Juliia Sweet",
+    ru: "Муссовый торт в форме сердца — Sweet Balance",
+    en: "Heart-shaped mousse cake — Sweet Balance",
   },
 };
 

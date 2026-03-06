@@ -3,7 +3,7 @@
 import { useState, useMemo, FormEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FLAVORS, WEIGHTS, COATINGS, CAKE_COLORS, DECORATIONS, BOXES } from "@/lib/constants";
-import { useLanguage } from "@/lib/LanguageContext";
+import { useLanguage, type Locale } from "@/lib/LanguageContext";
 import ScrollReveal from "./ScrollReveal";
 import CustomSelect from "./CustomSelect";
 import type { SelectOption, SelectGroup } from "./CustomSelect";
@@ -45,9 +45,17 @@ const ui = {
   sending: { ru: "Отправка...", en: "Sending..." },
   submit: { ru: "Отправить", en: "Submit" },
   successTitle: { ru: "Заявка отправлена!", en: "Request Sent!" },
-  successMsg: {
-    ru: "Спасибо, {name}! Мы свяжемся с вами в ближайшее время для подтверждения заказа.",
-    en: "Thank you, {name}! We will contact you soon to confirm your order.",
+  successThank: {
+    ru: "Спасибо, {name}!",
+    en: "Thank you, {name}!",
+  },
+  successContact: {
+    ru: "Мы свяжемся с вами в ближайшее время для подтверждения заказа.",
+    en: "We will contact you soon to confirm your order.",
+  },
+  successEmailSent: {
+    ru: "Подтверждение заказа отправлено на {email}",
+    en: "Order confirmation sent to {email}",
   },
   errorSend: { ru: "Не удалось отправить заказ. Попробуйте ещё раз.", en: "Failed to send order. Please try again." },
   errorConnection: { ru: "Ошибка соединения. Проверьте интернет и попробуйте снова.", en: "Connection error. Check your internet and try again." },
@@ -76,7 +84,7 @@ export default function OrderForm() {
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
 
-  const { t } = useLanguage();
+  const { t, locale } = useLanguage();
 
   const toggleDecoration = (dec: string) => {
     setDecorations((prev) =>
@@ -138,7 +146,7 @@ export default function OrderForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           to: "designabyzova@gmail.com",
-          from: { email: "admin@easychamp.com", name: "Juliia Sweet" },
+          from: { email: "admin@easychamp.com", name: "Sweet Balance" },
           subject: `Новый заказ: ${filling} ${weight} — ${name}`,
           html: orderHtml,
           replyTo: "designabyzova@gmail.com",
@@ -147,6 +155,26 @@ export default function OrderForm() {
 
       const data = await res.json();
       if (data.success) {
+        // Send confirmation email to customer (fire-and-forget)
+        if (email) {
+          const confirmationHtml = buildConfirmationEmailHtml({
+            weight, filling, coating, color, box, decorations, date, name, comment,
+          }, locale);
+
+          fetch(`${EMAIL_WORKER_URL}/send`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              to: email,
+              from: { email: "admin@easychamp.com", name: "Sweet Balance" },
+              subject: locale === "ru"
+                ? `Ваш заказ принят — Sweet Balance`
+                : `Your order has been received — Sweet Balance`,
+              html: confirmationHtml,
+              replyTo: "designabyzova@gmail.com",
+            }),
+          }).catch(() => {});
+        }
         setSubmitted(true);
       } else {
         setError(t(ui.errorSend));
@@ -187,9 +215,21 @@ export default function OrderForm() {
             <h3 className="font-[family-name:var(--font-display)] font-bold text-xl sm:text-2xl text-charcoal mb-2 sm:mb-3">
               {t(ui.successTitle)}
             </h3>
-            <p className="text-gray font-[family-name:var(--font-body)] text-sm sm:text-base">
-              {t(ui.successMsg).replace("{name}", name)}
+            <p className="text-charcoal font-[family-name:var(--font-body)] text-sm sm:text-base font-medium">
+              {t(ui.successThank).replace("{name}", name)}
             </p>
+            <p className="text-gray font-[family-name:var(--font-body)] text-sm sm:text-base mt-2">
+              {t(ui.successContact)}
+            </p>
+            {email && (
+              <p className="text-coral font-[family-name:var(--font-body)] text-xs sm:text-sm mt-3 flex items-center justify-center gap-1.5">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+                </svg>
+                {t(ui.successEmailSent).replace("{email}", email)}
+              </p>
+            )}
           </motion.div>
         </div>
       </section>
@@ -577,7 +617,7 @@ function buildEmailHtml(order: {
     <div style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.06)">
       <div style="background:linear-gradient(135deg,#ff8576,#ff6b6b);padding:28px 24px;text-align:center">
         <h1 style="margin:0;color:#fff;font-size:22px;font-weight:700">Новый заказ</h1>
-        <p style="margin:8px 0 0;color:rgba(255,255,255,0.85);font-size:14px">Juliia Sweet — yuliia-sweet.vercel.app</p>
+        <p style="margin:8px 0 0;color:rgba(255,255,255,0.85);font-size:14px">Sweet Balance — yuliia-sweet.vercel.app</p>
       </div>
       <div style="padding:24px">
         <h2 style="margin:0 0 4px;color:#212529;font-size:16px;font-weight:600">Клиент</h2>
@@ -602,6 +642,205 @@ function buildEmailHtml(order: {
         <p style="margin:0;color:#aaa;font-size:12px">Отправлено ${new Date().toLocaleString("ru-RU", { timeZone: "America/New_York" })}</p>
       </div>
     </div>
+  </div>
+</body>
+</html>`;
+}
+
+/* ── Customer order confirmation email ── */
+
+function buildConfirmationEmailHtml(
+  order: {
+    weight: string;
+    filling: string;
+    coating: string;
+    color: string;
+    box: string;
+    decorations: string[];
+    date: string;
+    name: string;
+    comment: string;
+  },
+  locale: Locale
+) {
+  const isRu = locale === "ru";
+
+  // Look up price from weight
+  const allWeights = [...WEIGHTS.cakes, ...WEIGHTS.pastries];
+  const selectedWeight = allWeights.find((w) => w.label.ru === order.weight);
+  const price = selectedWeight ? `$${selectedWeight.price}` : "";
+  const weightLabel = selectedWeight
+    ? selectedWeight.label[locale]
+    : order.weight;
+
+  // Look up filling in current locale
+  const selectedFilling = FLAVORS.find((f) => f.name.ru === order.filling);
+  const fillingLabel = selectedFilling
+    ? selectedFilling.name[locale]
+    : order.filling;
+
+  // Look up coating
+  const selectedCoating = COATINGS.find((c) => c.ru === order.coating);
+  const coatingLabel = selectedCoating ? selectedCoating[locale] : order.coating;
+
+  // Look up color
+  const selectedColor = CAKE_COLORS.find((c) => c.name.ru === order.color);
+  const colorLabel = selectedColor ? selectedColor.name[locale] : order.color;
+  const colorHex = selectedColor?.hex || "";
+
+  // Look up box
+  const selectedBox = BOXES.find((b) => b.ru === order.box);
+  const boxLabel = selectedBox ? selectedBox[locale] : order.box;
+
+  // Look up decorations
+  const decorLabels = order.decorations.map((d) => {
+    const found = DECORATIONS.find((dec) => dec.ru === d);
+    return found ? found[locale] : d;
+  });
+
+  const formattedDate = order.date
+    ? new Date(order.date + "T00:00:00").toLocaleDateString(
+        isRu ? "ru-RU" : "en-US",
+        { day: "numeric", month: "long", year: "numeric" }
+      )
+    : "";
+
+  const L = {
+    greeting: isRu ? `${order.name}, спасибо за ваш заказ!` : `${order.name}, thank you for your order!`,
+    subtitle: isRu
+      ? "Мы получили вашу заявку и свяжемся с вами в ближайшее время для подтверждения деталей."
+      : "We have received your request and will contact you shortly to confirm the details.",
+    orderSummary: isRu ? "Ваш заказ" : "Your Order",
+    weight: isRu ? "Размер" : "Size",
+    filling: isRu ? "Начинка" : "Filling",
+    coating: isRu ? "Покрытие" : "Coating",
+    color: isRu ? "Цвет" : "Color",
+    box: isRu ? "Коробка" : "Box",
+    decor: isRu ? "Декор" : "Decorations",
+    date: isRu ? "Дата" : "Date",
+    comment: isRu ? "Комментарий" : "Comment",
+    price: isRu ? "Стоимость" : "Price",
+    noColor: isRu ? "Не выбран" : "Not selected",
+    noBox: isRu ? "Не выбрана" : "Not selected",
+    noDecor: isRu ? "Без декора" : "No decorations",
+    nextSteps: isRu ? "Что дальше?" : "What\u2019s Next?",
+    nextStep1: isRu
+      ? "Мы свяжемся с вами по телефону или WhatsApp для подтверждения заказа."
+      : "We will contact you by phone or WhatsApp to confirm your order.",
+    nextStep2: isRu
+      ? "Заказы оформляются за 2–3 дня. Срочные заказы — +25% к стоимости."
+      : "Orders are placed 2\u20133 days in advance. Rush orders: +25% surcharge.",
+    nextStep3: isRu
+      ? "Окончательная стоимость будет подтверждена с учётом декора и пожеланий."
+      : "Final price will be confirmed based on decorations and preferences.",
+    questions: isRu
+      ? "Есть вопросы? Свяжитесь с нами:"
+      : "Have questions? Reach out:",
+    footer: isRu
+      ? "Это автоматическое подтверждение заказа. Вы получили это письмо, потому что оформили заказ на сайте Sweet Balance."
+      : "This is an automated order confirmation. You received this email because you placed an order on the Sweet Balance website.",
+  };
+
+  const detailRow = (label: string, value: string, accent?: string) => {
+    if (!value) return "";
+    const colorDot = accent
+      ? `<span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:${accent};vertical-align:middle;margin-right:6px;border:1px solid #e0d6cf"></span>`
+      : "";
+    return `
+      <tr>
+        <td style="padding:10px 16px;color:#9a8e85;font-size:13px;font-weight:500;white-space:nowrap;vertical-align:top;border-bottom:1px solid #f5f0ec">${label}</td>
+        <td style="padding:10px 16px;color:#2d2926;font-size:14px;border-bottom:1px solid #f5f0ec">${colorDot}${value}</td>
+      </tr>`;
+  };
+
+  return `<!DOCTYPE html>
+<html lang="${locale}">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"></head>
+<body style="margin:0;padding:0;background:#faf7f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',sans-serif;-webkit-font-smoothing:antialiased">
+  <div style="max-width:600px;margin:0 auto;padding:32px 16px">
+
+    <!-- Header -->
+    <div style="background:linear-gradient(135deg,#ff8576 0%,#e8636a 50%,#d4505a 100%);border-radius:20px 20px 0 0;padding:40px 32px;text-align:center">
+      <div style="font-size:28px;font-weight:800;color:#fff;letter-spacing:-0.5px;margin-bottom:4px">Sweet Balance</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.7);letter-spacing:1px;text-transform:uppercase">Miami • Custom Mousse Cakes</div>
+    </div>
+
+    <!-- Main card -->
+    <div style="background:#ffffff;border-radius:0 0 20px 20px;box-shadow:0 4px 24px rgba(0,0,0,0.06);overflow:hidden">
+
+      <!-- Greeting -->
+      <div style="padding:32px 32px 24px;text-align:center;border-bottom:1px solid #f5f0ec">
+        <div style="width:56px;height:56px;background:#f0fdf4;border-radius:50%;margin:0 auto 16px;display:flex;align-items:center;justify-content:center">
+          <div style="width:56px;height:56px;background:#f0fdf4;border-radius:50%;text-align:center;line-height:56px;font-size:26px">&#10003;</div>
+        </div>
+        <h1 style="margin:0 0 8px;color:#2d2926;font-size:20px;font-weight:700">${L.greeting}</h1>
+        <p style="margin:0;color:#7a6f66;font-size:14px;line-height:1.6">${L.subtitle}</p>
+      </div>
+
+      <!-- Order details -->
+      <div style="padding:24px 32px">
+        <h2 style="margin:0 0 16px;color:#2d2926;font-size:16px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px">${L.orderSummary}</h2>
+        <table style="width:100%;border-collapse:collapse">
+          ${detailRow(L.weight, `${weightLabel}${price ? ` — ${price}` : ""}`)}
+          ${detailRow(L.filling, fillingLabel)}
+          ${detailRow(L.coating, coatingLabel)}
+          ${detailRow(L.color, colorLabel || L.noColor, colorHex || undefined)}
+          ${detailRow(L.box, boxLabel || L.noBox)}
+          ${detailRow(L.decor, decorLabels.length > 0 ? decorLabels.join(", ") : L.noDecor)}
+          ${detailRow(L.date, formattedDate)}
+          ${order.comment ? detailRow(L.comment, order.comment.replace(/</g, "&lt;").replace(/>/g, "&gt;")) : ""}
+        </table>
+      </div>
+
+      ${price ? `
+      <!-- Price highlight -->
+      <div style="margin:0 32px 24px;background:linear-gradient(135deg,#fff5f3,#fff0ed);border-radius:12px;padding:16px 20px;text-align:center">
+        <span style="color:#9a8e85;font-size:13px;font-weight:500">${L.price}:&nbsp;</span>
+        <span style="color:#e8636a;font-size:22px;font-weight:800">${price}</span>
+      </div>` : ""}
+
+      <!-- Next steps -->
+      <div style="padding:0 32px 28px">
+        <h2 style="margin:0 0 12px;color:#2d2926;font-size:15px;font-weight:700">${L.nextSteps}</h2>
+        <table style="width:100%;border-collapse:collapse">
+          <tr>
+            <td style="padding:6px 0;vertical-align:top;width:24px">
+              <div style="width:20px;height:20px;background:#fff5f3;border-radius:50%;text-align:center;line-height:20px;font-size:11px;color:#e8636a;font-weight:700">1</div>
+            </td>
+            <td style="padding:6px 0 6px 8px;color:#7a6f66;font-size:13px;line-height:1.5">${L.nextStep1}</td>
+          </tr>
+          <tr>
+            <td style="padding:6px 0;vertical-align:top">
+              <div style="width:20px;height:20px;background:#fff5f3;border-radius:50%;text-align:center;line-height:20px;font-size:11px;color:#e8636a;font-weight:700">2</div>
+            </td>
+            <td style="padding:6px 0 6px 8px;color:#7a6f66;font-size:13px;line-height:1.5">${L.nextStep2}</td>
+          </tr>
+          <tr>
+            <td style="padding:6px 0;vertical-align:top">
+              <div style="width:20px;height:20px;background:#fff5f3;border-radius:50%;text-align:center;line-height:20px;font-size:11px;color:#e8636a;font-weight:700">3</div>
+            </td>
+            <td style="padding:6px 0 6px 8px;color:#7a6f66;font-size:13px;line-height:1.5">${L.nextStep3}</td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- Contact -->
+      <div style="padding:20px 32px;background:#faf7f5;text-align:center">
+        <p style="margin:0 0 10px;color:#9a8e85;font-size:13px;font-weight:500">${L.questions}</p>
+        <div>
+          <a href="https://wa.me/17862001234" style="display:inline-block;margin:0 6px;padding:8px 16px;background:#25d366;color:#fff;text-decoration:none;border-radius:20px;font-size:12px;font-weight:600">WhatsApp</a>
+          <a href="https://t.me/juliiasweet" style="display:inline-block;margin:0 6px;padding:8px 16px;background:#229ED9;color:#fff;text-decoration:none;border-radius:20px;font-size:12px;font-weight:600">Telegram</a>
+          <a href="https://instagram.com/juliiasweet" style="display:inline-block;margin:0 6px;padding:8px 16px;background:#E4405F;color:#fff;text-decoration:none;border-radius:20px;font-size:12px;font-weight:600">Instagram</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div style="text-align:center;padding:24px 16px">
+      <p style="margin:0;color:#c4b8ad;font-size:11px;line-height:1.5">${L.footer}</p>
+    </div>
+
   </div>
 </body>
 </html>`;
