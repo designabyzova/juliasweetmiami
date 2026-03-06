@@ -3,6 +3,7 @@ export const NAV_ITEMS = [
   { label: { ru: "Начинки", en: "Fillings" }, href: "#flavors" },
   { label: { ru: "Галерея", en: "Gallery" }, href: "#portfolio" },
   { label: { ru: "Отзывы", en: "Reviews" }, href: "#reviews" },
+  { label: { ru: "Вопросы", en: "FAQ" }, href: "#faq" },
   { label: { ru: "Заказать", en: "Order" }, href: "#order" },
   { label: { ru: "Контакты", en: "Contact" }, href: "#contact" },
 ] as const;
@@ -169,6 +170,69 @@ export const DECORATIONS = [
   { ru: "Надпись", en: "Inscription" },
   { ru: "Украшение топперами", en: "Topper decorations" },
   { ru: "Украшение ягодами и цветами", en: "Berry & flower decorations" },
+] as const;
+
+export const FAQ_ITEMS = [
+  {
+    question: {
+      ru: "За сколько дней нужно заказывать торт?",
+      en: "How far in advance should I order?",
+    },
+    answer: {
+      ru: "Рекомендуем оформлять заказ за 2–3 дня. Нужно раньше? Срочные заказы доступны с наценкой 25%. Для многоярусных праздничных тортов лучше заказывать за 5–7 дней, чтобы каждая деталь была идеальной.",
+      en: "We recommend placing your order at least 2–3 days in advance. Need it sooner? Rush orders are available with a 25% surcharge. For multi-tier celebration cakes, we suggest 5–7 days to ensure every detail is perfect.",
+    },
+  },
+  {
+    question: {
+      ru: "Чем ваши торты отличаются от обычных?",
+      en: "What makes your cakes different from regular bakeries?",
+    },
+    answer: {
+      ru: "Наши торты — европейские муссовые десерты: лёгкие, изысканные, с минимальным содержанием сахара. Каждый торт состоит из нескольких слоёв: нежный бисквит, фруктовая или шоколадная начинка, шелковистый мусс и безупречное велюровое или зеркальное покрытие. Мы используем только премиальные ингредиенты — бельгийский шоколад, свежие ягоды, настоящий маскарпоне — без искусственных ароматизаторов и консервантов.",
+      en: "Our cakes are European-style mousse desserts — light, sophisticated, and made with minimal sugar. Each cake features multiple layers: a delicate sponge, fruit or chocolate filling, silky mousse, and a flawless velvet or mirror glaze finish. We use only premium ingredients — Belgian chocolate, fresh berries, real mascarpone — no artificial flavors or preservatives.",
+    },
+  },
+  {
+    question: {
+      ru: "Можно ли изменить дизайн и вкус?",
+      en: "Can I customize the design and flavors?",
+    },
+    answer: {
+      ru: "Конечно! Вы можете выбрать начинку из нашей коллекции, цвет торта, тип покрытия и добавить персональный декор — рисунок, надпись, топперы или свежие ягоды и цветы. Есть особая идея? Опишите её в комментарии к заказу, и мы воплотим её в жизнь.",
+      en: "Absolutely! Choose from our signature fillings, select your cake color and coating style, and add personalized decorations — custom drawings, inscriptions, toppers, or fresh berries and flowers. Have a unique vision? Describe it in the order form, and we'll bring it to life.",
+    },
+  },
+  {
+    question: {
+      ru: "Учитываете ли вы аллергии и диеты?",
+      en: "Do you accommodate allergies or dietary restrictions?",
+    },
+    answer: {
+      ru: "Наши муссовые торты готовятся с использованием молочных продуктов, яиц и орехов. Мы можем скорректировать отдельные элементы — например, исключить определённые орехи или подобрать альтернативные вкусы — но не можем гарантировать полностью безаллергенную среду. Укажите аллергии в заказе, и мы сделаем всё возможное.",
+      en: "Our mousse cakes are crafted with dairy, eggs, and nuts as core ingredients. While we can adjust certain elements — such as omitting specific nuts or using alternative flavors — we cannot guarantee a fully allergen-free environment. Please mention any allergies in your order, and we'll do our best to accommodate.",
+    },
+  },
+  {
+    question: {
+      ru: "Как работает самовывоз и доставка?",
+      en: "How does pickup and delivery work?",
+    },
+    answer: {
+      ru: "Все заказы доступны для самовывоза в Майами. Мы тщательно упаковываем каждый торт, чтобы он прибыл в идеальном состоянии. Для уточнения вариантов доставки свяжитесь с нами через WhatsApp или Telegram — мы подберём лучшее решение для вашего мероприятия.",
+      en: "All orders are available for pickup in Miami. We carefully package each cake to ensure it arrives in perfect condition. For delivery options, reach out via WhatsApp or Telegram — we're happy to find the best solution for your event.",
+    },
+  },
+  {
+    question: {
+      ru: "Что входит в стоимость?",
+      en: "What's included in the price?",
+    },
+    answer: {
+      ru: "В стоимость входит выбранный размер торта, начинка, покрытие (велюр или глянец) и стандартная упаковка. Декор — рисунок, надпись, топперы, ягоды и цветы — оплачивается дополнительно. Окончательная стоимость будет подтверждена после обсуждения всех деталей заказа.",
+      en: "The price covers your chosen cake size, filling, coating (velvet or glaze), and standard packaging. Decorations such as custom drawings, inscriptions, toppers, or berries and flowers are available at an additional cost. The final price is confirmed after we discuss all the details.",
+    },
+  },
 ] as const;
 
 export const REVIEWS = [

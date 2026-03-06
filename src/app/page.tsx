@@ -4,6 +4,7 @@ import About from "@/components/About";
 import Flavors from "@/components/Flavors";
 import Portfolio from "@/components/Portfolio";
 import Reviews from "@/components/Reviews";
+import FAQ from "@/components/FAQ";
 import OrderForm from "@/components/OrderForm";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -22,6 +23,7 @@ export default function Home() {
         <Flavors />
         <Portfolio />
         <Reviews />
+        <FAQ />
         <OrderForm />
         <Contact />
       </main>

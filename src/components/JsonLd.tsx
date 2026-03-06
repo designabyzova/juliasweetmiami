@@ -1,3 +1,5 @@
+import { FAQ_ITEMS } from "@/lib/constants";
+
 const SITE_URL = "https://yuliia-sweet.vercel.app";
 
 export default function JsonLd() {
@@ -80,6 +82,19 @@ export default function JsonLd() {
     },
   };
 
+  const faqPage = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: FAQ_ITEMS.map((item) => ({
+      "@type": "Question",
+      name: item.question.en,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer.en,
+      },
+    })),
+  };
+
   return (
     <>
       <script
@@ -89,6 +104,10 @@ export default function JsonLd() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(product) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqPage) }}
       />
     </>
   );

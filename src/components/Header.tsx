@@ -51,7 +51,7 @@ export default function Header() {
         }`}
       >
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-14 sm:h-[60px] lg:h-[70px]">
+          <div className="flex items-center justify-between gap-4 h-14 sm:h-[60px] lg:h-[70px]">
             {/* Logo */}
             <button
               onClick={() => handleNavClick("#hero")}
@@ -65,7 +65,7 @@ export default function Header() {
             </button>
 
             {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-6" data-testid="desktop-nav">
+            <nav className="hidden lg:flex items-center gap-3 xl:gap-5" data-testid="desktop-nav">
               {NAV_ITEMS.map((item) => (
                 <button
                   key={item.href}
