@@ -65,7 +65,7 @@ export default function Header() {
             </button>
 
             {/* Desktop Nav */}
-            <nav className="hidden lg:flex items-center gap-3 xl:gap-5" data-testid="desktop-nav">
+            <nav className="hidden lg:flex items-center gap-4 xl:gap-6" data-testid="desktop-nav">
               {NAV_ITEMS.map((item) => (
                 <button
                   key={item.href}
@@ -79,14 +79,6 @@ export default function Header() {
 
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-4">
-              <a
-                href="https://wa.me/13054815910"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-gray hover:text-coral transition-colors"
-              >
-                WhatsApp
-              </a>
               <LanguageSwitcher />
               <button
                 onClick={() => handleNavClick("#order")}
