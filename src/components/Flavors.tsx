@@ -14,9 +14,9 @@ const text = {
 };
 
 // Images showing full plate — zoom past the rim to show just the slice
-const PLATE_IMAGES = new Set(["/fillings/filling-8.png", "/fillings/filling-9.jpeg"]);
+const PLATE_IMAGES = new Set(["/fillings/filling-8.png"]);
 
-// Checkerboard grid placement (md+ 6-col grid): rows of 3-2-3-2
+// Checkerboard grid placement (md+ 6-col grid): rows of 3-2-3-2-1
 const GRID_PLACEMENT = [
   // Row 1: 3 items
   "md:col-start-1 md:col-end-3 md:row-start-1",
@@ -32,6 +32,8 @@ const GRID_PLACEMENT = [
   // Row 4: 2 items (offset)
   "md:col-start-2 md:col-end-4 md:row-start-4",
   "md:col-start-4 md:col-end-6 md:row-start-4",
+  // Row 5: 1 centered item
+  "md:col-start-3 md:col-end-5 md:row-start-5",
 ];
 
 export default function Flavors() {

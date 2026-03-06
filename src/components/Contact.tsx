@@ -38,7 +38,7 @@ export default function Contact() {
         <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 lg:gap-8 max-w-3xl mx-auto">
           <ScrollReveal delay={0.1}>
             <a
-              href="https://wa.me/17862001234"
+              href="https://wa.me/13054815910"
               target="_blank"
               rel="noopener noreferrer"
               className="group block bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 lg:p-8 text-center shadow-md shadow-black/5 border border-border hover:shadow-xl hover:shadow-coral/10 transition-all duration-300 hover:-translate-y-1"
@@ -59,7 +59,7 @@ export default function Contact() {
 
           <ScrollReveal delay={0.2}>
             <a
-              href="https://t.me/juliiasweet"
+              href="https://t.me/imjasestra"
               target="_blank"
               rel="noopener noreferrer"
               className="group block bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 lg:p-8 text-center shadow-md shadow-black/5 border border-border hover:shadow-xl hover:shadow-coral/10 transition-all duration-300 hover:-translate-y-1"
@@ -80,7 +80,7 @@ export default function Contact() {
 
           <ScrollReveal delay={0.3}>
             <a
-              href="https://instagram.com/juliiasweet"
+              href="https://www.instagram.com/julia_sweet_miami?igsh=MWV2ZjZ4NnNjZnhqMg=="
               target="_blank"
               rel="noopener noreferrer"
               className="group block bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 lg:p-8 text-center shadow-md shadow-black/5 border border-border hover:shadow-xl hover:shadow-coral/10 transition-all duration-300 hover:-translate-y-1 sm:col-span-2 md:col-span-1"
@@ -100,15 +100,9 @@ export default function Contact() {
           </ScrollReveal>
         </div>
 
-        {/* Hours + Phone */}
+        {/* Working Hours */}
         <ScrollReveal delay={0.4}>
-          <div className="text-center mt-10 sm:mt-12 space-y-2">
-            <a
-              href="tel:+17862001234"
-              className="inline-block text-charcoal font-[family-name:var(--font-display)] font-bold text-base sm:text-lg hover:text-coral transition-colors"
-            >
-              +1 (786) 200-1234
-            </a>
+          <div className="text-center mt-10 sm:mt-12">
             <p className="text-gray text-xs sm:text-sm font-[family-name:var(--font-body)]">
               {t(text.workingHours)}
             </p>

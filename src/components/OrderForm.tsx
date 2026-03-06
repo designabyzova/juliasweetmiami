@@ -511,7 +511,7 @@ export default function OrderForm() {
                     type="tel"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    placeholder="+1 (786) 200-1234"
+                    placeholder="+1 (305) 481-5910"
                     required
                     aria-required="true"
                     className="w-full border border-border rounded-xl px-4 py-3 text-charcoal font-[family-name:var(--font-body)] text-sm sm:text-base mb-4 bg-white focus:outline-none focus:ring-2 focus:ring-coral/30 focus:border-coral transition-all placeholder:text-gray-light/70"
@@ -706,6 +706,7 @@ function buildConfirmationEmailHtml(
     : "";
 
   const L = {
+    headerSubtitle: isRu ? "Майами • Муссовые торты на заказ" : "Miami • Custom Mousse Cakes",
     greeting: isRu ? `${order.name}, спасибо за ваш заказ!` : `${order.name}, thank you for your order!`,
     subtitle: isRu
       ? "Мы получили вашу заявку и свяжемся с вами в ближайшее время для подтверждения деталей."
@@ -762,7 +763,7 @@ function buildConfirmationEmailHtml(
     <!-- Header -->
     <div style="background:linear-gradient(135deg,#ff8576 0%,#e8636a 50%,#d4505a 100%);border-radius:20px 20px 0 0;padding:40px 32px;text-align:center">
       <div style="font-size:28px;font-weight:800;color:#fff;letter-spacing:-0.5px;margin-bottom:4px">Sweet Balance</div>
-      <div style="font-size:13px;color:rgba(255,255,255,0.7);letter-spacing:1px;text-transform:uppercase">Miami • Custom Mousse Cakes</div>
+      <div style="font-size:13px;color:rgba(255,255,255,0.7);letter-spacing:1px;text-transform:uppercase">${L.headerSubtitle}</div>
     </div>
 
     <!-- Main card -->
@@ -828,9 +829,9 @@ function buildConfirmationEmailHtml(
       <div style="padding:20px 32px;background:#faf7f5;text-align:center">
         <p style="margin:0 0 10px;color:#9a8e85;font-size:13px;font-weight:500">${L.questions}</p>
         <div>
-          <a href="https://wa.me/17862001234" style="display:inline-block;margin:0 6px;padding:8px 16px;background:#25d366;color:#fff;text-decoration:none;border-radius:20px;font-size:12px;font-weight:600">WhatsApp</a>
-          <a href="https://t.me/juliiasweet" style="display:inline-block;margin:0 6px;padding:8px 16px;background:#229ED9;color:#fff;text-decoration:none;border-radius:20px;font-size:12px;font-weight:600">Telegram</a>
-          <a href="https://instagram.com/juliiasweet" style="display:inline-block;margin:0 6px;padding:8px 16px;background:#E4405F;color:#fff;text-decoration:none;border-radius:20px;font-size:12px;font-weight:600">Instagram</a>
+          <a href="https://wa.me/13054815910" style="display:inline-block;margin:0 6px;padding:8px 16px;background:#25d366;color:#fff;text-decoration:none;border-radius:20px;font-size:12px;font-weight:600">WhatsApp</a>
+          <a href="https://t.me/imjasestra" style="display:inline-block;margin:0 6px;padding:8px 16px;background:#229ED9;color:#fff;text-decoration:none;border-radius:20px;font-size:12px;font-weight:600">Telegram</a>
+          <a href="https://www.instagram.com/julia_sweet_miami?igsh=MWV2ZjZ4NnNjZnhqMg==" style="display:inline-block;margin:0 6px;padding:8px 16px;background:#E4405F;color:#fff;text-decoration:none;border-radius:20px;font-size:12px;font-weight:600">Instagram</a>
         </div>
       </div>
 

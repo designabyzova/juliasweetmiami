@@ -9,7 +9,7 @@ export default function JsonLd() {
     description:
       "Luxurious European mousse desserts with minimal sugar by pastry chef Juliia Sweet in Miami. Custom cakes for birthdays, weddings, and celebrations.",
     url: SITE_URL,
-    telephone: "+17862001234",
+    telephone: "+13054815910",
     image: `${SITE_URL}/hero-juliia.webp`,
     address: {
       "@type": "PostalAddress",
@@ -46,8 +46,9 @@ export default function JsonLd() {
       ratingCount: "150",
     },
     sameAs: [
-      "https://instagram.com/juliiasweet",
-      "https://t.me/juliiasweet",
+      "https://www.instagram.com/julia_sweet_miami?igsh=MWV2ZjZ4NnNjZnhqMg==",
+      "https://t.me/imjasestra",
+      "https://wa.me/13054815910",
     ],
   };
 

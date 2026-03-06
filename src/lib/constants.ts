@@ -106,7 +106,17 @@ export const FLAVORS = [
     },
     accent: "#e5d4b0",
     emoji: "🍏",
-    image: "/fillings/filling-9.jpeg",
+    image: "/fillings/filling-9.webp",
+  },
+  {
+    name: { ru: "Малиновое облако", en: "Raspberry Cloud" },
+    description: {
+      ru: "Малиновый конфитюр с целыми ягодами, воздушный сливочный мусс, розовая зеркальная глазурь, нежный бисквит",
+      en: "Raspberry confiture with whole berries, airy cream mousse, pink mirror glaze, delicate sponge",
+    },
+    accent: "#f8c8d8",
+    emoji: "🌸",
+    image: "/fillings/filling-10.webp",
   },
 ] as const;
 

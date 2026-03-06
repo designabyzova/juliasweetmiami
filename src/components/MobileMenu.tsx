@@ -85,7 +85,7 @@ export default function MobileMenu({ onClose, onNavClick }: MobileMenuProps) {
 
             <div className="flex gap-4 justify-center">
               <a
-                href="https://wa.me/17862001234"
+                href="https://wa.me/13054815910"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm text-gray hover:text-coral transition-colors py-2"
@@ -93,7 +93,7 @@ export default function MobileMenu({ onClose, onNavClick }: MobileMenuProps) {
                 WhatsApp
               </a>
               <a
-                href="https://t.me/juliiasweet"
+                href="https://t.me/imjasestra"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm text-gray hover:text-coral transition-colors py-2"
@@ -101,7 +101,7 @@ export default function MobileMenu({ onClose, onNavClick }: MobileMenuProps) {
                 Telegram
               </a>
               <a
-                href="https://instagram.com/juliiasweet"
+                href="https://www.instagram.com/julia_sweet_miami?igsh=MWV2ZjZ4NnNjZnhqMg=="
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm text-gray hover:text-coral transition-colors py-2"

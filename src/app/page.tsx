@@ -8,6 +8,7 @@ import OrderForm from "@/components/OrderForm";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
+import FloatingOrderButton from "@/components/FloatingOrderButton";
 import JsonLd from "@/components/JsonLd";
 
 export default function Home() {
@@ -25,6 +26,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
+      <FloatingOrderButton />
       <ScrollToTop />
     </>
   );

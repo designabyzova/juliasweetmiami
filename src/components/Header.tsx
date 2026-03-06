@@ -80,7 +80,7 @@ export default function Header() {
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-4">
               <a
-                href="https://wa.me/17862001234"
+                href="https://wa.me/13054815910"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm text-gray hover:text-coral transition-colors"
