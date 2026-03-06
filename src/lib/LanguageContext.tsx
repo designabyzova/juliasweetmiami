@@ -11,18 +11,25 @@ type LanguageContextType = {
 };
 
 const LanguageContext = createContext<LanguageContextType>({
-  locale: "ru",
+  locale: "en",
   setLocale: () => {},
-  t: (text) => text.ru,
+  t: (text) => text.en,
 });
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>("ru");
+  const [locale, setLocaleState] = useState<Locale>("en");
 
   useEffect(() => {
     const saved = localStorage.getItem("locale") as Locale | null;
     if (saved === "ru" || saved === "en") {
       setLocaleState(saved);
+    } else {
+      // Auto-detect browser language for first-time visitors
+      const browserLang =
+        navigator.language || navigator.languages?.[0] || "";
+      if (browserLang.startsWith("ru")) {
+        setLocaleState("ru");
+      }
     }
   }, []);
 

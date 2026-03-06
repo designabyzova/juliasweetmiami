@@ -4,6 +4,8 @@ import ProgressBar from "@/components/ProgressBar";
 import { LanguageProvider } from "@/lib/LanguageContext";
 import "./globals.css";
 
+const SITE_URL = "https://yuliia-sweet.vercel.app";
+
 const unbounded = Unbounded({
   variable: "--font-unbounded",
   subsets: ["latin", "cyrillic"],
@@ -19,9 +21,76 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Juliia Sweet — Премиальные торты в Майами",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default:
+      "Juliia Sweet — Luxurious Mousse Desserts in Miami | Роскошные муссовые десерты в Майами",
+    template: "%s | Juliia Sweet",
+  },
   description:
-    "Авторские европейские муссовые десерты с минимальным содержанием сахара. Кондитер Juliia Sweet в Майами.",
+    "Luxurious European mousse desserts with minimal sugar by Juliia Sweet in Miami. European recipes, pure flavor, custom cakes for birthdays, weddings & celebrations. From $75. Роскошные муссовые десерты в Майами — европейские рецепты, минимум сахара, чистый вкус.",
+  keywords: [
+    "custom cakes Miami",
+    "mousse desserts Miami",
+    "premium cakes Miami",
+    "pastry chef Miami",
+    "birthday cake Miami",
+    "wedding cake Miami",
+    "bento cake Miami",
+    "low sugar desserts",
+    "European mousse cake",
+    "торты на заказ Майами",
+    "муссовые десерты",
+    "кондитер Майами",
+    "торт на день рождения Майами",
+    "свадебный торт Майами",
+    "Juliia Sweet",
+  ],
+  authors: [{ name: "Juliia Sweet" }],
+  creator: "Juliia Sweet",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    alternateLocale: "ru_RU",
+    url: SITE_URL,
+    siteName: "Juliia Sweet",
+    title: "Juliia Sweet — Luxurious Mousse Desserts in Miami",
+    description:
+      "Luxurious European mousse desserts with minimal sugar. European recipes, pure flavor. Custom cakes for birthdays, weddings & celebrations. From $75.",
+    images: [
+      {
+        url: "/hero-juliia.webp",
+        width: 800,
+        height: 1067,
+        alt: "Juliia Sweet — Luxurious Mousse Desserts in Miami",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Juliia Sweet — Luxurious Mousse Desserts in Miami",
+    description:
+      "European mousse desserts with minimal sugar. European recipes, pure flavor. Custom cakes from $75.",
+    images: ["/hero-juliia.webp"],
+  },
+  alternates: {
+    canonical: SITE_URL,
+    languages: {
+      en: SITE_URL,
+      ru: SITE_URL,
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -30,7 +99,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ru">
+    <html lang="en">
       <body className={`${unbounded.variable} ${dmSans.variable} antialiased`}>
         <LanguageProvider>
           <ProgressBar />

@@ -27,13 +27,13 @@ const CHAT_BUBBLES = [
 ];
 
 const REVIEW_IMAGES = [
-  "/reviews/review-1.webp",
-  "/reviews/review-2.webp",
-  "/reviews/review-3.webp",
-  "/reviews/review-4.webp",
-  "/reviews/review-5.webp",
-  "/reviews/review-6.webp",
-  "/reviews/review-7.webp",
+  { src: "/reviews/review-1.webp", alt: { ru: "Отзыв клиента о торте Juliia Sweet в Майами", en: "Client review for Juliia Sweet custom cake in Miami" } },
+  { src: "/reviews/review-2.webp", alt: { ru: "Отзыв клиента о праздничном торте Juliia Sweet", en: "Client review for Juliia Sweet celebration cake" } },
+  { src: "/reviews/review-3.webp", alt: { ru: "Отзыв клиента о муссовом десерте Juliia Sweet", en: "Client review for Juliia Sweet mousse dessert" } },
+  { src: "/reviews/review-4.webp", alt: { ru: "Отзыв клиента о торте на заказ Juliia Sweet", en: "Client testimonial for custom Juliia Sweet cake" } },
+  { src: "/reviews/review-5.webp", alt: { ru: "Отзыв клиента о свадебном торте Juliia Sweet", en: "Client review for Juliia Sweet wedding cake" } },
+  { src: "/reviews/review-6.webp", alt: { ru: "Отзыв клиента о бенто-торте Juliia Sweet", en: "Client review for Juliia Sweet bento cake" } },
+  { src: "/reviews/review-7.webp", alt: { ru: "Отзыв клиента о премиальном десерте Juliia Sweet", en: "Client review for premium Juliia Sweet dessert" } },
 ];
 
 export default function Reviews() {
@@ -169,10 +169,10 @@ export default function Reviews() {
 
                 <div className="relative h-full w-full overflow-hidden rounded-xl sm:rounded-2xl bg-white shadow-2xl shadow-charcoal/10">
                   <div aria-hidden className="absolute inset-0 pointer-events-none invisible">
-                    {REVIEW_IMAGES.map((src, i) => (
+                    {REVIEW_IMAGES.map((img, i) => (
                       <Image
-                        key={src}
-                        src={src}
+                        key={img.src}
+                        src={img.src}
                         alt=""
                         fill
                         className="object-cover"
@@ -199,8 +199,8 @@ export default function Reviews() {
                       className="absolute inset-0"
                     >
                       <Image
-                        src={REVIEW_IMAGES[currentIndex]}
-                        alt={`${t(uiText.clientReview)} ${currentIndex + 1}`}
+                        src={REVIEW_IMAGES[currentIndex].src}
+                        alt={t(REVIEW_IMAGES[currentIndex].alt)}
                         fill
                         className="object-cover"
                         sizes="(max-width: 640px) 360px, 440px"

@@ -6,46 +6,102 @@ import { useLanguage } from "@/lib/LanguageContext";
 
 const text = {
   sectionLabel: { ru: "Обо мне", en: "About Me" },
-  title: { ru: "Моя история", en: "My Story" },
+  title: {
+    ru: "Искусство кондитерской точности",
+    en: "The Art of Confectionery Precision",
+  },
   story1: {
-    ru: "Мой профессиональный опыт научил меня ценить качество и внимание к деталям.",
-    en: "My professional experience taught me to value quality and attention to detail.",
+    ru: "Настоящая роскошь — это внимание к деталям.",
+    en: "True luxury lies in attention to detail.",
   },
   story2: {
-    ru: "Именно поэтому в своих десертах я использую только отборные ингредиенты.",
-    en: "That's why I only use premium ingredients in my desserts.",
+    ru: "Мой профессиональный путь сформировал принцип: в десерте важна не громкость сладости, а глубина вкуса и безупречный баланс.",
+    en: "My professional journey shaped a guiding principle: in a dessert, what matters is not how loud the sweetness, but the depth of flavor and impeccable balance.",
   },
   story3: {
-    ru: "Я создаю европейские муссовые десерты с минимальным содержанием сахара — без заменителей, только натуральный вкус и баланс, где сахар есть лишь в шоколаде.",
-    en: "I create European mousse desserts with minimal sugar — no substitutes, only natural flavor and balance, where sugar is only in the chocolate.",
+    ru: "Я работаю только с отборными ингредиентами премиального качества — натуральные сливки, свежие ягоды, благородный шоколад.",
+    en: "I work exclusively with hand-selected, premium-quality ingredients — natural cream, fresh berries, and fine chocolate.",
   },
-  diffTitle1: { ru: "Чем я", en: "What Makes Me" },
-  diffTitleAccent: { ru: "отличаюсь", en: "Different" },
-  diffTitle2: { ru: "от других", en: "from Others" },
-  diffText1: { ru: "Мои десерты не утомляют.", en: "My desserts never overwhelm." },
-  diffText2: {
-    ru: "Они лёгкие, сбалансированные и оставляют ощущение удовольствия, а не тяжести.",
-    en: "They are light, balanced, and leave a feeling of pleasure, not heaviness.",
+  story4: {
+    ru: "В моих десертах нет искусственных подсластителей и заменителей. Сахар присутствует лишь как естественная часть шоколада — не больше.",
+    en: "My desserts contain no artificial sweeteners or substitutes. Sugar is present only as a natural part of the chocolate — nothing more.",
+  },
+  story5: {
+    ru: "Это современная европейская кондитерская философия: чистота вкуса, лёгкость текстуры и утончённая подача.",
+    en: "This is the modern European confectionery philosophy: purity of flavor, lightness of texture, and refined presentation.",
+  },
+  diffTitle1: { ru: "Десерт как", en: "Dessert as an" },
+  diffTitleAccent: { ru: "эстетическое", en: "Aesthetic" },
+  diffTitle2: { ru: "наслаждение", en: "Experience" },
+  diffIntro1: {
+    ru: "Мои десерты не перегружают.",
+    en: "My desserts never overwhelm.",
+  },
+  diffIntro2: {
+    ru: "Они раскрываются постепенно.",
+    en: "They reveal themselves layer by layer.",
+  },
+  diffSteps: [
+    {
+      ru: "Сначала — воздушная муссовая текстура.",
+      en: "First — an airy mousse texture.",
+    },
+    {
+      ru: "Затем — тонкий ягодный акцент.",
+      en: "Then — a subtle berry accent.",
+    },
+    {
+      ru: "И в финале — благородная шоколадная глубина.",
+      en: "And finally — the rich depth of fine chocolate.",
+    },
+  ],
+  diffAfter: {
+    ru: "После них остаётся лёгкость, приятное послевкусие и желание повторить этот момент.",
+    en: "What stays with you is lightness, a delicate aftertaste, and the desire to relive the moment.",
+  },
+  diffClosing1: {
+    ru: "Это не просто торт для события.",
+    en: "It's not just a cake for an event.",
+  },
+  diffClosing2: {
+    ru: "Это часть атмосферы, которую запоминают.",
+    en: "It's part of the atmosphere people remember.",
   },
   diffTags: [
-    { ru: "Без заменителей", en: "No Substitutes" },
-    { ru: "Лёгкость", en: "Lightness" },
-    { ru: "Баланс вкуса", en: "Flavor Balance" },
+    { ru: "Воздушная текстура", en: "Airy Texture" },
+    { ru: "Лёгкое послевкусие", en: "Delicate Aftertaste" },
+    { ru: "Незабываемый момент", en: "Memorable Experience" },
   ],
-  forWhomTitle1: { ru: "Для кого", en: "Who Are" },
-  forWhomTitleAccent: { ru: "мои торты", en: "My Cakes For" },
-  forWhomText1: {
-    ru: "Создаю десерты для тех, кто ценит вкус, а не просто сладость.",
-    en: "I create desserts for those who appreciate flavor, not just sweetness.",
+  forWhomTitle1: { ru: "Для тех, кто выбирает", en: "For Those Who Choose" },
+  forWhomTitleAccent: { ru: "исключительное", en: "the Exceptional" },
+  forWhomIntro: {
+    ru: "Я создаю десерты для клиентов, которые ценят:",
+    en: "I create desserts for clients who value:",
   },
-  forWhomText2: {
-    ru: "Для тех, кто выбирает качество, осознанность и удовольствие без перегруза.",
-    en: "For those who choose quality, mindfulness, and pleasure without overload.",
+  forWhomValues: [
+    { ru: "Эстетику и минимализм", en: "Aesthetics and minimalism" },
+    {
+      ru: "Натуральность без компромиссов",
+      en: "All-natural ingredients, no compromises",
+    },
+    { ru: "Лёгкость вместо избыточности", en: "Lightness over excess" },
+    {
+      ru: "Качество, которое чувствуется с первого укуса",
+      en: "Quality you taste from the very first bite",
+    },
+  ],
+  forWhomOccasions: {
+    ru: "Частные мероприятия. Камерные ужины. Элегантные праздники. И особенные моменты, где важна каждая деталь.",
+    en: "Private events. Intimate dinners. Elegant celebrations. And special moments where every detail matters.",
+  },
+  forWhomCta: {
+    ru: "Если вы ищете в Майами десерт, соответствующий уровню high-end — вы его нашли.",
+    en: "If you're looking for a high-end dessert in Miami — you've found it.",
   },
   forWhomTags: [
-    { ru: "Натуральные ингредиенты", en: "Natural Ingredients" },
-    { ru: "Минимум сахара", en: "Minimal Sugar" },
-    { ru: "Европейские рецепты", en: "European Recipes" },
+    { ru: "High-end десерты", en: "High-End Desserts" },
+    { ru: "Частные мероприятия", en: "Private Events" },
+    { ru: "100% натуральность", en: "All Natural" },
   ],
   diffImageAlt: { ru: "Авторские муссовые десерты", en: "Signature mousse desserts" },
   forWhomImageAlt: {
@@ -88,6 +144,12 @@ export default function About() {
             </p>
             <p className="text-gray text-sm sm:text-base lg:text-lg leading-relaxed font-[family-name:var(--font-body)] text-center">
               {t(text.story3)}
+            </p>
+            <p className="text-gray text-sm sm:text-base lg:text-lg leading-relaxed font-[family-name:var(--font-body)] text-center">
+              {t(text.story4)}
+            </p>
+            <p className="text-gray text-sm sm:text-base lg:text-lg leading-relaxed font-[family-name:var(--font-body)] text-center">
+              {t(text.story5)}
             </p>
           </div>
         </ScrollReveal>
@@ -137,11 +199,32 @@ export default function About() {
                 </h3>
                 <div className="max-w-md mb-4 sm:mb-5 space-y-3">
                   <p className="text-charcoal/60 text-sm sm:text-base lg:text-lg leading-relaxed font-[family-name:var(--font-body)]">
-                    {t(text.diffText1)}
+                    {t(text.diffIntro1)}
                   </p>
                   <p className="text-charcoal/60 text-sm sm:text-base lg:text-lg leading-relaxed font-[family-name:var(--font-body)]">
-                    {t(text.diffText2)}
+                    {t(text.diffIntro2)}
                   </p>
+                  <div className="space-y-1.5 pl-1">
+                    {text.diffSteps.map((step) => (
+                      <p
+                        key={step.ru}
+                        className="text-charcoal/70 text-sm sm:text-base lg:text-lg leading-relaxed font-[family-name:var(--font-body)] font-medium"
+                      >
+                        {t(step)}
+                      </p>
+                    ))}
+                  </div>
+                  <p className="text-charcoal/60 text-sm sm:text-base lg:text-lg leading-relaxed font-[family-name:var(--font-body)]">
+                    {t(text.diffAfter)}
+                  </p>
+                  <div className="pt-1">
+                    <p className="text-charcoal/50 text-sm sm:text-base lg:text-lg leading-relaxed font-[family-name:var(--font-body)] italic">
+                      {t(text.diffClosing1)}
+                    </p>
+                    <p className="text-charcoal/80 text-sm sm:text-base lg:text-lg leading-relaxed font-[family-name:var(--font-body)] font-semibold italic">
+                      {t(text.diffClosing2)}
+                    </p>
+                  </div>
                 </div>
                 <div className="flex flex-wrap gap-2">
                   {text.diffTags.map((tag) => (
@@ -179,12 +262,26 @@ export default function About() {
                     <span className="absolute -bottom-1 left-0 h-2.5 sm:h-3 w-full rounded-full bg-coral/15" />
                   </span>
                 </h3>
-                <div className="max-w-md mb-5 sm:mb-6 space-y-3">
+                <div className="max-w-md mb-5 sm:mb-6 space-y-4">
                   <p className="text-charcoal/60 text-sm sm:text-base lg:text-lg leading-relaxed font-[family-name:var(--font-body)]">
-                    {t(text.forWhomText1)}
+                    {t(text.forWhomIntro)}
                   </p>
-                  <p className="text-charcoal/60 text-sm sm:text-base lg:text-lg leading-relaxed font-[family-name:var(--font-body)]">
-                    {t(text.forWhomText2)}
+                  <ul className="space-y-1.5 sm:space-y-2">
+                    {text.forWhomValues.map((value) => (
+                      <li
+                        key={value.ru}
+                        className="text-charcoal/70 text-sm sm:text-base lg:text-lg leading-relaxed font-[family-name:var(--font-body)] flex items-start gap-2.5"
+                      >
+                        <span className="text-coral/70 flex-shrink-0">—</span>
+                        <span>{t(value)}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="text-charcoal/50 text-xs sm:text-sm lg:text-base leading-relaxed font-[family-name:var(--font-body)] italic">
+                    {t(text.forWhomOccasions)}
+                  </p>
+                  <p className="text-charcoal/80 text-sm sm:text-base lg:text-lg leading-relaxed font-[family-name:var(--font-body)] font-semibold">
+                    {t(text.forWhomCta)}
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-2">

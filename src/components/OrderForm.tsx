@@ -34,6 +34,8 @@ const ui = {
   nameLabel: { ru: "Имя", en: "Name" },
   namePlaceholder: { ru: "Ваше имя", en: "Your name" },
   phoneLabel: { ru: "Контактный телефон", en: "Phone Number" },
+  emailLabel: { ru: "Email", en: "Email" },
+  emailPlaceholder: { ru: "your@email.com", en: "your@email.com" },
   commentLabel: { ru: "Комментарий", en: "Comment" },
   commentPlaceholder: { ru: "Пожелания к заказу...", en: "Order preferences..." },
   orderRules: {
@@ -72,6 +74,7 @@ export default function OrderForm() {
   const [comment, setComment] = useState("");
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
 
   const { t } = useLanguage();
 
@@ -126,7 +129,7 @@ export default function OrderForm() {
     setError("");
 
     const orderHtml = buildEmailHtml({
-      weight, filling, coating, color, box, decorations, date, name, phone, comment,
+      weight, filling, coating, color, box, decorations, date, name, phone, email, comment,
     });
 
     try {
@@ -476,6 +479,18 @@ export default function OrderForm() {
                   />
 
                   <label className="block mb-2 text-xs sm:text-sm font-medium text-charcoal font-[family-name:var(--font-body)]">
+                    {t(ui.emailLabel)}
+                  </label>
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder={t(ui.emailPlaceholder)}
+                    className="w-full border border-border rounded-xl px-4 py-3 text-charcoal font-[family-name:var(--font-body)] text-sm sm:text-base mb-4 bg-white focus:outline-none focus:ring-2 focus:ring-coral/30 focus:border-coral transition-all placeholder:text-gray-light/70"
+                    data-testid="input-email"
+                  />
+
+                  <label className="block mb-2 text-xs sm:text-sm font-medium text-charcoal font-[family-name:var(--font-body)]">
                     {t(ui.commentLabel)}
                   </label>
                   <textarea
@@ -537,6 +552,7 @@ function buildEmailHtml(order: {
   date: string;
   name: string;
   phone: string;
+  email: string;
   comment: string;
 }) {
   const row = (label: string, value: string) =>
@@ -568,6 +584,7 @@ function buildEmailHtml(order: {
         <table style="width:100%;border-collapse:collapse;margin-bottom:20px">
           ${row("Имя", order.name)}
           ${row("Телефон", order.phone)}
+          ${row("Email", order.email)}
           ${row("Дата", formattedDate)}
         </table>
         <h2 style="margin:0 0 4px;color:#212529;font-size:16px;font-weight:600">Торт</h2>

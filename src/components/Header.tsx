@@ -58,9 +58,9 @@ export default function Header() {
               className="flex-shrink-0 hover:scale-[1.03] transition-transform duration-200"
             >
               <span className="font-[family-name:var(--font-display)] text-lg sm:text-xl lg:text-[22px] font-black tracking-normal leading-none">
-                <span className="text-charcoal">Juliia</span>
+                <span className="text-charcoal">Sweet</span>
                 {" "}
-                <span className="text-coral">Sweet</span>
+                <span className="text-coral">Balance</span>
               </span>
             </button>
 

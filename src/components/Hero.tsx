@@ -5,18 +5,20 @@ import Image from "next/image";
 import { useLanguage } from "@/lib/LanguageContext";
 
 const text = {
-  location: { ru: "Miami, Florida", en: "Miami, Florida" },
-  title1: { ru: "Премиальные муссовые", en: "Premium Mousse" },
-  title2: { ru: "десерты от кондитера", en: "Desserts by a Pastry Chef" },
+  tagline: { ru: "Sweet Balance", en: "Sweet Balance" },
+  title1: { ru: "Роскошные муссовые", en: "Luxurious Mousse" },
+  title2: { ru: "десерты от Juliia Sweet", en: "Desserts by Juliia Sweet" },
   titleAccent: { ru: "в Майами", en: "in Miami" },
-  subtitle1: { ru: "Кондитер Juliia Sweet.", en: "Pastry Chef Juliia Sweet." },
-  subtitle2: {
-    ru: "Европейские муссовые десерты с минимальным содержанием сахара — только натуральный вкус и баланс.",
-    en: "European mousse desserts with minimal sugar — only natural flavor and balance.",
+  usp: {
+    ru: "Европейские рецепты • Минимум сахара • Чистый вкус",
+    en: "European Recipes • Minimal Sugar • Pure Flavor",
   },
   ctaOrder: { ru: "Заказать торт", en: "Order Cake" },
   ctaFlavors: { ru: "Смотреть начинки", en: "See Fillings" },
-  imageAlt: { ru: "Juliia Sweet — Кондитер в Майами", en: "Juliia Sweet — Pastry Chef in Miami" },
+  imageAlt: {
+    ru: "Juliia Sweet — кондитер муссовых десертов в Майами",
+    en: "Juliia Sweet — Mousse Dessert Pastry Chef in Miami",
+  },
 };
 
 export default function Hero() {
@@ -50,9 +52,9 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-coral font-semibold text-xs sm:text-sm tracking-widest uppercase mb-3 sm:mb-4 font-[family-name:var(--font-body)]"
+              className="text-coral font-semibold text-xs sm:text-sm tracking-[0.2em] uppercase mb-3 sm:mb-4 font-[family-name:var(--font-body)]"
             >
-              {t(text.location)}
+              {t(text.tagline)}
             </motion.p>
 
             <h1 className="heading-wide font-[family-name:var(--font-display)] font-black text-[28px] xs:text-[32px] sm:text-[40px] md:text-[48px] lg:text-[56px] xl:text-[64px] leading-[1.05] tracking-normal text-charcoal mb-4 sm:mb-6">
@@ -63,19 +65,14 @@ export default function Hero() {
               <span className="text-coral">{t(text.titleAccent)}</span>
             </h1>
 
-            <motion.div
+            <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.4 }}
-              className="max-w-md mx-auto lg:mx-0 mb-6 sm:mb-8 space-y-3"
+              className="text-gray/80 text-sm sm:text-base lg:text-lg font-medium tracking-wide font-[family-name:var(--font-body)] mb-6 sm:mb-8"
             >
-              <p className="text-gray text-sm sm:text-base lg:text-lg font-[family-name:var(--font-body)] leading-relaxed">
-                {t(text.subtitle1)}
-              </p>
-              <p className="text-gray text-sm sm:text-base lg:text-lg font-[family-name:var(--font-body)] leading-relaxed">
-                {t(text.subtitle2)}
-              </p>
-            </motion.div>
+              {t(text.usp)}
+            </motion.p>
 
             <motion.div
               initial={{ opacity: 0, y: 20 }}

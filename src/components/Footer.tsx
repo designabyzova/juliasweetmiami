@@ -57,9 +57,9 @@ export default function Footer() {
                 className="mb-3 inline-block hover:scale-[1.03] transition-transform duration-200"
               >
                 <span className="font-[family-name:var(--font-display)] text-xl font-black tracking-normal leading-none">
-                  <span className="text-charcoal">Juliia</span>
+                  <span className="text-charcoal">Sweet</span>
                   {" "}
-                  <span className="text-coral">Sweet</span>
+                  <span className="text-coral">Balance</span>
                 </span>
               </button>
               <p className="text-charcoal/50 text-xs leading-relaxed font-[family-name:var(--font-body)] max-w-[260px] mx-auto">
@@ -168,9 +168,9 @@ export default function Footer() {
                 className="mb-4 block hover:scale-[1.03] transition-transform duration-200"
               >
                 <span className="font-[family-name:var(--font-display)] text-2xl font-black tracking-normal leading-none">
-                  <span className="text-charcoal">Juliia</span>
+                  <span className="text-charcoal">Sweet</span>
                   {" "}
-                  <span className="text-coral">Sweet</span>
+                  <span className="text-coral">Balance</span>
                 </span>
               </button>
               <p className="text-charcoal/50 text-sm leading-relaxed font-[family-name:var(--font-body)] max-w-[260px]">
@@ -278,7 +278,7 @@ export default function Footer() {
           {/* Bottom bar */}
           <div className="border-t border-charcoal/8 mt-8 sm:mt-10 pt-5 sm:pt-6 flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-4">
             <p className="text-charcoal/30 text-[10px] sm:text-xs font-[family-name:var(--font-body)]">
-              &copy; {new Date().getFullYear()} Juliia Sweet. {t(text.allRights)}
+              &copy; {new Date().getFullYear()} Sweet Balance. {t(text.allRights)}
             </p>
             <LanguageSwitcher />
             <p className="text-charcoal/20 text-[10px] sm:text-xs font-[family-name:var(--font-body)] italic">
