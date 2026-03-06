@@ -23,13 +23,6 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     const saved = localStorage.getItem("locale") as Locale | null;
     if (saved === "ru" || saved === "en") {
       setLocaleState(saved);
-    } else {
-      // Auto-detect browser language for first-time visitors
-      const browserLang =
-        navigator.language || navigator.languages?.[0] || "";
-      if (browserLang.startsWith("ru")) {
-        setLocaleState("ru");
-      }
     }
   }, []);
 
