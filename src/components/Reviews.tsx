@@ -313,7 +313,7 @@ export default function Reviews() {
           <div className="overflow-x-auto pb-4 no-scrollbar -mx-5 px-5 sm:-mx-6 sm:px-6 lg:mx-0 lg:px-0 lg:overflow-visible">
             <div className="flex gap-3 sm:gap-4 w-max lg:w-auto lg:grid lg:grid-cols-4 lg:gap-5">
               {REVIEWS.map((review, i) => (
-                <ScrollReveal key={i} delay={i * 0.1}>
+                <ScrollReveal key={i} delay={i * 0.1} className="h-full">
                   <ReviewCard review={review} index={i} />
                 </ScrollReveal>
               ))}
@@ -338,7 +338,7 @@ function ReviewCard({
     <motion.div
       whileHover={{ y: -6, scale: 1.02 }}
       transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative flex w-[250px] sm:w-[280px] flex-shrink-0 flex-col rounded-xl sm:rounded-2xl border border-border bg-white/90 p-5 sm:p-6 shadow-md shadow-charcoal/4 backdrop-blur-sm transition-shadow hover:shadow-xl hover:shadow-coral/8 lg:w-auto"
+      className="group relative flex h-full w-[250px] sm:w-[280px] flex-shrink-0 flex-col rounded-xl sm:rounded-2xl border border-border bg-white/90 p-5 sm:p-6 shadow-md shadow-charcoal/4 backdrop-blur-sm transition-shadow hover:shadow-xl hover:shadow-coral/8 lg:w-auto"
       data-testid={`review-card-${index}`}
     >
       <div className="absolute top-0 left-5 right-5 sm:left-6 sm:right-6 h-[3px] rounded-b-full bg-gradient-to-r from-coral/60 via-coral to-coral/60 opacity-0 transition-opacity group-hover:opacity-100" />

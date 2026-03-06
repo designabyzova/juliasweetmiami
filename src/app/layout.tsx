@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Unbounded, DM_Sans } from "next/font/google";
+import { Unbounded, Cormorant_Garamond } from "next/font/google";
 import ProgressBar from "@/components/ProgressBar";
 import { LanguageProvider } from "@/lib/LanguageContext";
 import "./globals.css";
@@ -13,10 +13,11 @@ const unbounded = Unbounded({
   display: "swap",
 });
 
-const dmSans = DM_Sans({
-  variable: "--font-dm-sans",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+const cormorant = Cormorant_Garamond({
+  variable: "--font-cormorant",
+  subsets: ["latin", "cyrillic"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
@@ -100,7 +101,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${unbounded.variable} ${dmSans.variable} antialiased`}>
+      <body className={`${unbounded.variable} ${cormorant.variable} antialiased`}>
         <LanguageProvider>
           <ProgressBar />
           {children}

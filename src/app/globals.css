@@ -18,7 +18,7 @@
   --color-dark-light: #2a2a2a;
 
   --font-display: var(--font-unbounded);
-  --font-body: var(--font-dm-sans);
+  --font-body: var(--font-cormorant);
 
   --breakpoint-xs: 480px;
   --breakpoint-sm: 640px;
@@ -44,9 +44,9 @@ html {
 body {
   background: var(--color-white);
   color: var(--color-charcoal);
-  font-family: var(--font-body), system-ui, -apple-system, sans-serif;
+  font-family: var(--font-body), "Georgia", "Times New Roman", serif;
   overflow-x: hidden;
-  line-height: 1.55;
+  line-height: 1.6;
 }
 
 ::selection {

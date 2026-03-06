@@ -7,7 +7,7 @@ import { useLanguage } from "@/lib/LanguageContext";
 
 const uiText = {
   sectionLabel: { ru: "Портфолио", en: "Portfolio" },
-  title: { ru: "Наши работы", en: "Our Works" },
+  title: { ru: "Наши работы", en: "Our Creations" },
   subtitle: {
     ru: "Каждый торт — уникальное произведение кондитерского искусства",
     en: "Each cake is a unique masterpiece of confectionery art",

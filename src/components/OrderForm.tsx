@@ -86,6 +86,12 @@ export default function OrderForm() {
 
   const { t, locale } = useLanguage();
 
+  const minDate = useMemo(() => {
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    return tomorrow.toISOString().split("T")[0];
+  }, []);
+
   const toggleDecoration = (dec: string) => {
     setDecorations((prev) =>
       prev.includes(dec) ? prev.filter((d) => d !== dec) : [...prev, dec]
@@ -485,6 +491,7 @@ export default function OrderForm() {
                   <input
                     type="date"
                     value={date}
+                    min={minDate}
                     onChange={(e) => setDate(e.target.value)}
                     className="w-full border border-border rounded-xl px-4 py-3 text-charcoal font-[family-name:var(--font-body)] text-sm sm:text-base mb-4 bg-white focus:outline-none focus:ring-2 focus:ring-coral/30 focus:border-coral transition-all"
                     data-testid="input-date"
