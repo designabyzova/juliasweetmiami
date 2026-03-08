@@ -29,6 +29,8 @@ const uiText = {
     ru: "Авторские муссовые пирожные — маленькие шедевры",
     en: "Signature mousse pastries — little masterpieces",
   },
+  showMore: { ru: "Показать ещё", en: "Show More" },
+  showLess: { ru: "Свернуть", en: "Show Less" },
   close: { ru: "Закрыть", en: "Close" },
   prev: { ru: "Предыдущее", en: "Previous" },
   next: { ru: "Следующее", en: "Next" },
@@ -41,56 +43,56 @@ type T = { readonly ru: string; readonly en: string };
 type CakeItem = { src: string; alt: T; aspect?: "portrait" };
 
 const BENTO_CAKES: CakeItem[] = [
-  { src: "/cakes-bento/CakeBento_1.png", alt: { ru: "Фисташковый бенто-торт с шоколадными кубиками — авторский муссовый десерт", en: "Pistachio bento cake with chocolate cubes — signature mousse dessert" }, aspect: "portrait" },
-  { src: "/cakes-bento/CakeBento_9.png", alt: { ru: "Красный велюровый бенто-торт в форме сердца — десерт на заказ", en: "Red velvet heart-shaped bento cake — custom dessert" } },
-  { src: "/cakes-bento/CakeBento_20.png", alt: { ru: "Тёмно-синий бенто-торт с золотой надписью Happy Birthday — торт на заказ", en: "Navy blue bento cake with gold Happy Birthday lettering — custom order" }, aspect: "portrait" },
-  { src: "/cakes-bento/CakeBento_17.png", alt: { ru: "Белый элегантный бенто-торт с золотым логотипом — авторский дизайн", en: "White elegant bento cake with gold lettering — luxury design" } },
-  { src: "/cakes-bento/CakeBento_5.png", alt: { ru: "Красный глянцевый бенто-торт из муссовых сфер — авторский дизайн", en: "Red glossy sphere bento cake — signature textured design" } },
-  { src: "/cakes-bento/CakeBento_3.png", alt: { ru: "Нежный розовый бенто-торт на рождение малыша с фигуркой — ручная работа", en: "Delicate pink baby shower bento cake with figurine — handcrafted" }, aspect: "portrait" },
-  { src: "/cakes-bento/CakeBento_12.png", alt: { ru: "Красный велюровый бенто-торт с золотым топпером Happy Birthday", en: "Red velvet bento cake with gold Happy Birthday topper" } },
-  { src: "/cakes-bento/CakeBento_15.png", alt: { ru: "Фиолетовый велюровый бенто-торт с жемчужными бусинами — авторский дизайн", en: "Purple velvet bento cake with pearl bead decorations — signature design" } },
-  { src: "/cakes-bento/CakeBento_7.png", alt: { ru: "Белый бенто-торт с шоколадным рисунком лотоса — элегантный десерт", en: "White bento cake with chocolate lotus design — elegant dessert" } },
-  { src: "/cakes-bento/CakeBento_22.png", alt: { ru: "Розовый бенто-торт в форме сердца с надписью «С днём рождения, мама!»", en: "Pink heart-shaped bento cake with Happy Birthday Mom inscription" }, aspect: "portrait" },
-  { src: "/cakes-bento/CakeBento_8.png", alt: { ru: "Оранжевый бенто-торт на Хэллоуин с шоколадными черепами — креативный дизайн", en: "Orange Halloween bento cake with chocolate skulls — creative design" }, aspect: "portrait" },
-  { src: "/cakes-bento/CakeBento_4.png", alt: { ru: "Белый минималистичный бенто-торт с жемчужным декором — элегантный десерт", en: "White minimalist bento cake with pearl decoration — elegant dessert" } },
-  { src: "/cakes-bento/CakeBento_11.png", alt: { ru: "Синий бенто-торт из муссовых сфер с серебряными буквами — уникальный дизайн", en: "Blue bubble sphere bento cake with silver letters — unique design" }, aspect: "portrait" },
-  { src: "/cakes-bento/CakeBento_14.png", alt: { ru: "Зелёный фисташковый бенто-торт с надписью Happy Thanksgiving", en: "Green pistachio bento cake with Happy Thanksgiving inscription" } },
-  { src: "/cakes-bento/CakeBento_23.png", alt: { ru: "Красный бенто-торт «Love you, baby!» с золотыми сердечками", en: "Red bento cake with Love you baby and gold hearts" } },
-  { src: "/cakes-bento/CakeBento_18.png", alt: { ru: "Белый бенто-торт с фото-принтом и чёрной лентой — персональный десерт", en: "White bento cake with photo print and black ribbon — personalized dessert" }, aspect: "portrait" },
-  { src: "/cakes-bento/CakeBento_16.png", alt: { ru: "Янтарный бенто-торт с надписью Happy Thanksgiving — осенний десерт", en: "Amber bento cake with Happy Thanksgiving script — autumn dessert" } },
-  { src: "/cakes-bento/CakeBento_21.png", alt: { ru: "Красный бенто-торт в форме сердца с жемчужинами на фигурной тарелке", en: "Red heart bento cake with pearl dots on scalloped plate" } },
-  { src: "/cakes-bento/CakeBento_19.png", alt: { ru: "Зелёный бенто-торт матча с золотым топпером Happy Birthday", en: "Green matcha bento cake with gold Happy Birthday topper" }, aspect: "portrait" },
-  { src: "/cakes-bento/CakeBento_2.jpeg", alt: { ru: "Белый велюровый бенто-торт с шоколадной надписью на заказ", en: "White velvet bento cake with custom chocolate lettering" } },
-  { src: "/cakes-bento/CakeBento_13.png", alt: { ru: "Красный бенто-торт в форме сердца с ягодами и жемчужным декором", en: "Red heart bento cake with berry accents and pearl decorations" } },
-  { src: "/cakes-bento/CakeBento_10.png", alt: { ru: "Зелёный бенто-торт с надписью на грузинском языке — торт на заказ", en: "Green bento cake with Georgian script inscription — custom order" } },
-  { src: "/cakes-bento/CakeBento_6.png", alt: { ru: "Красно-белый бенто-торт с серебряным акцентом — авторский дизайн", en: "Red and white bento cake with silver accent — signature design" } },
-  { src: "/cakes-bento/CakeBento_24.png", alt: { ru: "Двухъярусный красно-белый праздничный торт с золотыми звёздами", en: "Two-tier red and white festive cake with gold stars and coconut" }, aspect: "portrait" },
+  { src: "/cakes-bento/bento-pistachio-chocolate-mousse.png", alt: { ru: "Фисташковый бенто-торт с шоколадными кубиками — авторский муссовый десерт", en: "Pistachio bento cake with chocolate cubes — signature mousse dessert" }, aspect: "portrait" },
+  { src: "/cakes-bento/bento-red-velvet-heart.png", alt: { ru: "Красный велюровый бенто-торт в форме сердца — десерт на заказ", en: "Red velvet heart-shaped bento cake — custom dessert" } },
+  { src: "/cakes-bento/bento-navy-gold-birthday.png", alt: { ru: "Тёмно-синий бенто-торт с золотой надписью Happy Birthday — торт на заказ", en: "Navy blue bento cake with gold Happy Birthday lettering — custom order" }, aspect: "portrait" },
+  { src: "/cakes-bento/bento-white-gold-elegant.png", alt: { ru: "Белый элегантный бенто-торт с золотым логотипом — авторский дизайн", en: "White elegant bento cake with gold lettering — luxury design" } },
+  { src: "/cakes-bento/bento-red-glossy-spheres.png", alt: { ru: "Красный глянцевый бенто-торт из муссовых сфер — авторский дизайн", en: "Red glossy sphere bento cake — signature textured design" } },
+  { src: "/cakes-bento/bento-pink-baby-shower.png", alt: { ru: "Нежный розовый бенто-торт на рождение малыша с фигуркой — ручная работа", en: "Delicate pink baby shower bento cake with figurine — handcrafted" }, aspect: "portrait" },
+  { src: "/cakes-bento/bento-red-velvet-birthday.png", alt: { ru: "Красный велюровый бенто-торт с золотым топпером Happy Birthday", en: "Red velvet bento cake with gold Happy Birthday topper" } },
+  { src: "/cakes-bento/bento-purple-velvet-pearls.png", alt: { ru: "Фиолетовый велюровый бенто-торт с жемчужными бусинами — авторский дизайн", en: "Purple velvet bento cake with pearl bead decorations — signature design" } },
+  { src: "/cakes-bento/bento-white-chocolate-lotus.png", alt: { ru: "Белый бенто-торт с шоколадным рисунком лотоса — элегантный десерт", en: "White bento cake with chocolate lotus design — elegant dessert" } },
+  { src: "/cakes-bento/bento-pink-heart-mom.png", alt: { ru: "Розовый бенто-торт в форме сердца с надписью «С днём рождения, мама!»", en: "Pink heart-shaped bento cake with Happy Birthday Mom inscription" }, aspect: "portrait" },
+  { src: "/cakes-bento/bento-orange-halloween.png", alt: { ru: "Оранжевый бенто-торт на Хэллоуин с шоколадными черепами — креативный дизайн", en: "Orange Halloween bento cake with chocolate skulls — creative design" }, aspect: "portrait" },
+  { src: "/cakes-bento/bento-white-pearl-minimal.png", alt: { ru: "Белый минималистичный бенто-торт с жемчужным декором — элегантный десерт", en: "White minimalist bento cake with pearl decoration — elegant dessert" } },
+  { src: "/cakes-bento/bento-blue-bubble-spheres.png", alt: { ru: "Синий бенто-торт из муссовых сфер с серебряными буквами — уникальный дизайн", en: "Blue bubble sphere bento cake with silver letters — unique design" }, aspect: "portrait" },
+  { src: "/cakes-bento/bento-green-thanksgiving.png", alt: { ru: "Зелёный фисташковый бенто-торт с надписью Happy Thanksgiving", en: "Green pistachio bento cake with Happy Thanksgiving inscription" } },
+  { src: "/cakes-bento/bento-red-love-gold-hearts.png", alt: { ru: "Красный бенто-торт «Love you, baby!» с золотыми сердечками", en: "Red bento cake with Love you baby and gold hearts" } },
+  { src: "/cakes-bento/bento-white-photo-print.png", alt: { ru: "Белый бенто-торт с фото-принтом и чёрной лентой — персональный десерт", en: "White bento cake with photo print and black ribbon — personalized dessert" }, aspect: "portrait" },
+  { src: "/cakes-bento/bento-amber-thanksgiving.png", alt: { ru: "Янтарный бенто-торт с надписью Happy Thanksgiving — осенний десерт", en: "Amber bento cake with Happy Thanksgiving script — autumn dessert" } },
+  { src: "/cakes-bento/bento-red-heart-pearls.png", alt: { ru: "Красный бенто-торт в форме сердца с жемчужинами на фигурной тарелке", en: "Red heart bento cake with pearl dots on scalloped plate" } },
+  { src: "/cakes-bento/bento-green-matcha.png", alt: { ru: "Зелёный бенто-торт матча с золотым топпером Happy Birthday", en: "Green matcha bento cake with gold Happy Birthday topper" }, aspect: "portrait" },
+  { src: "/cakes-bento/bento-white-velvet-custom.jpeg", alt: { ru: "Белый велюровый бенто-торт с шоколадной надписью на заказ", en: "White velvet bento cake with custom chocolate lettering" } },
+  { src: "/cakes-bento/bento-red-heart-berries.png", alt: { ru: "Красный бенто-торт в форме сердца с ягодами и жемчужным декором", en: "Red heart bento cake with berry accents and pearl decorations" } },
+  { src: "/cakes-bento/bento-green-georgian.png", alt: { ru: "Зелёный бенто-торт с надписью на грузинском языке — торт на заказ", en: "Green bento cake with Georgian script inscription — custom order" } },
+  { src: "/cakes-bento/bento-red-white-silver.png", alt: { ru: "Красно-белый бенто-торт с серебряным акцентом — авторский дизайн", en: "Red and white bento cake with silver accent — signature design" } },
+  { src: "/cakes-bento/bento-two-tier-festive.png", alt: { ru: "Двухъярусный красно-белый праздничный торт с золотыми звёздами", en: "Two-tier red and white festive cake with gold stars and coconut" }, aspect: "portrait" },
 ];
 
 const CELEBRATION_CAKES: CakeItem[] = [
-  { src: "/cakes-celebration/CakeCelebration1.png", alt: { ru: "Двухъярусный розовый торт со свежей малиной и золотыми акцентами — торт на заказ", en: "Two-tier pink raspberry celebration cake with gold accents — custom order" } },
-  { src: "/cakes-celebration/Cake_6.jpeg", alt: { ru: "Медовый торт ручной работы с натуральными сотами, мёдом и пчёлками из шоколада", en: "Handcrafted honey cake with real honeycomb, honey drips and chocolate bees" } },
-  { src: "/cakes-celebration/Cake_2.png", alt: { ru: "Бирюзовый праздничный торт на заказ с фиолетовым кремом и золотыми подтёками", en: "Turquoise birthday cake with purple cream border and gold drip decoration" } },
-  { src: "/cakes-celebration/Cake_7.jpeg", alt: { ru: "Фисташковый велюровый торт с голубикой и эвкалиптом — авторский дизайн", en: "Pistachio velvet cake with fresh blueberries and eucalyptus — signature design" } },
-  { src: "/cakes-celebration/Cake_4.png", alt: { ru: "Фисташковый торт на день рождения с голубикой и золотой надписью Happy Birthday", en: "Pistachio birthday cake with blueberries and gold Happy Birthday inscription" } },
+  { src: "/cakes-celebration/celebration-pink-raspberry-two-tier.png", alt: { ru: "Двухъярусный розовый торт со свежей малиной и золотыми акцентами — торт на заказ", en: "Two-tier pink raspberry celebration cake with gold accents — custom order" } },
+  { src: "/cakes-celebration/celebration-honey-honeycomb.jpeg", alt: { ru: "Медовый торт ручной работы с натуральными сотами, мёдом и пчёлками из шоколада", en: "Handcrafted honey cake with real honeycomb, honey drips and chocolate bees" } },
+  { src: "/cakes-celebration/celebration-turquoise-gold-drip.png", alt: { ru: "Бирюзовый праздничный торт на заказ с фиолетовым кремом и золотыми подтёками", en: "Turquoise birthday cake with purple cream border and gold drip decoration" } },
+  { src: "/cakes-celebration/celebration-pistachio-blueberry.jpeg", alt: { ru: "Фисташковый велюровый торт с голубикой и эвкалиптом — авторский дизайн", en: "Pistachio velvet cake with fresh blueberries and eucalyptus — signature design" } },
+  { src: "/cakes-celebration/celebration-pistachio-birthday.png", alt: { ru: "Фисташковый торт на день рождения с голубикой и золотой надписью Happy Birthday", en: "Pistachio birthday cake with blueberries and gold Happy Birthday inscription" } },
 ];
 
 const DESSERTS: CakeItem[] = [
-  { src: "/desserts/Desserts_13.png", alt: { ru: "Разноцветные авторские муссовые десерты-ракушки ручной работы", en: "Rainbow handcrafted mousse shell desserts — signature collection" } },
-  { src: "/desserts/Desserts_2.jpeg", alt: { ru: "Коллекция авторских муссовых десертов с геометрическим дизайном на заказ", en: "Signature geometric mousse dessert collection — custom order" }, aspect: "portrait" },
-  { src: "/desserts/Desserts_6.png", alt: { ru: "Розовый сферический муссовый десерт из ягод — авторская кондитерская", en: "Pink spherical berry mousse dessert — artisan confectionery" }, aspect: "portrait" },
-  { src: "/desserts/Desserts_1.png", alt: { ru: "Фисташковые и красные геометрические муссовые десерты — авторский дизайн", en: "Pistachio and red geometric mousse desserts — signature design" } },
-  { src: "/desserts/Desserts_7.png", alt: { ru: "Шоколадный и лимонный муссовые десерты ручной работы на тарелке", en: "Handcrafted chocolate and lemon mousse desserts" } },
-  { src: "/desserts/Desserts_3.png", alt: { ru: "Фисташковые муссовые спирали и персиковые десерты — авторская коллекция", en: "Pistachio mousse spirals and peach desserts — artisan collection" }, aspect: "portrait" },
-  { src: "/desserts/Desserts_12.png", alt: { ru: "Красно-белые геометрические муссовые десерты на заказ", en: "Red and white geometric mousse desserts — custom order" } },
-  { src: "/desserts/Desserts_4.png", alt: { ru: "Лимонные муссовые десерты в форме сердца и куба — ручная работа", en: "Lemon mousse heart and cube desserts — handcrafted" } },
-  { src: "/desserts/Desserts_11.png", alt: { ru: "Ассорти авторских муссовых десертов с ягодами и сердечками", en: "Assorted mousse desserts with berries and hearts — pastry art" } },
-  { src: "/desserts/Desserts_5.png", alt: { ru: "Оранжевый купольный муссовый десерт ручной работы", en: "Orange dome mousse dessert — handcrafted pastry" } },
-  { src: "/desserts/Desserts_10.png", alt: { ru: "Шоколадные муссовые десерты с лепестками роз — авторская подача", en: "Chocolate mousse desserts with rose petals — signature presentation" } },
-  { src: "/desserts/Desserts_8.png", alt: { ru: "Трио муссовых десертов: красный, белый и лавандовый — кондитерское искусство", en: "Mousse dessert trio: red, white and lavender — confectionery art" } },
-  { src: "/desserts/Desserts_9.png", alt: { ru: "Апельсиновые купольные десерты — авторские муссовые пирожные на заказ", en: "Orange dome desserts — signature mousse pastries to order" } },
-  { src: "/desserts/Desserts_14.png", alt: { ru: "Красно-оранжевые авторские муссовые десерты — коллекция ручной работы", en: "Red and orange signature mousse desserts — handcrafted collection" } },
-  { src: "/desserts/Desserts_15.png", alt: { ru: "Фисташковый муссовый десерт в форме сердца — авторское пирожное", en: "Pistachio mousse heart dessert — artisan pastry" } },
+  { src: "/desserts/mousse-dessert-rainbow-shells.png", alt: { ru: "Разноцветные авторские муссовые десерты-ракушки ручной работы", en: "Rainbow handcrafted mousse shell desserts — signature collection" } },
+  { src: "/desserts/mousse-dessert-geometric-collection.jpeg", alt: { ru: "Коллекция авторских муссовых десертов с геометрическим дизайном на заказ", en: "Signature geometric mousse dessert collection — custom order" }, aspect: "portrait" },
+  { src: "/desserts/mousse-dessert-pink-berry-sphere.png", alt: { ru: "Розовый сферический муссовый десерт из ягод — авторская кондитерская", en: "Pink spherical berry mousse dessert — artisan confectionery" }, aspect: "portrait" },
+  { src: "/desserts/mousse-dessert-pistachio-red-geometric.png", alt: { ru: "Фисташковые и красные геометрические муссовые десерты — авторский дизайн", en: "Pistachio and red geometric mousse desserts — signature design" } },
+  { src: "/desserts/mousse-dessert-chocolate-lemon.png", alt: { ru: "Шоколадный и лимонный муссовые десерты ручной работы на тарелке", en: "Handcrafted chocolate and lemon mousse desserts" } },
+  { src: "/desserts/mousse-dessert-pistachio-spirals.png", alt: { ru: "Фисташковые муссовые спирали и персиковые десерты — авторская коллекция", en: "Pistachio mousse spirals and peach desserts — artisan collection" }, aspect: "portrait" },
+  { src: "/desserts/mousse-dessert-red-white-geometric.png", alt: { ru: "Красно-белые геометрические муссовые десерты на заказ", en: "Red and white geometric mousse desserts — custom order" } },
+  { src: "/desserts/mousse-dessert-lemon-heart-cube.png", alt: { ru: "Лимонные муссовые десерты в форме сердца и куба — ручная работа", en: "Lemon mousse heart and cube desserts — handcrafted" } },
+  { src: "/desserts/mousse-dessert-berries-hearts.png", alt: { ru: "Ассорти авторских муссовых десертов с ягодами и сердечками", en: "Assorted mousse desserts with berries and hearts — pastry art" } },
+  { src: "/desserts/mousse-dessert-orange-dome.png", alt: { ru: "Оранжевый купольный муссовый десерт ручной работы", en: "Orange dome mousse dessert — handcrafted pastry" } },
+  { src: "/desserts/mousse-dessert-chocolate-rose.png", alt: { ru: "Шоколадные муссовые десерты с лепестками роз — авторская подача", en: "Chocolate mousse desserts with rose petals — signature presentation" } },
+  { src: "/desserts/mousse-dessert-trio-lavender.png", alt: { ru: "Трио муссовых десертов: красный, белый и лавандовый — кондитерское искусство", en: "Mousse dessert trio: red, white and lavender — confectionery art" } },
+  { src: "/desserts/mousse-dessert-orange-domes.png", alt: { ru: "Апельсиновые купольные десерты — авторские муссовые пирожные на заказ", en: "Orange dome desserts — signature mousse pastries to order" } },
+  { src: "/desserts/mousse-dessert-red-orange.png", alt: { ru: "Красно-оранжевые авторские муссовые десерты — коллекция ручной работы", en: "Red and orange signature mousse desserts — handcrafted collection" } },
+  { src: "/desserts/mousse-dessert-pistachio-heart.png", alt: { ru: "Фисташковый муссовый десерт в форме сердца — авторское пирожное", en: "Pistachio mousse heart dessert — artisan pastry" } },
 ];
 
 const ALL_ITEMS: CakeItem[] = [
@@ -350,6 +352,8 @@ function MasonryGrid({
               fill
               className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
               sizes="(max-width: 640px) 50vw, (max-width: 960px) 33vw, 20vw"
+              placeholder="blur"
+              blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjZjVlZWU4Ii8+PC9zdmc+"
             />
             {/* Hover overlay */}
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300 flex items-center justify-center">
@@ -384,10 +388,17 @@ function MasonryGrid({
 export default function Portfolio() {
   const { t } = useLanguage();
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [showAllBento, setShowAllBento] = useState(false);
+  const [showAllDesserts, setShowAllDesserts] = useState(false);
+
+  const INITIAL_COUNT = 8;
 
   const openLightbox = useCallback((globalIndex: number) => {
     setLightboxIndex(globalIndex);
   }, []);
+
+  const visibleBento = showAllBento ? BENTO_CAKES : BENTO_CAKES.slice(0, INITIAL_COUNT);
+  const visibleDesserts = showAllDesserts ? DESSERTS : DESSERTS.slice(0, INITIAL_COUNT);
 
   const bentoStart = 0;
   const celebrationStart = BENTO_CAKES.length;
@@ -425,11 +436,34 @@ export default function Portfolio() {
               </p>
             </div>
             <MasonryGrid
-              items={BENTO_CAKES}
+              items={visibleBento}
               onImageClick={openLightbox}
               t={t}
               startIndex={bentoStart}
             />
+            {BENTO_CAKES.length > INITIAL_COUNT && (
+              <div className="text-center mt-6">
+                <button
+                  onClick={() => setShowAllBento(!showAllBento)}
+                  className="inline-flex items-center gap-2 text-sm font-medium text-coral hover:text-coral-dark transition-colors font-[family-name:var(--font-body)] border border-coral/20 hover:border-coral/40 px-5 py-2.5 rounded-full"
+                >
+                  {t(showAllBento ? uiText.showLess : uiText.showMore)}
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className={`transition-transform duration-300 ${showAllBento ? "rotate-180" : ""}`}
+                  >
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
+                </button>
+              </div>
+            )}
           </div>
 
           {/* ──── Праздничные Торты ──── */}
@@ -463,6 +497,8 @@ export default function Portfolio() {
                       fill
                       className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                       sizes="(max-width: 640px) 50vw, (max-width: 960px) 33vw, 20vw"
+                      placeholder="blur"
+                      blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjZjVlZWU4Ii8+PC9zdmc+"
                     />
                     <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300 flex items-center justify-center">
                       <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 scale-75 group-hover:scale-100 shadow-lg">
@@ -491,11 +527,34 @@ export default function Portfolio() {
               </p>
             </div>
             <MasonryGrid
-              items={DESSERTS}
+              items={visibleDesserts}
               onImageClick={openLightbox}
               t={t}
               startIndex={dessertsStart}
             />
+            {DESSERTS.length > INITIAL_COUNT && (
+              <div className="text-center mt-6">
+                <button
+                  onClick={() => setShowAllDesserts(!showAllDesserts)}
+                  className="inline-flex items-center gap-2 text-sm font-medium text-coral hover:text-coral-dark transition-colors font-[family-name:var(--font-body)] border border-coral/20 hover:border-coral/40 px-5 py-2.5 rounded-full"
+                >
+                  {t(showAllDesserts ? uiText.showLess : uiText.showMore)}
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className={`transition-transform duration-300 ${showAllDesserts ? "rotate-180" : ""}`}
+                  >
+                    <path d="M6 9l6 6 6-6" />
+                  </svg>
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </section>

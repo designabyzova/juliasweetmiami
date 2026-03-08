@@ -25,11 +25,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default:
-      "Sweet Balance — Luxurious Mousse Desserts in Miami | Роскошные муссовые десерты в Майами",
+      "Sweet Balance — Luxurious Mousse Desserts in Miami | Custom Cakes from $75",
     template: "%s | Sweet Balance",
   },
   description:
-    "Sweet Balance — luxurious European mousse desserts with minimal sugar by Juliia Sweet in Miami. European recipes, pure flavor, custom cakes for birthdays, weddings & celebrations. From $75. Роскошные муссовые десерты в Майами — европейские рецепты, минимум сахара, чистый вкус.",
+    "Sweet Balance by Juliia Sweet — luxurious European mousse desserts in Miami. Minimal sugar, pure flavor. Custom bento cakes, celebration cakes & pastries for birthdays, weddings & events. From $75.",
   keywords: [
     "custom cakes Miami",
     "mousse desserts Miami",

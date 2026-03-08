@@ -222,6 +222,12 @@ export default function Footer() {
                 <a href="https://www.instagram.com/julia_sweet_miami?igsh=MWV2ZjZ4NnNjZnhqMg==" target="_blank" rel="noopener noreferrer" className="text-charcoal/55 hover:text-coral transition-colors">
                   Instagram
                 </a>
+                <a href="https://www.instagram.com/julia_sweet_miami?igsh=MWV2ZjZ4NnNjZnhqMg==" target="_blank" rel="noopener noreferrer" className="text-coral/70 hover:text-coral text-xs transition-colors flex items-center gap-1">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                  {t({ ru: "Подписаться", en: "Follow us" })}
+                </a>
                 <p className="text-charcoal/35 mt-2 flex items-center gap-1.5">
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />

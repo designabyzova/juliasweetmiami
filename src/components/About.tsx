@@ -30,9 +30,9 @@ const text = {
     ru: "Это современная европейская кондитерская философия: чистота вкуса, лёгкость текстуры и утончённая подача.",
     en: "This is the modern European confectionery philosophy: purity of flavor, lightness of texture, and refined presentation.",
   },
-  diffTitle1: { ru: "Десерт как", en: "Dessert as an" },
-  diffTitleAccent: { ru: "эстетическое", en: "Aesthetic" },
-  diffTitle2: { ru: "наслаждение", en: "Experience" },
+  diffTitle1: { ru: "Почему", en: "Why" },
+  diffTitleAccent: { ru: "Sweet", en: "Sweet" },
+  diffTitle2: { ru: "Balance", en: "Balance" },
   diffIntro1: {
     ru: "Мои десерты не перегружают.",
     en: "My desserts never overwhelm.",
