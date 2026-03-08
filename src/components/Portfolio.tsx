@@ -313,9 +313,9 @@ function Lightbox({
   );
 }
 
-/* ---------- Masonry Gallery Grid ---------- */
+/* ---------- Uniform Gallery Grid ---------- */
 
-function MasonryGrid({
+function UniformGrid({
   items,
   onImageClick,
   t,
@@ -327,11 +327,11 @@ function MasonryGrid({
   startIndex: number;
 }) {
   return (
-    <div className="columns-2 sm:columns-3 lg:columns-4 xl:columns-5 gap-3 sm:gap-4">
+    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
       {items.map((item, i) => (
         <div
           key={item.src}
-          className="mb-3 sm:mb-4 break-inside-avoid group cursor-pointer"
+          className="group cursor-pointer"
           onClick={() => onImageClick(startIndex + i)}
           role="button"
           tabIndex={0}
@@ -341,11 +341,7 @@ function MasonryGrid({
           aria-label={t(item.alt)}
           data-testid={`portfolio-item-${startIndex + i}`}
         >
-          <div
-            className={`relative overflow-hidden rounded-2xl sm:rounded-[20px] lg:rounded-3xl ${
-              item.aspect === "portrait" ? "aspect-[3/4]" : "aspect-square"
-            }`}
-          >
+          <div className="relative overflow-hidden rounded-2xl sm:rounded-[20px] lg:rounded-3xl aspect-[4/5]">
             <Image
               src={item.src}
               alt={t(item.alt)}
@@ -355,20 +351,9 @@ function MasonryGrid({
               placeholder="blur"
               blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjZjVlZWU4Ii8+PC9zdmc+"
             />
-            {/* Hover overlay */}
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300 flex items-center justify-center">
               <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 scale-75 group-hover:scale-100 shadow-lg">
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="text-charcoal"
-                >
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-charcoal">
                   <circle cx="11" cy="11" r="8" />
                   <line x1="21" y1="21" x2="16.65" y2="16.65" />
                   <line x1="11" y1="8" x2="11" y2="14" />
@@ -391,7 +376,7 @@ export default function Portfolio() {
   const [showAllBento, setShowAllBento] = useState(false);
   const [showAllDesserts, setShowAllDesserts] = useState(false);
 
-  const INITIAL_COUNT = 8;
+  const INITIAL_COUNT = 10;
 
   const openLightbox = useCallback((globalIndex: number) => {
     setLightboxIndex(globalIndex);
@@ -435,7 +420,7 @@ export default function Portfolio() {
                 {t(uiText.bentoSubtitle)}
               </p>
             </div>
-            <MasonryGrid
+            <UniformGrid
               items={visibleBento}
               onImageClick={openLightbox}
               t={t}
@@ -476,44 +461,12 @@ export default function Portfolio() {
                 {t(uiText.celebrationSubtitle)}
               </p>
             </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
-              {CELEBRATION_CAKES.map((item, i) => (
-                <div
-                  key={item.src}
-                  className="group cursor-pointer"
-                  onClick={() => openLightbox(celebrationStart + i)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") openLightbox(celebrationStart + i);
-                  }}
-                  aria-label={t(item.alt)}
-                  data-testid={`portfolio-item-${celebrationStart + i}`}
-                >
-                  <div className="relative overflow-hidden rounded-2xl sm:rounded-[20px] lg:rounded-3xl aspect-[4/5]">
-                    <Image
-                      src={item.src}
-                      alt={t(item.alt)}
-                      fill
-                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-                      sizes="(max-width: 640px) 50vw, (max-width: 960px) 33vw, 20vw"
-                      placeholder="blur"
-                      blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTAiIGhlaWdodD0iMTAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIiBmaWxsPSIjZjVlZWU4Ii8+PC9zdmc+"
-                    />
-                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-300 flex items-center justify-center">
-                      <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-white/80 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 scale-75 group-hover:scale-100 shadow-lg">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-charcoal">
-                          <circle cx="11" cy="11" r="8" />
-                          <line x1="21" y1="21" x2="16.65" y2="16.65" />
-                          <line x1="11" y1="8" x2="11" y2="14" />
-                          <line x1="8" y1="11" x2="14" y2="11" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <UniformGrid
+              items={CELEBRATION_CAKES}
+              onImageClick={openLightbox}
+              t={t}
+              startIndex={celebrationStart}
+            />
           </div>
 
           {/* ──── Десерты ──── */}
@@ -526,7 +479,7 @@ export default function Portfolio() {
                 {t(uiText.dessertsSubtitle)}
               </p>
             </div>
-            <MasonryGrid
+            <UniformGrid
               items={visibleDesserts}
               onImageClick={openLightbox}
               t={t}
