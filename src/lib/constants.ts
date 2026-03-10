@@ -205,12 +205,22 @@ export const FAQ_ITEMS = [
   },
   {
     question: {
-      ru: "Учитываете ли вы аллергии и диеты?",
-      en: "Do you accommodate allergies or dietary restrictions?",
+      ru: "Содержат ли ваши торты аллергены?",
+      en: "Do your cakes contain allergens?",
     },
     answer: {
-      ru: "Наши муссовые торты готовятся с использованием молочных продуктов, яиц и орехов. Мы можем скорректировать отдельные элементы — например, исключить определённые орехи или подобрать альтернативные вкусы — но не можем гарантировать полностью безаллергенную среду. Укажите аллергии в заказе, и мы сделаем всё возможное.",
-      en: "Our mousse cakes are crafted with dairy, eggs, and nuts as core ingredients. While we can adjust certain elements — such as omitting specific nuts or using alternative flavors — we cannot guarantee a fully allergen-free environment. Please mention any allergies in your order, and we'll do our best to accommodate.",
+      ru: "Наши муссовые торты создаются на основе молочных продуктов, яиц и орехов в общей кухне, поэтому мы не можем гарантировать полностью безаллергенный продукт. Чтобы вы были полностью довольны, укажите любые пищевые аллергии в форме заказа — мы скорректируем рецепт, насколько это возможно.",
+      en: "Our mousse cakes are crafted with dairy, eggs, and tree nuts in a shared kitchen, so we cannot guarantee an allergen-free product. To ensure you're completely satisfied, please note any food allergies in the order form — we'll adjust the recipe wherever possible to suit your needs.",
+    },
+  },
+  {
+    question: {
+      ru: "Содержат ли ваши торты искусственные красители?",
+      en: "Do your cakes contain artificial food coloring?",
+    },
+    answer: {
+      ru: "Мы используем пищевые красители для создания фирменных велюровых и глянцевых покрытий. Если вы предпочитаете натуральную палитру — нежный розовый из свёклы, насыщенный коричневый из тёмного бельгийского шоколада — просто укажите это при оформлении заказа, и мы адаптируем дизайн.",
+      en: "We use food-safe colorings to create our signature velvet and mirror glaze finishes. If you prefer a natural palette — soft pink from beetroot, rich brown from dark Belgian chocolate — just mention it when placing your order, and we'll adapt the design.",
     },
   },
   {
