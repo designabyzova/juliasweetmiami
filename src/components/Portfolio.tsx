@@ -70,7 +70,7 @@ const BENTO_CAKES: CakeItem[] = [
 ];
 
 const CELEBRATION_CAKES: CakeItem[] = [
-  { src: "/cakes-celebration/celebration-pink-raspberry-two-tier.png", alt: { ru: "Двухъярусный розовый торт со свежей малиной и золотыми акцентами — торт на заказ", en: "Two-tier pink raspberry celebration cake with gold accents — custom order" } },
+  { src: "/cakes-celebration/celebration-honey-raspberry-blueberry.webp", alt: { ru: "Классический медовик с крошкой, свежей малиной, голубикой и мятой — Juliia Sweet торт на заказ", en: "Classic honey crumb cake topped with fresh raspberries, blueberries and mint — Juliia Sweet Miami custom order" } },
   { src: "/cakes-celebration/celebration-honey-honeycomb.jpeg", alt: { ru: "Медовый торт ручной работы с натуральными сотами, мёдом и пчёлками из шоколада", en: "Handcrafted honey cake with real honeycomb, honey drips and chocolate bees" } },
   { src: "/cakes-celebration/celebration-turquoise-gold-drip.png", alt: { ru: "Бирюзовый праздничный торт на заказ с фиолетовым кремом и золотыми подтёками", en: "Turquoise birthday cake with purple cream border and gold drip decoration" } },
   { src: "/cakes-celebration/celebration-pistachio-blueberry.jpeg", alt: { ru: "Фисташковый велюровый торт с голубикой и эвкалиптом — авторский дизайн", en: "Pistachio velvet cake with fresh blueberries and eucalyptus — signature design" } },

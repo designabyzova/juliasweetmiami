@@ -1,6 +1,7 @@
 "use client";
 
 import { useLanguage } from "@/lib/LanguageContext";
+import { usePhone } from "@/lib/usePhone";
 import ScrollReveal from "./ScrollReveal";
 
 const text = {
@@ -9,11 +10,14 @@ const text = {
   whatsappAction: { ru: "Написать сообщение", en: "Send a message" },
   telegramAction: { ru: "Написать в Telegram", en: "Message on Telegram" },
   instagramAction: { ru: "Смотреть работы", en: "View portfolio" },
+  phoneTitle: { ru: "Телефон", en: "Phone" },
+  phoneAction: { ru: "Позвонить нам", en: "Call us" },
   workingHours: { ru: "Работаем каждый день с 9:00 до 21:00", en: "Open every day from 9:00 AM to 9:00 PM" },
 };
 
 export default function Contact() {
   const { t } = useLanguage();
+  const { ref: phoneRef, call: phoneCall } = usePhone();
 
   return (
     <section
@@ -35,7 +39,7 @@ export default function Contact() {
           </div>
         </ScrollReveal>
 
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 lg:gap-8 max-w-3xl mx-auto">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 max-w-4xl mx-auto">
           <ScrollReveal delay={0.1}>
             <a
               href="https://wa.me/13054815910"
@@ -83,7 +87,7 @@ export default function Contact() {
               href="https://www.instagram.com/julia_sweet_miami?igsh=MWV2ZjZ4NnNjZnhqMg=="
               target="_blank"
               rel="noopener noreferrer"
-              className="group block bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 lg:p-8 text-center shadow-md shadow-black/5 border border-border hover:shadow-xl hover:shadow-coral/10 transition-all duration-300 hover:-translate-y-1 sm:col-span-2 md:col-span-1"
+              className="group block bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 lg:p-8 text-center shadow-md shadow-black/5 border border-border hover:shadow-xl hover:shadow-coral/10 transition-all duration-300 hover:-translate-y-1"
             >
               <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-pink-50 flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="#E4405F" className="sm:w-7 sm:h-7">
@@ -98,10 +102,30 @@ export default function Contact() {
               </p>
             </a>
           </ScrollReveal>
+
+          <ScrollReveal delay={0.4}>
+            <button
+              onClick={phoneCall}
+              type="button"
+              className="group block w-full bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 lg:p-8 text-center shadow-md shadow-black/5 border border-border hover:shadow-xl hover:shadow-coral/10 transition-all duration-300 hover:-translate-y-1"
+            >
+              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl sm:rounded-2xl bg-coral/5 flex items-center justify-center mx-auto mb-3 sm:mb-4 group-hover:scale-110 transition-transform">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="#ff8576" className="sm:w-7 sm:h-7">
+                  <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                </svg>
+              </div>
+              <h3 className="font-[family-name:var(--font-display)] font-bold text-base sm:text-lg text-charcoal mb-1">
+                {t(text.phoneTitle)}
+              </h3>
+              <p className="text-gray text-xs sm:text-sm font-[family-name:var(--font-body)]">
+                <span ref={phoneRef} />
+              </p>
+            </button>
+          </ScrollReveal>
         </div>
 
         {/* Working Hours */}
-        <ScrollReveal delay={0.4}>
+        <ScrollReveal delay={0.5}>
           <div className="text-center mt-10 sm:mt-12">
             <p className="text-gray text-xs sm:text-sm font-[family-name:var(--font-body)]">
               {t(text.workingHours)}

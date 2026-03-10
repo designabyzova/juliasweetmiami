@@ -102,8 +102,8 @@ export const FLAVORS = [
   {
     name: { ru: "Виски-яблоко", en: "Whiskey-Apple" },
     description: {
-      ru: "Яблочное конфи с виски, карамельный мусс с орехами, бисквит с корицей",
-      en: "Apple & whiskey confit, caramel mousse with nuts, cinnamon sponge",
+      ru: "Яблочная карамель с виски, мусс из молочного шоколада, брауни",
+      en: "Apple caramel with whiskey, milk chocolate mousse, brownie",
     },
     accent: "#e5d4b0",
     emoji: "🍏",
