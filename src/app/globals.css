@@ -145,6 +145,11 @@ body {
   90% { transform: translate(-10%, 10%); }
 }
 
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
 /* ── Utility animations ── */
 .animate-float { animation: float 6s ease-in-out infinite; }
 .animate-float-reverse { animation: float-reverse 8s ease-in-out infinite; }
