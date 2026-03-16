@@ -229,7 +229,7 @@ export default function Reviews() {
                   </p>
                   <div className="mt-1 flex gap-0.5">
                     {[...Array(5)].map((_, i) => (
-                      <svg key={i} width="8" height="8" viewBox="0 0 24 24" fill="#C4705A" className="sm:w-2.5 sm:h-2.5">
+                      <svg key={i} width="8" height="8" viewBox="0 0 24 24" fill="#D4756A" className="sm:w-2.5 sm:h-2.5">
                         <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
                       </svg>
                     ))}
@@ -366,7 +366,7 @@ function ReviewCard({
 
       <div className="mb-3 sm:mb-4 flex gap-1">
         {Array.from({ length: review.rating }).map((_, i) => (
-          <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill="#C4705A" stroke="none" className="sm:w-4 sm:h-4">
+          <svg key={i} width="14" height="14" viewBox="0 0 24 24" fill="#D4756A" stroke="none" className="sm:w-4 sm:h-4">
             <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
           </svg>
         ))}
