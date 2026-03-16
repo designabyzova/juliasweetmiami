@@ -46,21 +46,29 @@ export default function Header() {
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-white/90 backdrop-blur-md shadow-sm"
+            ? "backdrop-blur-md shadow-sm"
             : "bg-transparent"
         }`}
+        style={scrolled ? { background: "rgba(253,246,240,0.96)", boxShadow: "0 1px 0 rgba(44,24,16,0.06), 0 4px 24px rgba(44,24,16,0.08)" } : undefined}
       >
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between gap-4 h-14 sm:h-[60px] lg:h-[70px]">
             {/* Logo */}
             <button
               onClick={() => handleNavClick("#hero")}
-              className="flex-shrink-0 hover:scale-[1.03] transition-transform duration-200"
+              className="flex-shrink-0 hover:opacity-80 transition-opacity duration-200"
             >
-              <span className="font-[family-name:var(--font-display)] text-lg sm:text-xl lg:text-[22px] font-black tracking-normal leading-none">
+              <span className="font-[family-name:var(--font-display)] text-lg sm:text-xl lg:text-[22px] font-bold tracking-tight leading-none">
                 <span className="text-charcoal">Sweet</span>
                 {" "}
-                <span className="text-coral">Balance</span>
+                <span
+                  className="italic"
+                  style={{
+                    background: "linear-gradient(135deg, var(--color-coral) 0%, var(--color-gold) 100%)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                  }}
+                >Balance</span>
               </span>
             </button>
 
@@ -70,7 +78,7 @@ export default function Header() {
                 <button
                   key={item.href}
                   onClick={() => handleNavClick(item.href)}
-                  className="text-sm font-medium text-gray hover:text-coral transition-colors duration-200 font-[family-name:var(--font-body)]"
+                  className="text-sm font-[family-name:var(--font-ui)] font-normal text-gray hover:text-coral transition-colors duration-200 tracking-wide"
                 >
                   {t(item.label)}
                 </button>
@@ -82,7 +90,7 @@ export default function Header() {
               <LanguageSwitcher />
               <button
                 onClick={() => handleNavClick("#order")}
-                className="bg-coral hover:bg-coral-dark text-white px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 hover:scale-105"
+                className="bg-coral hover:bg-coral-dark text-white px-5 py-2.5 rounded-full text-sm font-[family-name:var(--font-ui)] font-bold tracking-wide transition-all duration-200 hover:shadow-lg hover:shadow-coral/30 active:scale-[0.97]"
               >
                 {t({ ru: "Заказать торт", en: "Order Cake" })}
               </button>

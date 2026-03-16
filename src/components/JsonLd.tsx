@@ -1,6 +1,6 @@
 import { FAQ_ITEMS } from "@/lib/constants";
 
-const SITE_URL = "https://yuliia-sweet.vercel.app";
+const SITE_URL = "https://sweetbalancemiami.com";
 
 export default function JsonLd() {
   const localBusiness = {
@@ -12,7 +12,7 @@ export default function JsonLd() {
       "Luxurious European mousse desserts with minimal sugar by pastry chef Juliia Sweet in Miami. Custom cakes for birthdays, weddings, and celebrations.",
     url: SITE_URL,
     telephone: "+13054815910",
-    image: `${SITE_URL}/hero-juliia.webp`,
+    image: `${SITE_URL}/og-sweet-balance.jpg`,
     address: {
       "@type": "PostalAddress",
       addressLocality: "Miami",
@@ -64,7 +64,7 @@ export default function JsonLd() {
       "@type": "Brand",
       name: "Sweet Balance",
     },
-    image: `${SITE_URL}/hero-juliia.webp`,
+    image: `${SITE_URL}/og-sweet-balance.jpg`,
     offers: {
       "@type": "AggregateOffer",
       priceCurrency: "USD",

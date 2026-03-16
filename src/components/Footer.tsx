@@ -38,15 +38,16 @@ export default function Footer() {
       data-testid="footer"
       className="relative overflow-hidden"
       style={{
-        background: "linear-gradient(175deg, #fff5f0 0%, #fef0ea 25%, #fce8e0 50%, #fae0d8 75%, #f5d5ca 100%)",
+        background: "linear-gradient(175deg, #F5EDE4 0%, #F0E5D8 25%, #EBE0D2 55%, #E5D8C8 100%)",
       }}
     >
       {/* Decorative top line */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-coral/20 to-transparent" />
+      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, #C4705A 30%, #C9956A 70%, transparent)" }} />
 
-      {/* Subtle blobs */}
-      <div className="absolute top-10 -right-20 w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] bg-coral/5 rounded-full blur-3xl" />
-      <div className="absolute bottom-10 -left-16 w-[180px] h-[180px] sm:w-[250px] sm:h-[250px] bg-pink-light/30 rounded-full blur-3xl" />
+      {/* Warm glow — top right */}
+      <div className="absolute top-0 -right-20 w-[300px] h-[300px] sm:w-[450px] sm:h-[450px] rounded-full blur-3xl pointer-events-none" style={{ background: "radial-gradient(circle, rgba(196,112,90,0.08) 0%, transparent 70%)" }} />
+      {/* Gold warmth — bottom left */}
+      <div className="absolute bottom-0 -left-16 w-[250px] h-[250px] sm:w-[350px] sm:h-[350px] rounded-full blur-3xl pointer-events-none" style={{ background: "radial-gradient(circle, rgba(201,149,106,0.1) 0%, transparent 70%)" }} />
 
       <div className="relative py-10 sm:py-14 lg:py-16">
         <div className="max-w-[1200px] mx-auto px-6 sm:px-6 lg:px-8">
@@ -59,13 +60,20 @@ export default function Footer() {
                 onClick={() => handleNavClick("#hero")}
                 className="mb-3 inline-block hover:scale-[1.03] transition-transform duration-200"
               >
-                <span className="font-[family-name:var(--font-display)] text-xl font-black tracking-normal leading-none">
+                <span className="font-[family-name:var(--font-display)] text-xl font-bold tracking-tight leading-none">
                   <span className="text-charcoal">Sweet</span>
                   {" "}
-                  <span className="text-coral">Balance</span>
+                  <span
+                    className="italic"
+                    style={{
+                      background: "linear-gradient(135deg, var(--color-coral) 0%, var(--color-gold) 100%)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                  >Balance</span>
                 </span>
               </button>
-              <p className="text-charcoal/50 text-xs leading-relaxed font-[family-name:var(--font-body)] max-w-[260px] mx-auto">
+              <p className="text-charcoal/50 text-xs leading-relaxed font-[family-name:var(--font-ui)] max-w-[260px] mx-auto">
                 {t(text.brandDescription)}
               </p>
               {/* Social icons */}
@@ -109,7 +117,7 @@ export default function Footer() {
                   aria-label="Phone"
                   className="w-10 h-10 rounded-xl bg-white/70 border border-white/80 flex items-center justify-center hover:bg-white transition-all duration-200"
                 >
-                  <svg width="17" height="17" viewBox="0 0 24 24" fill="#ff8576">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="#C4705A">
                     <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
                   </svg>
                 </button>
@@ -126,7 +134,7 @@ export default function Footer() {
                   <button
                     key={item.href}
                     onClick={() => handleNavClick(item.href)}
-                    className="text-center text-charcoal/55 hover:text-coral text-xs transition-colors font-[family-name:var(--font-body)] py-1.5"
+                    className="text-center text-charcoal/55 hover:text-coral text-xs transition-colors font-[family-name:var(--font-ui)] py-1.5"
                   >
                     {t(item.label)}
                   </button>
@@ -139,7 +147,7 @@ export default function Footer() {
               <div className="flex items-center justify-between mb-3">
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                  <p className="text-xs text-charcoal/70 font-[family-name:var(--font-body)] font-medium">
+                  <p className="text-xs text-charcoal/70 font-[family-name:var(--font-ui)] font-medium">
                     {t(text.everyDay)}
                   </p>
                 </div>
@@ -148,20 +156,20 @@ export default function Footer() {
                 </p>
               </div>
               <div className="border-t border-charcoal/8 pt-3 space-y-2">
-                <p className="text-charcoal/40 text-xs font-[family-name:var(--font-body)] flex items-center gap-2">
+                <p className="text-charcoal/40 text-xs font-[family-name:var(--font-ui)] flex items-center gap-2">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-coral/40 flex-shrink-0">
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
                     <circle cx="12" cy="10" r="3" />
                   </svg>
                   Miami, Florida
                 </p>
-                <button onClick={callPhone1} type="button" className="text-charcoal/40 text-xs font-[family-name:var(--font-body)] flex items-center gap-2 hover:text-coral transition-colors">
+                <button onClick={callPhone1} type="button" className="text-charcoal/40 text-xs font-[family-name:var(--font-ui)] flex items-center gap-2 hover:text-coral transition-colors">
                   <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-coral/40 flex-shrink-0">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
                   </svg>
                   <span ref={phoneRef1} />
                 </button>
-                <p className="text-charcoal/40 text-[11px] font-[family-name:var(--font-body)] flex items-center gap-2">
+                <p className="text-charcoal/40 text-[11px] font-[family-name:var(--font-ui)] flex items-center gap-2">
                   <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-coral/40 flex-shrink-0">
                     <circle cx="12" cy="12" r="10" />
                     <polyline points="12 6 12 12 16 14" />
@@ -180,13 +188,20 @@ export default function Footer() {
                 onClick={() => handleNavClick("#hero")}
                 className="mb-4 block hover:scale-[1.03] transition-transform duration-200"
               >
-                <span className="font-[family-name:var(--font-display)] text-2xl font-black tracking-normal leading-none">
+                <span className="font-[family-name:var(--font-display)] text-2xl font-bold tracking-tight leading-none">
                   <span className="text-charcoal">Sweet</span>
                   {" "}
-                  <span className="text-coral">Balance</span>
+                  <span
+                    className="italic"
+                    style={{
+                      background: "linear-gradient(135deg, var(--color-coral) 0%, var(--color-gold) 100%)",
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                    }}
+                  >Balance</span>
                 </span>
               </button>
-              <p className="text-charcoal/50 text-sm leading-relaxed font-[family-name:var(--font-body)] max-w-[260px]">
+              <p className="text-charcoal/50 text-sm leading-relaxed font-[family-name:var(--font-ui)] max-w-[260px]">
                 {t(text.brandDescription)}
               </p>
               <div className="flex gap-2.5 mt-6">
@@ -206,7 +221,7 @@ export default function Footer() {
                   </svg>
                 </a>
                 <button onClick={callPhone2} type="button" aria-label="Phone" className="w-10 h-10 rounded-xl bg-white/70 border border-white/80 flex items-center justify-center hover:bg-white hover:shadow-md hover:shadow-coral/10 hover:-translate-y-0.5 transition-all duration-200">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="#ff8576">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="#C4705A">
                     <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
                   </svg>
                 </button>
@@ -223,7 +238,7 @@ export default function Footer() {
                   <button
                     key={item.href}
                     onClick={() => handleNavClick(item.href)}
-                    className="text-left text-charcoal/55 hover:text-coral text-sm transition-colors font-[family-name:var(--font-body)]"
+                    className="text-left text-charcoal/55 hover:text-coral text-sm transition-colors font-[family-name:var(--font-ui)]"
                   >
                     {t(item.label)}
                   </button>
@@ -236,7 +251,7 @@ export default function Footer() {
               <h4 className="font-[family-name:var(--font-display)] font-bold text-xs uppercase tracking-wider text-coral/60 mb-4">
                 {t(text.contacts)}
               </h4>
-              <div className="flex flex-col gap-2 text-sm font-[family-name:var(--font-body)]">
+              <div className="flex flex-col gap-2 text-sm font-[family-name:var(--font-ui)]">
                 <a href="https://wa.me/13054815910" target="_blank" rel="noopener noreferrer" className="text-charcoal/55 hover:text-coral transition-colors">
                   WhatsApp
                 </a>
@@ -273,7 +288,7 @@ export default function Footer() {
               <div className="bg-white/50 rounded-2xl p-5 border border-white/60">
                 <div className="flex items-center gap-2 mb-2">
                   <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                  <p className="text-sm text-charcoal/70 font-[family-name:var(--font-body)] font-medium">
+                  <p className="text-sm text-charcoal/70 font-[family-name:var(--font-ui)] font-medium">
                     {t(text.everyDay)}
                   </p>
                 </div>
@@ -281,14 +296,14 @@ export default function Footer() {
                   9:00 — 21:00
                 </p>
                 <div className="mt-3 pt-3 border-t border-charcoal/8 space-y-1">
-                  <p className="text-xs text-charcoal/40 font-[family-name:var(--font-body)] flex items-center gap-1.5">
+                  <p className="text-xs text-charcoal/40 font-[family-name:var(--font-ui)] flex items-center gap-1.5">
                     <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <circle cx="12" cy="12" r="10" />
                       <polyline points="12 6 12 12 16 14" />
                     </svg>
                     {t(text.orderAdvance)}
                   </p>
-                  <p className="text-xs text-charcoal/40 font-[family-name:var(--font-body)] flex items-center gap-1.5">
+                  <p className="text-xs text-charcoal/40 font-[family-name:var(--font-ui)] flex items-center gap-1.5">
                     <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
                     </svg>
@@ -301,11 +316,11 @@ export default function Footer() {
 
           {/* Bottom bar */}
           <div className="border-t border-charcoal/8 mt-8 sm:mt-10 pt-5 sm:pt-6 flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-4">
-            <p className="text-charcoal/30 text-[10px] sm:text-xs font-[family-name:var(--font-body)]">
+            <p className="text-charcoal/30 text-[10px] sm:text-xs font-[family-name:var(--font-ui)]">
               &copy; {new Date().getFullYear()} Sweet Balance. {t(text.allRights)}
             </p>
             <LanguageSwitcher />
-            <p className="text-charcoal/20 text-[10px] sm:text-xs font-[family-name:var(--font-body)] italic">
+            <p className="text-charcoal/20 text-[10px] sm:text-xs font-[family-name:var(--font-ui)] italic">
               {t(text.tagline)}
             </p>
           </div>
