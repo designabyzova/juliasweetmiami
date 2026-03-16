@@ -51,7 +51,7 @@ export default function MobileMenu({ onClose, onNavClick }: MobileMenuProps) {
         exit={{ x: "100%" }}
         transition={{ type: "spring", damping: 25, stiffness: 200 }}
         className="fixed top-0 right-0 bottom-0 w-[85vw] max-w-[300px] z-[70] lg:hidden shadow-2xl"
-        style={{ background: "linear-gradient(160deg, #FFF3EF 0%, #F5E3DA 100%)" }}
+        style={{ background: "linear-gradient(160deg, #FFF8F5 0%, #F8EDE6 100%)" }}
         data-testid="mobile-menu"
         role="dialog"
         aria-modal="true"

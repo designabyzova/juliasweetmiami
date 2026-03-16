@@ -17,18 +17,18 @@
   --color-gray-light: #9E9188;
 
   /* ── Warm Blush ── */
-  --color-pink-light: #F9D9D0;
-  --color-pink-lighter: #FDEAE5;
-  --color-pink-muted: #F7DDD5;
+  --color-pink-light: #FBE4DD;
+  --color-pink-lighter: #FDF0EC;
+  --color-pink-muted: #F9E4DF;
 
   /* ── Backgrounds ── */
-  --color-cream: #FFF3EF;
-  --color-cream-dark: #F5E3DA;
+  --color-cream: #FFF8F5;
+  --color-cream-dark: #F8EDE6;
 
   --color-cyan: #49c7ff;
   --color-border: #EDDDD6;
   --color-white: #ffffff;
-  --color-bg: #FFF3EF;
+  --color-bg: #FFF8F5;
   --color-dark: #1A130C;
   --color-dark-light: #2C1810;
 
@@ -293,27 +293,27 @@ body {
 
 /* Hero */
 .bg-gradient-hero {
-  background: linear-gradient(160deg, #FFF3EF 0%, #F9DDD4 35%, #F5D2C8 65%, #F0C8BC 100%);
+  background: linear-gradient(160deg, #FFF8F5 0%, #FBE9E2 35%, #F8E0D8 65%, #F3D5CC 100%);
 }
 
 /* Warm */
 .bg-gradient-warm {
-  background: linear-gradient(160deg, #FFF3EF 0%, #F9E2D9 40%, #F5D6CC 100%);
+  background: linear-gradient(160deg, #FFF8F5 0%, #FBEEE6 40%, #F8E4DC 100%);
 }
 
 /* Peach */
 .bg-gradient-peach {
-  background: linear-gradient(150deg, #F9DDD4 0%, #FBE7E0 45%, #FFF3EF 100%);
+  background: linear-gradient(150deg, #FBE9E2 0%, #FDF0E8 45%, #FFF8F5 100%);
 }
 
 /* Pink-blush */
 .bg-gradient-pink {
-  background: linear-gradient(165deg, #F9D9D0 0%, #FBE3DC 50%, #FFF3EF 100%);
+  background: linear-gradient(165deg, #FBE4DD 0%, #FDECE6 50%, #FFF8F5 100%);
 }
 
 /* Cream */
 .bg-gradient-cream {
-  background: linear-gradient(165deg, #FFF5F2 0%, #FFF3EF 50%, #F5E3DA 100%);
+  background: linear-gradient(165deg, #FFFAF7 0%, #FFF8F5 50%, #F8EDE6 100%);
 }
 
 /* ── Review carousel ── */
