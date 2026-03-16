@@ -88,6 +88,19 @@ const BENTO_CAKES: CakeItem[] = [
   { src: "/cakes-bento/bento-white-snowflake.webp", alt: { ru: "Белый бенто-торт со снежинкой — зимний праздничный десерт на заказ", en: "White snowflake bento cake — winter holiday dessert custom order" } },
   { src: "/cakes-bento/bento-white-happy-bday-candles.webp", alt: { ru: "Белый бенто-торт с разноцветными свечами Happy BDAY — праздничный десерт", en: "White bento cake with colorful Happy BDAY candles — birthday celebration" } },
   { src: "/cakes-bento/bento-white-roses-elegant.webp", alt: { ru: "Белый элегантный бенто-торт с белыми розами и жемчужинами — свадебный десерт", en: "White elegant bento cake with white roses and pearls — wedding dessert" }, aspect: "portrait" },
+  { src: "/cakes-bento/bento-lavender-bubble-cloud.webp", alt: { ru: "Лавандовый бенто-торт из муссовых сфер — облачный велюровый дизайн", en: "Lavender bubble cloud bento cake — velvet mousse sphere design" } },
+  { src: "/cakes-bento/bento-peach-velvet-minimal.webp", alt: { ru: "Персиковый велюровый бенто-торт минималистичный с жемчужным декором", en: "Peach velvet minimalist bento cake with pearl dot accents" } },
+  { src: "/cakes-bento/bento-white-cube-silver-stars.webp", alt: { ru: "Белый кубический бенто-торт с серебряными звёздами — авторский дизайн", en: "White cube-shaped bento cake with silver star decorations — unique design" }, aspect: "portrait" },
+  { src: "/cakes-bento/bento-green-pink-hearts-custom.webp", alt: { ru: "Зелёный бенто-торт с розовыми и зелёными сердечками — торт на заказ", en: "Green bento cake with pink and green heart bonbons — custom order Miami" }, aspect: "portrait" },
+  { src: "/cakes-bento/bento-pink-cloud-floral-pearls.webp", alt: { ru: "Розовый облачный бенто-торт с цветами и жемчужинами — нежный десерт", en: "Pink cloud bento cake with floral petals and pearl accents — delicate dessert" } },
+  { src: "/cakes-bento/bento-lilac-bubble-spheres.webp", alt: { ru: "Сиреневый бенто-торт из муссовых сфер — велюровый авторский десерт", en: "Lilac bubble sphere bento cake — velvet signature mousse dessert" } },
+  { src: "/cakes-bento/bento-pink-glossy-heart.webp", alt: { ru: "Розовый глянцевый бенто-торт в форме сердца — десерт на заказ Juliia Sweet", en: "Pink glossy heart-shaped bento cake — Juliia Sweet Miami custom dessert" } },
+  { src: "/cakes-bento/bento-red-glossy-heart-valentine.webp", alt: { ru: "Красный глянцевый бенто-торт в форме сердца — десерт на День святого Валентина", en: "Red glossy heart bento cake — Valentine's Day dessert custom order" } },
+  { src: "/cakes-bento/bento-blue-bubble-pearl-accents.webp", alt: { ru: "Голубой бенто-торт из муссовых сфер с жемчужными акцентами", en: "Blue bubble sphere bento cake with pearl accents — artisan design" } },
+  { src: "/cakes-bento/bento-karate-birthday-custom.webp", alt: { ru: "Бенто-торт с силуэтом каратиста — персональный торт на день рождения 35 лет", en: "Karate silhouette bento cake — personalized 35th birthday custom order" } },
+  { src: "/cakes-bento/bento-purple-velvet-birthday.webp", alt: { ru: "Фиолетовый велюровый бенто-торт с золотым топпером Happy Birthday", en: "Purple velvet bento cake with gold Happy Birthday topper — custom order" } },
+  { src: "/cakes-bento/bento-red-heart-i-love-you.webp", alt: { ru: "Красный велюровый бенто-торт в форме сердца с надписью I love you", en: "Red velvet heart bento cake with I love you lettering — romantic dessert" } },
+  { src: "/cakes-bento/bento-green-matcha-bubble-cloud.webp", alt: { ru: "Зелёный матча бенто-торт из муссовых сфер — облачный дизайн", en: "Green matcha bubble cloud bento cake — velvet sphere artisan design" } },
 ];
 
 const CELEBRATION_CAKES: CakeItem[] = [
