@@ -7,7 +7,7 @@ export default function LanguageSwitcher({ className = "" }: { className?: strin
 
   return (
     <div
-      className={`relative inline-flex items-center rounded-full bg-charcoal/8 p-1 font-[family-name:var(--font-ui)] ${className}`}
+      className={`relative inline-flex items-center rounded-full bg-charcoal/5 p-1 font-[family-name:var(--font-body)] ${className}`}
     >
       {/* Sliding active indicator */}
       <div

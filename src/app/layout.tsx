@@ -1,23 +1,15 @@
 import type { Metadata } from "next";
-import { Playfair_Display, Lato, Cormorant_Garamond } from "next/font/google";
+import { Unbounded, Cormorant_Garamond } from "next/font/google";
 import ProgressBar from "@/components/ProgressBar";
 import { LanguageProvider } from "@/lib/LanguageContext";
 import "./globals.css";
 
-const SITE_URL = "https://sweetbalancemiami.com";
+const SITE_URL = "https://yuliia-sweet.vercel.app";
 
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
+const unbounded = Unbounded({
+  variable: "--font-unbounded",
   subsets: ["latin", "cyrillic"],
   weight: ["400", "500", "600", "700", "800", "900"],
-  style: ["normal", "italic"],
-  display: "swap",
-});
-
-const lato = Lato({
-  variable: "--font-lato",
-  subsets: ["latin"],
-  weight: ["300", "400", "700", "900"],
   display: "swap",
 });
 
@@ -33,11 +25,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
     default:
-      "Sweet Balance Miami — Artisan Mousse Cakes & Custom Desserts",
-    template: "%s | Sweet Balance Miami",
+      "Sweet Balance — Luxurious Mousse Desserts in Miami | Custom Cakes from $75",
+    template: "%s | Sweet Balance",
   },
   description:
-    "Sweet Balance Miami — handcrafted European mousse cakes. Less sugar, elegant design, unforgettable taste. Custom bento cakes, celebration cakes & pastries for every special moment. | Sweet Balance Miami — авторские муссовые торты европейского уровня. Минимум сахара, изысканный дизайн, незабываемый вкус. Бенто-торты и праздничные десерты для особенных моментов.",
+    "Sweet Balance by Juliia Sweet — luxurious European mousse desserts in Miami. Minimal sugar, pure flavor. Custom bento cakes, celebration cakes & pastries for birthdays, weddings & events. From $75.",
   keywords: [
     "custom cakes Miami",
     "mousse desserts Miami",
@@ -53,35 +45,34 @@ export const metadata: Metadata = {
     "кондитер Майами",
     "торт на день рождения Майами",
     "свадебный торт Майами",
-    "Sweet Balance Miami",
-    "SweetBalanceMiami",
+    "Sweet Balance",
   ],
-  authors: [{ name: "Sweet Balance Miami" }],
-  creator: "Sweet Balance Miami",
+  authors: [{ name: "Sweet Balance" }],
+  creator: "Sweet Balance",
   openGraph: {
     type: "website",
     locale: "en_US",
     alternateLocale: "ru_RU",
     url: SITE_URL,
-    siteName: "Sweet Balance Miami",
-    title: "Artisan Mousse Cakes & Desserts in Miami",
+    siteName: "Sweet Balance",
+    title: "Sweet Balance — Luxurious Mousse Desserts in Miami",
     description:
-      "Handcrafted European mousse cakes in Miami. Less sugar, elegant design, unforgettable taste. Custom bento cakes & celebration desserts for every special moment.",
+      "Luxurious European mousse desserts with minimal sugar. European recipes, pure flavor. Custom cakes for birthdays, weddings & celebrations. From $75.",
     images: [
       {
-        url: "/og-sweet-balance.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Sweet Balance Miami — Artisan mousse heart cake on marble table with ocean view",
+        url: "/hero-juliia.webp",
+        width: 800,
+        height: 1067,
+        alt: "Sweet Balance — Luxurious Mousse Desserts in Miami",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Artisan Mousse Cakes & Desserts in Miami",
+    title: "Sweet Balance — Luxurious Mousse Desserts in Miami",
     description:
-      "Handcrafted European mousse cakes in Miami. Less sugar, elegant design, unforgettable taste. Custom cakes & desserts for every special moment.",
-    images: ["/og-sweet-balance.jpg"],
+      "Sweet Balance — European mousse desserts with minimal sugar. European recipes, pure flavor. Custom cakes from $75.",
+    images: ["/hero-juliia.webp"],
   },
   alternates: {
     canonical: SITE_URL,
@@ -109,11 +100,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" style={{ colorScheme: "light" }}>
-      <head>
-        <meta name="color-scheme" content="light" />
-      </head>
-      <body className={`${playfair.variable} ${lato.variable} ${cormorant.variable} antialiased`}>
+    <html lang="en">
+      <body className={`${unbounded.variable} ${cormorant.variable} antialiased`}>
         <LanguageProvider>
           <ProgressBar />
           {children}

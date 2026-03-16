@@ -166,7 +166,7 @@ export default function NotFound() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease }}
-          className="text-coral font-[family-name:var(--font-ui)] font-bold text-xs sm:text-sm tracking-[0.25em] uppercase mb-6 sm:mb-8"
+          className="text-coral font-semibold text-xs sm:text-sm tracking-[0.2em] uppercase mb-6 sm:mb-8 font-[family-name:var(--font-body)]"
         >
           {t(text.tagline)}
         </motion.p>
@@ -195,7 +195,7 @@ export default function NotFound() {
           <h1
             className="relative font-[family-name:var(--font-display)] font-black text-[120px] xs:text-[150px] sm:text-[200px] md:text-[240px] lg:text-[280px] leading-none select-none"
             style={{
-              background: "linear-gradient(135deg, var(--color-coral) 0%, var(--color-gold) 50%, var(--color-coral) 100%)",
+              background: "linear-gradient(135deg, var(--color-coral) 0%, var(--color-coral-dark) 50%, var(--color-coral) 100%)",
               backgroundSize: "200% 200%",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
@@ -236,7 +236,7 @@ export default function NotFound() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.9, ease }}
-          className="font-[family-name:var(--font-ui)] text-gray font-light text-base sm:text-lg leading-relaxed mb-8 sm:mb-10 max-w-lg mx-auto"
+          className="font-[family-name:var(--font-body)] text-gray text-base sm:text-lg md:text-xl leading-relaxed mb-8 sm:mb-10 max-w-lg mx-auto"
         >
           {t(text.description)}
         </motion.p>

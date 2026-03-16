@@ -50,8 +50,7 @@ export default function MobileMenu({ onClose, onNavClick }: MobileMenuProps) {
         animate={{ x: 0 }}
         exit={{ x: "100%" }}
         transition={{ type: "spring", damping: 25, stiffness: 200 }}
-        className="fixed top-0 right-0 bottom-0 w-[85vw] max-w-[300px] z-[70] lg:hidden shadow-2xl"
-        style={{ background: "linear-gradient(160deg, #FDF6F0 0%, #F5EDE4 100%)" }}
+        className="fixed top-0 right-0 bottom-0 w-[85vw] max-w-[300px] bg-white z-[70] lg:hidden shadow-2xl"
         data-testid="mobile-menu"
         role="dialog"
         aria-modal="true"
@@ -67,7 +66,7 @@ export default function MobileMenu({ onClose, onNavClick }: MobileMenuProps) {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.1 + i * 0.05 }}
                 onClick={() => onNavClick(item.href)}
-                className="text-left text-base sm:text-lg font-medium text-charcoal hover:text-coral active:text-coral-dark transition-colors py-3 border-b border-border font-[family-name:var(--font-ui)] min-h-[44px] flex items-center tracking-wide"
+                className="text-left text-base sm:text-lg font-medium text-charcoal hover:text-coral active:text-coral-dark transition-colors py-3 border-b border-border font-[family-name:var(--font-body)] min-h-[44px] flex items-center"
               >
                 {t(item.label)}
               </motion.button>
@@ -79,7 +78,7 @@ export default function MobileMenu({ onClose, onNavClick }: MobileMenuProps) {
 
             <button
               onClick={() => onNavClick("#order")}
-              className="w-full active:scale-[0.97] bg-coral hover:bg-coral-dark text-white py-3.5 rounded-full font-[family-name:var(--font-ui)] font-bold tracking-wide transition-all duration-200 text-sm sm:text-base"
+              className="w-full bg-coral hover:bg-coral-dark active:scale-[0.97] text-white py-3.5 rounded-full font-semibold transition-all duration-200 text-sm sm:text-base"
             >
               {t({ ru: "Заказать торт", en: "Order Cake" })}
             </button>
