@@ -38,11 +38,11 @@ export default function Footer() {
       data-testid="footer"
       className="relative overflow-hidden"
       style={{
-        background: "linear-gradient(175deg, #F8EDE6 0%, #F4E4DB 25%, #F0DDD3 55%, #EBD7CC 100%)",
+        background: "linear-gradient(175deg, #F5EDE4 0%, #F0E5D8 25%, #EBE0D2 55%, #E5D8C8 100%)",
       }}
     >
       {/* Decorative top line */}
-      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, #D4756A 30%, #C9956A 70%, transparent)" }} />
+      <div className="absolute top-0 left-0 right-0 h-px" style={{ background: "linear-gradient(90deg, transparent, #C4705A 30%, #C9956A 70%, transparent)" }} />
 
       {/* Warm glow — top right */}
       <div className="absolute top-0 -right-20 w-[300px] h-[300px] sm:w-[450px] sm:h-[450px] rounded-full blur-3xl pointer-events-none" style={{ background: "radial-gradient(circle, rgba(196,112,90,0.08) 0%, transparent 70%)" }} />
@@ -117,7 +117,7 @@ export default function Footer() {
                   aria-label="Phone"
                   className="w-10 h-10 rounded-xl bg-white/70 border border-white/80 flex items-center justify-center hover:bg-white transition-all duration-200"
                 >
-                  <svg width="17" height="17" viewBox="0 0 24 24" fill="#D4756A">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="#C4705A">
                     <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
                   </svg>
                 </button>
@@ -221,7 +221,7 @@ export default function Footer() {
                   </svg>
                 </a>
                 <button onClick={callPhone2} type="button" aria-label="Phone" className="w-10 h-10 rounded-xl bg-white/70 border border-white/80 flex items-center justify-center hover:bg-white hover:shadow-md hover:shadow-coral/10 hover:-translate-y-0.5 transition-all duration-200">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="#D4756A">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="#C4705A">
                     <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
                   </svg>
                 </button>

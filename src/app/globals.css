@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* ── Coral/Rose Primary — warm pink coral ── */
-  --color-coral: #D4756A;
-  --color-coral-dark: #C05A4E;
-  --color-coral-glow: #D4756A35;
+  /* ── Coral/Rose Primary — dusty rose/blush ── */
+  --color-coral: #C4705A;
+  --color-coral-dark: #A8503A;
+  --color-coral-glow: #C4705A35;
 
   /* ── Gold accent ── */
   --color-gold: #C9956A;
@@ -17,18 +17,18 @@
   --color-gray-light: #9E9188;
 
   /* ── Warm Blush ── */
-  --color-pink-light: #FBE4DD;
-  --color-pink-lighter: #FDF0EC;
-  --color-pink-muted: #F9E4DF;
+  --color-pink-light: #F9E8E0;
+  --color-pink-lighter: #FAF0ED;
+  --color-pink-muted: #F7E8E4;
 
   /* ── Backgrounds ── */
-  --color-cream: #FFF8F5;
-  --color-cream-dark: #F8EDE6;
+  --color-cream: #FDF6F0;
+  --color-cream-dark: #F5EDE4;
 
   --color-cyan: #49c7ff;
-  --color-border: #EDDDD6;
+  --color-border: #E8D8D0;
   --color-white: #ffffff;
-  --color-bg: #FFF8F5;
+  --color-bg: #FDF6F0;
   --color-dark: #1A130C;
   --color-dark-light: #2C1810;
 
@@ -59,7 +59,7 @@ html {
 }
 
 body {
-  background: var(--color-bg);
+  background: var(--color-cream);
   color: var(--color-charcoal);
   font-family: var(--font-ui), var(--font-body), "Georgia", "Times New Roman", serif;
   font-size: 16px;
@@ -293,27 +293,27 @@ body {
 
 /* Hero */
 .bg-gradient-hero {
-  background: linear-gradient(160deg, #FFF8F5 0%, #FBE9E2 35%, #F8E0D8 65%, #F3D5CC 100%);
+  background: linear-gradient(160deg, #FDF6F0 0%, #F9EDE4 35%, #F5E8E0 65%, #F0DDD2 100%);
 }
 
 /* Warm */
 .bg-gradient-warm {
-  background: linear-gradient(160deg, #FFF8F5 0%, #FBEEE6 40%, #F8E4DC 100%);
+  background: linear-gradient(160deg, #FDF6F0 0%, #F9F0E6 40%, #F5E8E0 100%);
 }
 
 /* Peach */
 .bg-gradient-peach {
-  background: linear-gradient(150deg, #FBE9E2 0%, #FDF0E8 45%, #FFF8F5 100%);
+  background: linear-gradient(150deg, #F9EDE4 0%, #FDF2EA 45%, #FDF6F0 100%);
 }
 
 /* Pink-blush */
 .bg-gradient-pink {
-  background: linear-gradient(165deg, #FBE4DD 0%, #FDECE6 50%, #FFF8F5 100%);
+  background: linear-gradient(165deg, #F9E8E0 0%, #FBEFE8 50%, #FDF6F0 100%);
 }
 
 /* Cream */
 .bg-gradient-cream {
-  background: linear-gradient(165deg, #FFFAF7 0%, #FFF8F5 50%, #F8EDE6 100%);
+  background: linear-gradient(165deg, #FFFAF6 0%, #FDF6F0 50%, #F5EDE4 100%);
 }
 
 /* ── Review carousel ── */
