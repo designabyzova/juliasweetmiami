@@ -38,7 +38,7 @@ export default function Footer() {
       data-testid="footer"
       className="relative overflow-hidden"
       style={{
-        background: "linear-gradient(175deg, #F8EDE6 0%, #F4E4DB 25%, #F0DDD3 55%, #EBD7CC 100%)",
+        background: "linear-gradient(175deg, #F5E3DA 0%, #F0D8CD 25%, #ECD0C4 55%, #E7C9BC 100%)",
       }}
     >
       {/* Decorative top line */}

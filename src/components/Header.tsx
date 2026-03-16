@@ -49,7 +49,7 @@ export default function Header() {
             ? "backdrop-blur-md shadow-sm"
             : "bg-transparent"
         }`}
-        style={scrolled ? { background: "rgba(255,248,245,0.96)", boxShadow: "0 1px 0 rgba(44,24,16,0.06), 0 4px 24px rgba(44,24,16,0.08)" } : undefined}
+        style={scrolled ? { background: "rgba(255,243,239,0.96)", boxShadow: "0 1px 0 rgba(44,24,16,0.06), 0 4px 24px rgba(44,24,16,0.08)" } : undefined}
       >
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between gap-4 h-14 sm:h-[60px] lg:h-[70px]">
