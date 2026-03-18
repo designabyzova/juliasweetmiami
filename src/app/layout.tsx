@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Unbounded, Cormorant_Garamond } from "next/font/google";
 import ProgressBar from "@/components/ProgressBar";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { LanguageProvider } from "@/lib/LanguageContext";
 import "./globals.css";
 
-const SITE_URL = "https://yuliia-sweet.vercel.app";
+const SITE_URL = "https://www.sweetbalancemiami.com";
 
 const unbounded = Unbounded({
   variable: "--font-unbounded",
@@ -102,6 +103,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${unbounded.variable} ${cormorant.variable} antialiased`}>
+        <GoogleAnalytics />
         <LanguageProvider>
           <ProgressBar />
           {children}

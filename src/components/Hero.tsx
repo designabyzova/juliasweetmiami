@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { useLanguage } from "@/lib/LanguageContext";
+import { trackOrderClick, trackFlavorsClick } from "@/lib/gtag";
 
 const text = {
   tagline: { ru: "Sweet Balance", en: "Sweet Balance" },
@@ -81,13 +82,13 @@ export default function Hero() {
               className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
             >
               <button
-                onClick={() => handleScroll("#order")}
+                onClick={() => { trackOrderClick("hero"); handleScroll("#order"); }}
                 className="bg-coral hover:bg-coral-dark active:scale-[0.97] text-white px-7 py-3.5 rounded-full font-semibold text-sm sm:text-base transition-all duration-200 hover:shadow-lg hover:shadow-coral/25 font-[family-name:var(--font-body)]"
               >
                 {t(text.ctaOrder)}
               </button>
               <button
-                onClick={() => handleScroll("#flavors")}
+                onClick={() => { trackFlavorsClick(); handleScroll("#flavors"); }}
                 className="border-2 border-charcoal text-charcoal hover:bg-charcoal hover:text-white active:scale-[0.97] px-7 py-3.5 rounded-full font-semibold text-sm sm:text-base transition-all duration-200 font-[family-name:var(--font-body)]"
               >
                 {t(text.ctaFlavors)}

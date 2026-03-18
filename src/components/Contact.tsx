@@ -2,6 +2,7 @@
 
 import { useLanguage } from "@/lib/LanguageContext";
 import { usePhone } from "@/lib/usePhone";
+import { trackContact } from "@/lib/gtag";
 import ScrollReveal from "./ScrollReveal";
 
 const text = {
@@ -42,7 +43,7 @@ export default function Contact() {
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 max-w-4xl mx-auto">
           <ScrollReveal delay={0.1}>
             <a
-              href="https://wa.me/13054815910"
+              onClick={() => trackContact("whatsapp", "contact")} href="https://wa.me/13054815910"
               target="_blank"
               rel="noopener noreferrer"
               className="group block bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 lg:p-8 text-center shadow-md shadow-black/5 border border-border hover:shadow-xl hover:shadow-coral/10 transition-all duration-300 hover:-translate-y-1"
@@ -63,7 +64,7 @@ export default function Contact() {
 
           <ScrollReveal delay={0.2}>
             <a
-              href="https://t.me/imjasestra"
+              onClick={() => trackContact("telegram", "contact")} href="https://t.me/imjasestra"
               target="_blank"
               rel="noopener noreferrer"
               className="group block bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 lg:p-8 text-center shadow-md shadow-black/5 border border-border hover:shadow-xl hover:shadow-coral/10 transition-all duration-300 hover:-translate-y-1"
@@ -84,7 +85,7 @@ export default function Contact() {
 
           <ScrollReveal delay={0.3}>
             <a
-              href="https://www.instagram.com/julia_sweet_miami?igsh=MWV2ZjZ4NnNjZnhqMg=="
+              onClick={() => trackContact("instagram", "contact")} href="https://www.instagram.com/julia_sweet_miami?igsh=MWV2ZjZ4NnNjZnhqMg=="
               target="_blank"
               rel="noopener noreferrer"
               className="group block bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 lg:p-8 text-center shadow-md shadow-black/5 border border-border hover:shadow-xl hover:shadow-coral/10 transition-all duration-300 hover:-translate-y-1"
@@ -105,7 +106,7 @@ export default function Contact() {
 
           <ScrollReveal delay={0.4}>
             <button
-              onClick={phoneCall}
+              onClick={() => { trackContact("phone", "contact"); phoneCall(); }}
               type="button"
               className="group block w-full bg-white rounded-xl sm:rounded-2xl p-5 sm:p-6 lg:p-8 text-center shadow-md shadow-black/5 border border-border hover:shadow-xl hover:shadow-coral/10 transition-all duration-300 hover:-translate-y-1"
             >

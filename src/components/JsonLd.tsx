@@ -1,6 +1,6 @@
 import { FAQ_ITEMS } from "@/lib/constants";
 
-const SITE_URL = "https://yuliia-sweet.vercel.app";
+const SITE_URL = "https://www.sweetbalancemiami.com";
 
 export default function JsonLd() {
   const localBusiness = {

@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { NAV_ITEMS } from "@/lib/constants";
 import { useLanguage } from "@/lib/LanguageContext";
+import { trackOrderClick } from "@/lib/gtag";
 import LanguageSwitcher from "./LanguageSwitcher";
 import MobileMenu from "./MobileMenu";
 
@@ -81,7 +82,7 @@ export default function Header() {
             <div className="hidden lg:flex items-center gap-4">
               <LanguageSwitcher />
               <button
-                onClick={() => handleNavClick("#order")}
+                onClick={() => { trackOrderClick("header"); handleNavClick("#order"); }}
                 className="bg-coral hover:bg-coral-dark text-white px-5 py-2 rounded-full text-sm font-semibold transition-all duration-200 hover:scale-105"
               >
                 {t({ ru: "Заказать торт", en: "Order Cake" })}

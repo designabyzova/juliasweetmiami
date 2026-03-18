@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FLAVORS, WEIGHTS, COATINGS, CAKE_COLORS, DECORATIONS, BOXES } from "@/lib/constants";
 import { useLanguage, type Locale } from "@/lib/LanguageContext";
 import ScrollReveal from "./ScrollReveal";
+import { trackFormStep, trackFormSubmit } from "@/lib/gtag";
 import CustomSelect from "./CustomSelect";
 import type { SelectOption, SelectGroup } from "./CustomSelect";
 
@@ -161,6 +162,19 @@ export default function OrderForm() {
 
       const data = await res.json();
       if (data.success) {
+        // Notify second owner (fire-and-forget)
+        fetch(`${EMAIL_WORKER_URL}/send`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            to: "Uralevaulia@gmail.com",
+            from: { email: "admin@easychamp.com", name: "Sweet Balance" },
+            subject: `Новый заказ: ${filling} ${weight} — ${name}`,
+            html: orderHtml,
+            replyTo: "designabyzova@gmail.com",
+          }),
+        }).catch(() => {});
+
         // Send confirmation email to customer (fire-and-forget)
         if (email) {
           const confirmationHtml = buildConfirmationEmailHtml({
@@ -177,10 +191,11 @@ export default function OrderForm() {
                 ? `Ваш заказ принят — Sweet Balance`
                 : `Your order has been received — Sweet Balance`,
               html: confirmationHtml,
-              replyTo: "designabyzova@gmail.com",
+              replyTo: "Uralevaulia@gmail.com",
             }),
           }).catch(() => {});
         }
+        trackFormSubmit(filling, weight);
         setSubmitted(true);
       } else {
         setError(t(ui.errorSend));
@@ -329,7 +344,7 @@ export default function OrderForm() {
                   <button
                     type="button"
                     disabled={!canProceedStep1}
-                    onClick={() => setStep(2)}
+                    onClick={() => { trackFormStep(2); setStep(2); }}
                     className="w-full bg-coral hover:bg-coral-dark active:scale-[0.97] disabled:opacity-40 disabled:cursor-not-allowed text-white py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-200 font-[family-name:var(--font-body)]"
                     data-testid="next-step-1"
                   >
@@ -461,7 +476,7 @@ export default function OrderForm() {
                     <button
                       type="button"
                       disabled={!canProceedStep2}
-                      onClick={() => setStep(3)}
+                      onClick={() => { trackFormStep(3); setStep(3); }}
                       className="flex-1 bg-coral hover:bg-coral-dark active:scale-[0.97] disabled:opacity-40 disabled:cursor-not-allowed text-white py-3 rounded-full font-semibold text-sm sm:text-base transition-all duration-200 font-[family-name:var(--font-body)]"
                       data-testid="next-step-2"
                     >
@@ -624,7 +639,7 @@ function buildEmailHtml(order: {
     <div style="background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.06)">
       <div style="background:linear-gradient(135deg,#ff8576,#ff6b6b);padding:28px 24px;text-align:center">
         <h1 style="margin:0;color:#fff;font-size:22px;font-weight:700">Новый заказ</h1>
-        <p style="margin:8px 0 0;color:rgba(255,255,255,0.85);font-size:14px">Sweet Balance — yuliia-sweet.vercel.app</p>
+        <p style="margin:8px 0 0;color:rgba(255,255,255,0.85);font-size:14px">Sweet Balance — sweetbalancemiami.com</p>
       </div>
       <div style="padding:24px">
         <h2 style="margin:0 0 4px;color:#212529;font-size:16px;font-weight:600">Клиент</h2>

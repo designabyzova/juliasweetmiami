@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useLanguage, type Locale } from "@/lib/LanguageContext";
+import { trackEmailSubscribe } from "@/lib/gtag";
 import ScrollReveal from "./ScrollReveal";
 
 const EMAIL_WORKER_URL = "https://email-service.anton-abyzov.workers.dev";
@@ -51,6 +52,19 @@ export default function EmailCapture() {
       });
       const data = await res.json();
       if (data.success) {
+        // Notify second owner (fire-and-forget)
+        fetch(`${EMAIL_WORKER_URL}/send`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            to: "Uralevaulia@gmail.com",
+            from: { email: "admin@easychamp.com", name: "Sweet Balance" },
+            subject: `New subscriber: ${email}`,
+            html: `<p>New email subscriber: <strong>${email}</strong></p><p>Language: ${locale}</p>`,
+            replyTo: "designabyzova@gmail.com",
+          }),
+        }).catch(() => {});
+
         // Send welcome email to subscriber (fire-and-forget)
         fetch(`${EMAIL_WORKER_URL}/send`, {
           method: "POST",
@@ -62,11 +76,12 @@ export default function EmailCapture() {
               ? "Добро пожаловать в Sweet Balance! 🎂"
               : "Welcome to Sweet Balance! 🎂",
             html: buildWelcomeEmailHtml(locale),
-            replyTo: "designabyzova@gmail.com",
+            replyTo: "Uralevaulia@gmail.com",
           }),
         }).catch(() => {});
 
         setStatus("success");
+        trackEmailSubscribe();
         setEmail("");
       } else {
         setStatus("error");
@@ -218,7 +233,7 @@ function buildWelcomeEmailHtml(locale: Locale) {
         <div style="background:linear-gradient(135deg,#fff5f0 0%,#fce8e0 50%,#fdf0f5 100%);border-radius:16px;padding:28px 24px">
           <h3 style="margin:0 0 8px;color:#2d2926;font-size:18px;font-weight:700">${L.ctaTitle}</h3>
           <p style="margin:0 0 20px;color:#7a6f66;font-size:14px;line-height:1.6">${L.ctaText}</p>
-          <a href="https://yuliia-sweet.vercel.app/#order" style="display:inline-block;padding:12px 32px;background:linear-gradient(135deg,#ff8576,#e8636a);color:#fff;text-decoration:none;border-radius:25px;font-size:14px;font-weight:700;letter-spacing:0.3px">${L.ctaButton}</a>
+          <a href="https://www.sweetbalancemiami.com/#order" style="display:inline-block;padding:12px 32px;background:linear-gradient(135deg,#ff8576,#e8636a);color:#fff;text-decoration:none;border-radius:25px;font-size:14px;font-weight:700;letter-spacing:0.3px">${L.ctaButton}</a>
         </div>
       </div>
 

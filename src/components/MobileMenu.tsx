@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { NAV_ITEMS } from "@/lib/constants";
 import { useLanguage } from "@/lib/LanguageContext";
 import LanguageSwitcher from "./LanguageSwitcher";
+import { trackOrderClick, trackContact } from "@/lib/gtag";
 
 interface MobileMenuProps {
   onClose: () => void;
@@ -77,7 +78,7 @@ export default function MobileMenu({ onClose, onNavClick }: MobileMenuProps) {
             <LanguageSwitcher className="justify-center py-2" />
 
             <button
-              onClick={() => onNavClick("#order")}
+              onClick={() => { trackOrderClick("mobile_menu"); onNavClick("#order"); }}
               className="w-full bg-coral hover:bg-coral-dark active:scale-[0.97] text-white py-3.5 rounded-full font-semibold transition-all duration-200 text-sm sm:text-base"
             >
               {t({ ru: "Заказать торт", en: "Order Cake" })}
@@ -85,7 +86,7 @@ export default function MobileMenu({ onClose, onNavClick }: MobileMenuProps) {
 
             <div className="flex gap-4 justify-center">
               <a
-                href="https://wa.me/13054815910"
+                onClick={() => trackContact("whatsapp", "mobile_menu")} href="https://wa.me/13054815910"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm text-gray hover:text-coral transition-colors py-2"
@@ -93,7 +94,7 @@ export default function MobileMenu({ onClose, onNavClick }: MobileMenuProps) {
                 WhatsApp
               </a>
               <a
-                href="https://t.me/imjasestra"
+                onClick={() => trackContact("telegram", "mobile_menu")} href="https://t.me/imjasestra"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm text-gray hover:text-coral transition-colors py-2"
@@ -101,7 +102,7 @@ export default function MobileMenu({ onClose, onNavClick }: MobileMenuProps) {
                 Telegram
               </a>
               <a
-                href="https://www.instagram.com/julia_sweet_miami?igsh=MWV2ZjZ4NnNjZnhqMg=="
+                onClick={() => trackContact("instagram", "mobile_menu")} href="https://www.instagram.com/julia_sweet_miami?igsh=MWV2ZjZ4NnNjZnhqMg=="
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-sm text-gray hover:text-coral transition-colors py-2"

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useLanguage } from "@/lib/LanguageContext";
+import { trackOrderClick } from "@/lib/gtag";
 
 export default function FloatingOrderButton() {
   const [visible, setVisible] = useState(false);
@@ -35,7 +36,7 @@ export default function FloatingOrderButton() {
     };
   }, []);
 
-  const scrollToOrder = () => {
+  const scrollToOrder = () => { trackOrderClick("floating");
     const el = document.getElementById("order");
     if (el) el.scrollIntoView({ behavior: "smooth" });
   };
