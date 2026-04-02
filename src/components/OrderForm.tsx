@@ -9,7 +9,7 @@ import { trackFormStep, trackFormSubmit } from "@/lib/gtag";
 import CustomSelect from "./CustomSelect";
 import type { SelectOption, SelectGroup } from "./CustomSelect";
 
-const EMAIL_WORKER_URL = "https://email-service.anton-abyzov.workers.dev";
+const SEND_ORDER_URL = "/api/send-order";
 
 const ui = {
   sectionLabel: { ru: "Конструктор торта", en: "Cake Builder" },
@@ -147,54 +147,32 @@ export default function OrderForm() {
       weight, filling, coating, color, box, decorations, date, name, phone, email, comment,
     });
 
+    const customerHtml = email
+      ? buildConfirmationEmailHtml({
+          weight, filling, coating, color, box, decorations, date, name, comment,
+        }, locale)
+      : undefined;
+
     try {
-      const res = await fetch(`${EMAIL_WORKER_URL}/send`, {
+      const res = await fetch(SEND_ORDER_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          to: "designabyzova@gmail.com",
-          from: { email: "admin@easychamp.com", name: "Sweet Balance" },
           subject: `Новый заказ: ${filling} ${weight} — ${name}`,
           html: orderHtml,
-          replyTo: "designabyzova@gmail.com",
+          replyTo: "Uralevaulia@gmail.com",
+          customerEmail: email || undefined,
+          customerSubject: email
+            ? (locale === "ru"
+              ? "Ваш заказ принят — Sweet Balance"
+              : "Your order has been received — Sweet Balance")
+            : undefined,
+          customerHtml,
         }),
       });
 
       const data = await res.json();
       if (data.success) {
-        // Notify second owner (fire-and-forget)
-        fetch(`${EMAIL_WORKER_URL}/send`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            to: "Uralevaulia@gmail.com",
-            from: { email: "admin@easychamp.com", name: "Sweet Balance" },
-            subject: `Новый заказ: ${filling} ${weight} — ${name}`,
-            html: orderHtml,
-            replyTo: "designabyzova@gmail.com",
-          }),
-        }).catch(() => {});
-
-        // Send confirmation email to customer (fire-and-forget)
-        if (email) {
-          const confirmationHtml = buildConfirmationEmailHtml({
-            weight, filling, coating, color, box, decorations, date, name, comment,
-          }, locale);
-
-          fetch(`${EMAIL_WORKER_URL}/send`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              to: email,
-              from: { email: "admin@easychamp.com", name: "Sweet Balance" },
-              subject: locale === "ru"
-                ? `Ваш заказ принят — Sweet Balance`
-                : `Your order has been received — Sweet Balance`,
-              html: confirmationHtml,
-              replyTo: "Uralevaulia@gmail.com",
-            }),
-          }).catch(() => {});
-        }
         trackFormSubmit(filling, weight);
         setSubmitted(true);
       } else {

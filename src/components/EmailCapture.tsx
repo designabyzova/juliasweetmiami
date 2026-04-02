@@ -5,7 +5,7 @@ import { useLanguage, type Locale } from "@/lib/LanguageContext";
 import { trackEmailSubscribe } from "@/lib/gtag";
 import ScrollReveal from "./ScrollReveal";
 
-const EMAIL_WORKER_URL = "https://email-service.anton-abyzov.workers.dev";
+const SUBSCRIBE_URL = "/api/subscribe";
 
 const uiText = {
   title: {
@@ -39,47 +39,17 @@ export default function EmailCapture() {
 
     setStatus("loading");
     try {
-      const res = await fetch(`${EMAIL_WORKER_URL}/send`, {
+      const res = await fetch(SUBSCRIBE_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          to: "designabyzova@gmail.com",
-          from: { email: "admin@easychamp.com", name: "Sweet Balance" },
-          subject: `New subscriber: ${email}`,
-          html: `<p>New email subscriber: <strong>${email}</strong></p><p>Language: ${locale}</p>`,
-          replyTo: "designabyzova@gmail.com",
+          subscriberEmail: email,
+          locale,
+          welcomeHtml: buildWelcomeEmailHtml(locale),
         }),
       });
       const data = await res.json();
       if (data.success) {
-        // Notify second owner (fire-and-forget)
-        fetch(`${EMAIL_WORKER_URL}/send`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            to: "Uralevaulia@gmail.com",
-            from: { email: "admin@easychamp.com", name: "Sweet Balance" },
-            subject: `New subscriber: ${email}`,
-            html: `<p>New email subscriber: <strong>${email}</strong></p><p>Language: ${locale}</p>`,
-            replyTo: "designabyzova@gmail.com",
-          }),
-        }).catch(() => {});
-
-        // Send welcome email to subscriber (fire-and-forget)
-        fetch(`${EMAIL_WORKER_URL}/send`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            to: email,
-            from: { email: "admin@easychamp.com", name: "Sweet Balance" },
-            subject: locale === "ru"
-              ? "Добро пожаловать в Sweet Balance! 🎂"
-              : "Welcome to Sweet Balance! 🎂",
-            html: buildWelcomeEmailHtml(locale),
-            replyTo: "Uralevaulia@gmail.com",
-          }),
-        }).catch(() => {});
-
         setStatus("success");
         trackEmailSubscribe();
         setEmail("");
