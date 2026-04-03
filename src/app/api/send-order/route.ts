@@ -41,20 +41,20 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Send customer confirmation (fire-and-forget)
-    if (customerEmail && customerHtml) {
-      fetch(`${EMAIL_WORKER_URL}/send`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          to: customerEmail,
-          from: { email: "admin@easychamp.com", name: "Sweet Balance" },
-          subject: customerSubject || "Your order has been received — Sweet Balance",
-          html: customerHtml,
-          replyTo: OWNER_EMAILS[0],
-        }),
-      }).catch(() => {});
-    }
+    // DISABLED: Customer confirmation email — admin contacts customer directly by phone/message
+    // if (customerEmail && customerHtml) {
+    //   fetch(`${EMAIL_WORKER_URL}/send`, {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify({
+    //       to: customerEmail,
+    //       from: { email: "admin@easychamp.com", name: "Sweet Balance" },
+    //       subject: customerSubject || "Your order has been received — Sweet Balance",
+    //       html: customerHtml,
+    //       replyTo: OWNER_EMAILS[0],
+    //     }),
+    //   }).catch(() => {});
+    // }
 
     return NextResponse.json({ success: true });
   } catch {

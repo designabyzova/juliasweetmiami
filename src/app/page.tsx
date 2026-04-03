@@ -7,7 +7,7 @@ import Reviews from "@/components/Reviews";
 import FAQ from "@/components/FAQ";
 import HowItWorks from "@/components/HowItWorks";
 import OrderForm from "@/components/OrderForm";
-import EmailCapture from "@/components/EmailCapture";
+// import EmailCapture from "@/components/EmailCapture"; // DISABLED: newsletter subscription feature temporarily disabled
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 import ScrollToTop from "@/components/ScrollToTop";
@@ -29,7 +29,7 @@ export default function Home() {
         <FAQ />
         <HowItWorks />
         <OrderForm />
-        <EmailCapture />
+        {/* <EmailCapture /> */}{/* DISABLED: newsletter subscription feature temporarily disabled */}
         <Contact />
       </main>
       <Footer />

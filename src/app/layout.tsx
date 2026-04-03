@@ -61,9 +61,9 @@ export const metadata: Metadata = {
       "Luxurious European mousse desserts with minimal sugar. European recipes, pure flavor. Custom cakes for birthdays, weddings & celebrations. From $75.",
     images: [
       {
-        url: "/hero-juliia.webp",
-        width: 800,
-        height: 1067,
+        url: "/og-sweet-balance.webp",
+        width: 1200,
+        height: 630,
         alt: "Sweet Balance — Luxurious Mousse Desserts in Miami",
       },
     ],
@@ -73,7 +73,7 @@ export const metadata: Metadata = {
     title: "Sweet Balance — Luxurious Mousse Desserts in Miami",
     description:
       "Sweet Balance — European mousse desserts with minimal sugar. European recipes, pure flavor. Custom cakes from $75.",
-    images: ["/hero-juliia.webp"],
+    images: ["/og-sweet-balance.webp"],
   },
   alternates: {
     canonical: SITE_URL,

@@ -147,11 +147,12 @@ export default function OrderForm() {
       weight, filling, coating, color, box, decorations, date, name, phone, email, comment,
     });
 
-    const customerHtml = email
-      ? buildConfirmationEmailHtml({
-          weight, filling, coating, color, box, decorations, date, name, comment,
-        }, locale)
-      : undefined;
+    // DISABLED: Customer confirmation email — admin contacts customer directly by phone/message
+    // const customerHtml = email
+    //   ? buildConfirmationEmailHtml({
+    //       weight, filling, coating, color, box, decorations, date, name, comment,
+    //     }, locale)
+    //   : undefined;
 
     try {
       const res = await fetch(SEND_ORDER_URL, {
@@ -161,13 +162,14 @@ export default function OrderForm() {
           subject: `Новый заказ: ${filling} ${weight} — ${name}`,
           html: orderHtml,
           replyTo: "Uralevaulia@gmail.com",
-          customerEmail: email || undefined,
-          customerSubject: email
-            ? (locale === "ru"
-              ? "Ваш заказ принят — Sweet Balance"
-              : "Your order has been received — Sweet Balance")
-            : undefined,
-          customerHtml,
+          // DISABLED: customer email fields — no confirmation email sent to customer
+          // customerEmail: email || undefined,
+          // customerSubject: email
+          //   ? (locale === "ru"
+          //     ? "Ваш заказ принят — Sweet Balance"
+          //     : "Your order has been received — Sweet Balance")
+          //   : undefined,
+          // customerHtml,
         }),
       });
 
@@ -220,7 +222,8 @@ export default function OrderForm() {
             <p className="text-gray font-[family-name:var(--font-body)] text-sm sm:text-base mt-2">
               {t(ui.successContact)}
             </p>
-            {email && (
+            {/* DISABLED: "Confirmation sent to email" message — no customer emails sent */}
+            {/* {email && (
               <p className="text-coral font-[family-name:var(--font-body)] text-xs sm:text-sm mt-3 flex items-center justify-center gap-1.5">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <rect x="2" y="4" width="20" height="16" rx="2" />
@@ -228,7 +231,7 @@ export default function OrderForm() {
                 </svg>
                 {t(ui.successEmailSent).replace("{email}", email)}
               </p>
-            )}
+            )} */}
           </motion.div>
         </div>
       </section>

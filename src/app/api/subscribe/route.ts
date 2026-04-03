@@ -49,22 +49,22 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Send welcome email to subscriber (fire-and-forget)
-    if (welcomeHtml) {
-      fetch(`${EMAIL_WORKER_URL}/send`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          to: subscriberEmail,
-          from: { email: "admin@easychamp.com", name: "Sweet Balance" },
-          subject: locale === "ru"
-            ? "Добро пожаловать в Sweet Balance! 🎂"
-            : "Welcome to Sweet Balance! 🎂",
-          html: welcomeHtml,
-          replyTo: OWNER_EMAILS[0],
-        }),
-      }).catch(() => {});
-    }
+    // DISABLED: Welcome email to subscriber — newsletter feature temporarily disabled
+    // if (welcomeHtml) {
+    //   fetch(`${EMAIL_WORKER_URL}/send`, {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify({
+    //       to: subscriberEmail,
+    //       from: { email: "admin@easychamp.com", name: "Sweet Balance" },
+    //       subject: locale === "ru"
+    //         ? "Добро пожаловать в Sweet Balance! 🎂"
+    //         : "Welcome to Sweet Balance! 🎂",
+    //       html: welcomeHtml,
+    //       replyTo: OWNER_EMAILS[0],
+    //     }),
+    //   }).catch(() => {});
+    // }
 
     return NextResponse.json({ success: true });
   } catch {
